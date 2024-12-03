@@ -1,1 +1,2 @@
-﻿Ana sayfa tasarımı bitti veri çekme işlemi gerçekleştirilecek
+﻿Ana sayfa işlemleri tamamen bitti.
+yan sayfalar yapılacak.
