@@ -1,0 +1,89 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblService>
+
+
+<section id="tabs" class="tabs section light-background">
+
+    <div class="container">
+
+
+       
+
+        
+
+        <div class="row gap-x-lg-4 justify-content-between">
+          
+            <div class="col-lg-4 js-custom-dots">
+                <!-- /.service -->
+                @foreach (var x in Model)
+                {
+            <a href="#" class="service-item link horizontal d-flex active" data-aos="fade-left" data-aos-delay="0">
+                <div class="service-icon color-1 mb-4">
+                    <i class="@x.ServiceIcon"></i>
+
+                </div>
+                <!-- /.icon -->
+                <div class="service-contents">
+                    <h3>@x.Title</h3>
+                    <p>
+                        @x.Description
+                    </p>
+                </div>
+                <!-- /.service-contents-->
+            </a> <!-- /.service -->}
+            </div>
+           
+                <div class="col-lg-8">
+                   
+                    <div class="swiper init-swiper-tabs">
+
+                        <script type="application/json" class="swiper-config">
+                            {
+                              "loop": true,
+                              "speed": 600,
+                              "autoHeight": true,
+                              "autoplay": {
+                                "delay": 5000
+                              },
+                              "slidesPerView": "auto",
+                              "pagination": {
+                                "el": ".swiper-pagination",
+                                "type": "bullets",
+                                "clickable": true
+                              },
+                              "breakpoints": {
+                                "320": {
+                                  "slidesPerView": 1,
+                                  "spaceBetween": 40
+                                },
+                                "1200": {
+                                  "slidesPerView": 1,
+                                  "spaceBetween": 1
+                                }
+                              }
+                            }
+                        </script>
+                       
+                        <div class="swiper-wrapper">
+                            @foreach (var x in Model)
+                            {
+                                <div class="swiper-slide">
+                                    <img src="@x.İmage" alt="Image" class="img-fluid">
+
+                                </div>
+                            }
+
+
+
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                
+
+        </div>
+        
+
+    </div>
+</section>

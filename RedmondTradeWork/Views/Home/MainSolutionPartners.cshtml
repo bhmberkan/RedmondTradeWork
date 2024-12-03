@@ -1,0 +1,45 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblWork>
+
+<section id="blog-posts" class="blog-posts section">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+
+        <h2>Çözüm Ortaklarımız</h2>
+    </div><!-- End Section Title -->
+   
+   
+
+
+    <div class="container">
+       
+        <div class="row gy-4">
+            @foreach (var x in Model)
+            {
+        <div class="col-md-6 col-lg-4">
+
+
+
+            <div class="post-entry" data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="thumb d-block"><img src="@x.Photo" alt="Image" class="img-fluid rounded"></a>
+
+                <div class="post-content">
+
+                    <h3><a href="#">@x.Title</a></h3>
+                    <p>
+                        @x.Description
+                    </p>
+
+
+                </div>
+            </div>
+
+        </div>
+
+            }
+                    </div>
+        
+    </div>
+    
+
+</section>

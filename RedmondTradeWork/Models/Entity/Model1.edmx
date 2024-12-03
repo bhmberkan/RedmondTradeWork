@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RedmondTradeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TblAboutUs">
+          <Key>
+            <PropertyRef Name="AboutUsID" />
+          </Key>
+          <Property Name="AboutUsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="20" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Photo" Type="nchar" MaxLength="100" />
+          <Property Name="Photo2" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TblAdmin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="30" />
+          <Property Name="Password" Type="nchar" MaxLength="30" />
+          <Property Name="Rol" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TblMainPage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="30" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Photo1" Type="nchar" MaxLength="100" />
+          <Property Name="İmage2" Type="nvarchar" MaxLength="100" />
+          <Property Name="image3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Solution_Partners" Type="int" />
+          <Property Name="Photo2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Work" Type="int" />
+          <Property Name="About_Us" Type="int" />
+          <Property Name="Photo3" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TblMessage">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TblService">
+          <Key>
+            <PropertyRef Name="ServiceID" />
+          </Key>
+          <Property Name="ServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="20" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="İmage" Type="nchar" MaxLength="100" />
+          <Property Name="ServiceIcon" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TblSolution_Partners">
+          <Key>
+            <PropertyRef Name="SolutionPartnersID" />
+          </Key>
+          <Property Name="SolutionPartnersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="20" />
+          <Property Name="Description" Type="nchar" MaxLength="100" />
+          <Property Name="Photo" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TblWork">
+          <Key>
+            <PropertyRef Name="WorkID" />
+          </Key>
+          <Property Name="WorkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="nchar" MaxLength="100" />
+          <Property Name="Title" Type="nchar" MaxLength="20" />
+          <Property Name="Description" Type="nchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_TblMainPage_TblAboutUs">
+          <End Role="TblAboutUs" Type="Self.TblAboutUs" Multiplicity="0..1" />
+          <End Role="TblMainPage" Type="Self.TblMainPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblAboutUs">
+              <PropertyRef Name="AboutUsID" />
+            </Principal>
+            <Dependent Role="TblMainPage">
+              <PropertyRef Name="About_Us" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMainPage_TblSolution_Partners">
+          <End Role="TblSolution_Partners" Type="Self.TblSolution_Partners" Multiplicity="0..1" />
+          <End Role="TblMainPage" Type="Self.TblMainPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblSolution_Partners">
+              <PropertyRef Name="SolutionPartnersID" />
+            </Principal>
+            <Dependent Role="TblMainPage">
+              <PropertyRef Name="Solution_Partners" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMainPage_TblWork">
+          <End Role="TblWork" Type="Self.TblWork" Multiplicity="0..1" />
+          <End Role="TblMainPage" Type="Self.TblMainPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblWork">
+              <PropertyRef Name="WorkID" />
+            </Principal>
+            <Dependent Role="TblMainPage">
+              <PropertyRef Name="Work" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RedmondTradeDBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblAboutUs" EntityType="Self.TblAboutUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMainPage" EntityType="Self.TblMainPage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMessage" EntityType="Self.TblMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblService" EntityType="Self.TblService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblSolution_Partners" EntityType="Self.TblSolution_Partners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblWork" EntityType="Self.TblWork" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TblMainPage_TblAboutUs" Association="Self.FK_TblMainPage_TblAboutUs">
+            <End Role="TblAboutUs" EntitySet="TblAboutUs" />
+            <End Role="TblMainPage" EntitySet="TblMainPage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMainPage_TblSolution_Partners" Association="Self.FK_TblMainPage_TblSolution_Partners">
+            <End Role="TblSolution_Partners" EntitySet="TblSolution_Partners" />
+            <End Role="TblMainPage" EntitySet="TblMainPage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMainPage_TblWork" Association="Self.FK_TblMainPage_TblWork">
+            <End Role="TblWork" EntitySet="TblWork" />
+            <End Role="TblMainPage" EntitySet="TblMainPage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RedmondTradeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TblAboutUs">
+          <Key>
+            <PropertyRef Name="AboutUsID" />
+          </Key>
+          <Property Name="AboutUsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Photo2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblMainPage" Relationship="Self.FK_TblMainPage_TblAboutUs" FromRole="TblAboutUs" ToRole="TblMainPage" />
+        </EntityType>
+        <EntityType Name="TblAdmin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Rol" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblMainPage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Solution_Partners" Type="Int32" />
+          <Property Name="Photo2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Work" Type="Int32" />
+          <Property Name="About_Us" Type="Int32" />
+          <Property Name="Photo3" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="TblAboutUs" Relationship="Self.FK_TblMainPage_TblAboutUs" FromRole="TblMainPage" ToRole="TblAboutUs" />
+          <NavigationProperty Name="TblSolution_Partners" Relationship="Self.FK_TblMainPage_TblSolution_Partners" FromRole="TblMainPage" ToRole="TblSolution_Partners" />
+          <NavigationProperty Name="TblWork" Relationship="Self.FK_TblMainPage_TblWork" FromRole="TblMainPage" ToRole="TblWork" />
+          <Property Name="İmage2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="image3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblMessage">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblService">
+          <Key>
+            <PropertyRef Name="ServiceID" />
+          </Key>
+          <Property Name="ServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="İmage" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ServiceIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblSolution_Partners">
+          <Key>
+            <PropertyRef Name="SolutionPartnersID" />
+          </Key>
+          <Property Name="SolutionPartnersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="TblMainPage" Relationship="Self.FK_TblMainPage_TblSolution_Partners" FromRole="TblSolution_Partners" ToRole="TblMainPage" />
+        </EntityType>
+        <EntityType Name="TblWork">
+          <Key>
+            <PropertyRef Name="WorkID" />
+          </Key>
+          <Property Name="WorkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="TblMainPage" Relationship="Self.FK_TblMainPage_TblWork" FromRole="TblWork" ToRole="TblMainPage" />
+        </EntityType>
+        <Association Name="FK_TblMainPage_TblAboutUs">
+          <End Role="TblAboutUs" Type="Self.TblAboutUs" Multiplicity="0..1" />
+          <End Role="TblMainPage" Type="Self.TblMainPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblAboutUs">
+              <PropertyRef Name="AboutUsID" />
+            </Principal>
+            <Dependent Role="TblMainPage">
+              <PropertyRef Name="About_Us" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMainPage_TblSolution_Partners">
+          <End Role="TblSolution_Partners" Type="Self.TblSolution_Partners" Multiplicity="0..1" />
+          <End Role="TblMainPage" Type="Self.TblMainPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblSolution_Partners">
+              <PropertyRef Name="SolutionPartnersID" />
+            </Principal>
+            <Dependent Role="TblMainPage">
+              <PropertyRef Name="Solution_Partners" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMainPage_TblWork">
+          <End Role="TblWork" Type="Self.TblWork" Multiplicity="0..1" />
+          <End Role="TblMainPage" Type="Self.TblMainPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblWork">
+              <PropertyRef Name="WorkID" />
+            </Principal>
+            <Dependent Role="TblMainPage">
+              <PropertyRef Name="Work" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RedmondTradeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TblAboutUs" EntityType="Self.TblAboutUs" />
+          <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" />
+          <EntitySet Name="TblMainPage" EntityType="Self.TblMainPage" />
+          <EntitySet Name="TblMessage" EntityType="Self.TblMessage" />
+          <EntitySet Name="TblService" EntityType="Self.TblService" />
+          <EntitySet Name="TblSolution_Partners" EntityType="Self.TblSolution_Partners" />
+          <EntitySet Name="TblWork" EntityType="Self.TblWork" />
+          <AssociationSet Name="FK_TblMainPage_TblAboutUs" Association="Self.FK_TblMainPage_TblAboutUs">
+            <End Role="TblAboutUs" EntitySet="TblAboutUs" />
+            <End Role="TblMainPage" EntitySet="TblMainPage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMainPage_TblSolution_Partners" Association="Self.FK_TblMainPage_TblSolution_Partners">
+            <End Role="TblSolution_Partners" EntitySet="TblSolution_Partners" />
+            <End Role="TblMainPage" EntitySet="TblMainPage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMainPage_TblWork" Association="Self.FK_TblMainPage_TblWork">
+            <End Role="TblWork" EntitySet="TblWork" />
+            <End Role="TblMainPage" EntitySet="TblMainPage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RedmondTradeDBModelStoreContainer" CdmEntityContainer="RedmondTradeDBEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAboutUs">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblAboutUs">
+              <MappingFragment StoreEntitySet="TblAboutUs">
+                <ScalarProperty Name="AboutUsID" ColumnName="AboutUsID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Photo2" ColumnName="Photo2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAdmin">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblAdmin">
+              <MappingFragment StoreEntitySet="TblAdmin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMainPage">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblMainPage">
+              <MappingFragment StoreEntitySet="TblMainPage">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="image3" ColumnName="image3" />
+                <ScalarProperty Name="İmage2" ColumnName="İmage2" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Photo1" ColumnName="Photo1" />
+                <ScalarProperty Name="Solution_Partners" ColumnName="Solution_Partners" />
+                <ScalarProperty Name="Photo2" ColumnName="Photo2" />
+                <ScalarProperty Name="Work" ColumnName="Work" />
+                <ScalarProperty Name="About_Us" ColumnName="About_Us" />
+                <ScalarProperty Name="Photo3" ColumnName="Photo3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMessage">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblMessage">
+              <MappingFragment StoreEntitySet="TblMessage">
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblService">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblService">
+              <MappingFragment StoreEntitySet="TblService">
+                <ScalarProperty Name="ServiceIcon" ColumnName="ServiceIcon" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="İmage" ColumnName="İmage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblSolution_Partners">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblSolution_Partners">
+              <MappingFragment StoreEntitySet="TblSolution_Partners">
+                <ScalarProperty Name="SolutionPartnersID" ColumnName="SolutionPartnersID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblWork">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblWork">
+              <MappingFragment StoreEntitySet="TblWork">
+                <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

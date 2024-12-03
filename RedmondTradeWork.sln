@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33920.266
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedmondTradeWork", "RedmondTradeWork\RedmondTradeWork.csproj", "{F04DF0D9-42C3-4C3F-A7F2-C392346E9586}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F04DF0D9-42C3-4C3F-A7F2-C392346E9586}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F04DF0D9-42C3-4C3F-A7F2-C392346E9586}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F04DF0D9-42C3-4C3F-A7F2-C392346E9586}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F04DF0D9-42C3-4C3F-A7F2-C392346E9586}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A237BA24-253A-4B24-BEC5-20DE34826F00}
+	EndGlobalSection
+EndGlobal

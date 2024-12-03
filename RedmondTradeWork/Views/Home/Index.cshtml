@@ -1,0 +1,90 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblMainPage>
+
+
+
+<!-- About Section -->
+<section id="about" class="about section">
+
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-7 mb-5 mb-lg-0 order-lg-2" data-aos="fade-up" data-aos-delay="400">
+                <div class="swiper init-swiper">
+                    <script type="application/json" class="swiper-config">
+                        {
+                          "loop": true,
+                          "speed": 600,
+                          "autoplay": {
+                            "delay": 5000
+                          },
+                          "slidesPerView": "auto",
+                          "pagination": {
+                            "el": ".swiper-pagination",
+                            "type": "bullets",
+                            "clickable": true
+                          },
+                          "breakpoints": {
+                            "320": {
+                              "slidesPerView": 1,
+                              "spaceBetween": 40
+                            },
+                            "1200": {
+                              "slidesPerView": 1,
+                              "spaceBetween": 1
+                            }
+                          }
+                        }
+                    </script>
+                    @foreach (var x in Model)
+                    {
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="~/Active/assets/img/img_h_6.jpg" alt="Image" class="img-fluid">
+            </div>
+            <div class="swiper-slide">
+                <img src="@x.Photo1" alt="Image" class="img-fluid">
+            </div>
+            <div class="swiper-slide">
+                <img src="~/Active/assets/img/img_h_8.jpg" alt="Image" class="img-fluid">
+            </div>
+        </div>}
+
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="col-lg-4 order-lg-1">
+                <span class="section-subtitle" data-aos="fade-up">HOŞGELDİNİZ!</span>
+                @foreach (var x in Model)
+                {
+    <h1 class="mb-4" data-aos="fade-up">
+        @x.Title
+    </h1>
+                    <p data-aos="fade-up">
+                        @x.Description
+                    </p>}
+                <p class="mt-5" data-aos="fade-up">
+                    <a href="#" class="btn btn-warning">Servislerimiz</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /About Section -->
+
+<!-- About 2 Section -->
+@Html.Action("MainAbaoutUsPartial", "Home")
+<!-- /About 2 Section -->
+
+<!-- Services Section -->
+<section id="services" class="services section light-background">
+</section>
+<!-- /Services Section -->
+
+<!-- Blog Posts Section -->
+@Html.Action("MainSolutionPartners", "Home")
+<!-- /Blog Posts Section -->
+
+<!-- Tabs Section -->
+@Html.Action("MainService", "Home")
+<!-- /Tabs Section -->
