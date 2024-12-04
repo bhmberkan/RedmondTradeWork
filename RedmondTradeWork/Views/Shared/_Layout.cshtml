@@ -2,20 +2,25 @@
 <html lang="en">
 
 <head>
+
+   
+
+
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Index - Active Bootstrap Template</title>
+    <title>Redmond Trade</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="~/Active/assets/img/favicon.png" rel="icon">
+    <link href="~/Active/assets/img/Titleİcon.png" rel="icon">
     <link href="~/Active/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="~/Active/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -49,13 +54,25 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li> 
-                  
-                   
-                   
+                    <li><a href="~/Home/Index" class="active">Home</a></li>
+                    <li><a href="~/Home/About">About</a></li>
+                    <li><a href="~/Home/Service">Services</a></li>
+                    <li><a href="~/Home/Contact">Contact</a></li>
+
+                    <li class="dropdown">
+                        <a href="#"><span>Language</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="#">Turkish</a></li>
+                           
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">French</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li><a href="#">Login</a></li>
+
+
+
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -65,7 +82,7 @@
 
     <main class="main">
 
-      @RenderBody()
+        @RenderBody()
 
     </main>
 
@@ -76,12 +93,11 @@
                     <div class="widget">
                         <h3 class="widget-heading">About Us</h3>
                         <p class="mb-4">
-                            Firmamız, inşaat sektöründe öncü bir rol üstlenerek, 
-                            yüksek kaliteli inşaat malzemelerini tedarik edip 
-                            yurtdışına ihracatını gerçekleştiren bir lider kuruluştur...
+                            Our company is a leading company that assumes a leading role in the construction industry, 
+                            supplying high quality construction materials and exporting them abroad...
                         </p>
                         <p class="mb-0">
-                            <a href="#" class="btn-learn-more">Learn more</a>
+                            <a href="~/Home/About" class="btn btn-warning">Learn more</a>
                         </p>
                     </div>
                 </div>
@@ -89,15 +105,15 @@
                     <div class="widget">
                         <h3 class="widget-heading">Navigation</h3>
                         <ul class="list-unstyled float-start me-5">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Services</a></li>
-                            
+                            <li><a href="Index">Home</a></li>
+                            <li><a href="About">About Us</a></li>
+                            <li><a href="Service">Services</a></li>
+
                         </ul>
                         <ul class="list-unstyled float-start">
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Mail</a></li>
-                            
+                            <li><a href="Contact">Contact</a></li>
+                            <li><a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">Mail</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -107,19 +123,21 @@
                         <ul class="list-unstyled footer-blog-entry">
                             <li>
                                 <span class="d-block date">Mail</span>
-                                <a href="#">info@redmondtrade.com</a>
+                                <p>info@redmondtrade.com</p>
+                              
                             </li>
                             <li>
                                 <span class="d-block date">GSM</span>
-                                <a href="#">+90 534 650 05 43</a>
-                            </li> 
+                                <p>+90 534 650 05 43</p>
+                                
+                            </li>
                             <li>
                                 <span class="d-block date">GSM</span>
-                                <a href="#">+90 532 055 86 63</a>
+                                <p>+90 532 055 86 63</p>
                             </li>
                         </ul>
 
-                        
+
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 pl-lg-5">
@@ -144,7 +162,7 @@
                         </ul>
                     </div>
 
-                  
+
                 </div>
             </div>
 
@@ -182,6 +200,9 @@
 
     <!-- Main JS File -->
     <script src="~/Active/assets/js/main.js"></script>
+
+
+  
 
 </body>
 

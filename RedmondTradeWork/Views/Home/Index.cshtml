@@ -5,7 +5,6 @@
 
 <!-- About Section -->
 <section id="about" class="about section">
-
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-7 mb-5 mb-lg-0 order-lg-2" data-aos="fade-up" data-aos-delay="400">
@@ -39,15 +38,16 @@
                     {
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="~/Active/assets/img/img_h_6.jpg" alt="Image" class="img-fluid">
-            </div>
-            <div class="swiper-slide">
                 <img src="@x.Photo1" alt="Image" class="img-fluid">
             </div>
             <div class="swiper-slide">
-                <img src="~/Active/assets/img/img_h_8.jpg" alt="Image" class="img-fluid">
+                <img src="@x.İmage2" alt="Image" class="img-fluid">
             </div>
-        </div>}
+            <div class="swiper-slide">
+                <img src="@x.image3" alt="Image" class="img-fluid">
+            </div>
+        </div>
+        }
 
                     <div class="swiper-pagination"></div>
                 </div>
@@ -63,7 +63,7 @@
                         @x.Description
                     </p>}
                 <p class="mt-5" data-aos="fade-up">
-                    <a href="#" class="btn btn-warning">Servislerimiz</a>
+                    <a href="/Home/Service" class="btn btn-warning">Services</a>
                 </p>
 
             </div>
@@ -71,20 +71,16 @@
     </div>
 </section>
 <!-- /About Section -->
-
 <!-- About 2 Section -->
 @Html.Action("MainAbaoutUsPartial", "Home")
 <!-- /About 2 Section -->
-
 <!-- Services Section -->
 <section id="services" class="services section light-background">
 </section>
 <!-- /Services Section -->
-
 <!-- Blog Posts Section -->
 @Html.Action("MainSolutionPartners", "Home")
 <!-- /Blog Posts Section -->
-
 <!-- Tabs Section -->
 @Html.Action("MainService", "Home")
 <!-- /Tabs Section -->

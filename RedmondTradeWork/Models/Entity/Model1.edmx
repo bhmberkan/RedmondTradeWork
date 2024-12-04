@@ -22,6 +22,8 @@
           <Property Name="AboutUsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nchar" MaxLength="20" />
           <Property Name="Description" Type="varchar(max)" />
+          <Property Name="SubHeadingTitle" Type="nchar" MaxLength="20" />
+          <Property Name="SubHeading" Type="varchar(max)" />
           <Property Name="Photo" Type="nchar" MaxLength="100" />
           <Property Name="Photo2" Type="nvarchar" MaxLength="100" />
         </EntityType>
@@ -57,7 +59,9 @@
           <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="30" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="200" />
           <Property Name="Message" Type="varchar(max)" />
+          <Property Name="Date" Type="date" />
         </EntityType>
         <EntityType Name="TblService">
           <Key>
@@ -85,7 +89,7 @@
           <Property Name="WorkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Photo" Type="nchar" MaxLength="100" />
           <Property Name="Title" Type="nchar" MaxLength="20" />
-          <Property Name="Description" Type="nchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK_TblMainPage_TblAboutUs">
           <End Role="TblAboutUs" Type="Self.TblAboutUs" Multiplicity="0..1" />
@@ -169,6 +173,8 @@
           <Property Name="Photo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="Photo2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblMainPage" Relationship="Self.FK_TblMainPage_TblAboutUs" FromRole="TblAboutUs" ToRole="TblMainPage" />
+          <Property Name="SubHeadingTitle" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="SubHeading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TblAdmin">
           <Key>
@@ -206,6 +212,8 @@
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="TblService">
           <Key>
@@ -234,7 +242,7 @@
           <Property Name="WorkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Photo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="Title" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TblMainPage" Relationship="Self.FK_TblMainPage_TblWork" FromRole="TblWork" ToRole="TblMainPage" />
         </EntityType>
         <Association Name="FK_TblMainPage_TblAboutUs">
@@ -315,6 +323,8 @@
           <EntitySetMapping Name="TblAboutUs">
             <EntityTypeMapping TypeName="RedmondTradeDBModel.TblAboutUs">
               <MappingFragment StoreEntitySet="TblAboutUs">
+                <ScalarProperty Name="SubHeading" ColumnName="SubHeading" />
+                <ScalarProperty Name="SubHeadingTitle" ColumnName="SubHeadingTitle" />
                 <ScalarProperty Name="AboutUsID" ColumnName="AboutUsID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -353,6 +363,8 @@
           <EntitySetMapping Name="TblMessage">
             <EntityTypeMapping TypeName="RedmondTradeDBModel.TblMessage">
               <MappingFragment StoreEntitySet="TblMessage">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="MessageID" ColumnName="MessageID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

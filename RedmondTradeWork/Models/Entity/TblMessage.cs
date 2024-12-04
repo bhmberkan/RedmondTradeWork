@@ -18,5 +18,7 @@ namespace RedmondTradeWork.Models.Entity
         public string Name { get; set; }
         public string Email { get; set; }
         public string Message { get; set; }
+        public string Title { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     }
 }

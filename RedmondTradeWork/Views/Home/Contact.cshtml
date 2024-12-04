@@ -1,17 +1,106 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model RedmondTradeWork.Models.Entity.TblMessage
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+<!-- Page Title -->
+<div class="page-title light-background">
+    <div class="container">
+        <h1>Contact</h1>
+        <nav class="breadcrumbs">
+            <ol>
+                <li><a href="Index">Home</a></li>
+                <li class="current">Contact</li>
+            </ol>
+        </nav>
+    </div>
+</div><!-- End Page Title -->
+<br />
+<br />
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="contact section">
+
+    <div class="container" data-aos="fade">
+
+        <div class="row gy-5 gx-lg-5">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5344.6461072368975!2d38.79828897455717!3d37.201521786676956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15347a98a46390a9%3A0xaa26baaacdc26bbf!2zWWVsa2VuJ3MgdG93ZXJzIEthcmFhxJ9hw6cgaW7Fnw!5e0!3m2!1str!2str!4v1733334253019!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            
+
+            <br />
+
+            <div class="col-lg-4">
+
+                <div class="info">
+                    <h3>Get in touch</h3>
+                    <p>We welcome you to our office to talk about other issues.</p>
+
+                    <div class="info-item d-flex">
+                        <i class="bi bi-geo-alt flex-shrink-0"></i>
+                        <div>
+                            <h4>Location:</h4>
+                            <p>
+                                Yelken Towers Sitesi B Blok No.1 <br />
+                                Karakopru/Sanliurfa
+                            </p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                    <div class="info-item d-flex">
+                        <i class="bi bi-envelope flex-shrink-0"></i>
+                        <div>
+                            <h4>Email:</h4>
+                            <p>info@redmondtrade.com</p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                    <div class="info-item d-flex">
+                        <i class="bi bi-phone flex-shrink-0"></i>
+                        <div>
+                            <h4>Call:</h4>
+                            <p>+90 534 650 05 43</p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-8">
+                <form action="Contact" method="post" class="php-email-form">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            @Html.TextBoxFor(x => x.Name, new { @type = "text", @class = "form-control", placeholder = "Your Name", requried = "" })
+
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            @Html.TextBoxFor(x => x.Email, new { @type = "email", @class = "form-control", placeholder = "Your Email", requried = "" })
+
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        @Html.TextBoxFor(x => x.Title, new { @type = "text", @class = "form-control", placeholder = "Subject", requried = "" })
+
+                    </div>
+                    <div class="form-group mt-3">
+                        @Html.TextAreaFor(x => x.Message, new { @class = "form-control", placeholder = "Message", requried = "" })
+
+                    </div>
+                    <div class="my-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                    </div>
+                    <div class="text-center"><button type="submit">Send Message</button></div>
+                </form>
+            </div><!-- End Contact Form -->
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- /Contact Section -->

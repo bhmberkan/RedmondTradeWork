@@ -1,2 +1,7 @@
 ﻿Ana sayfa işlemleri tamamen bitti.
 yan sayfalar yapılacak.
+
+
+
+https://icons.getbootstrap.com/
+bi bi icons page 
