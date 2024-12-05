@@ -1,0 +1,38 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblMainPage>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Hoşgeldiniz Kısmı</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Açıklama</th>
+        <th>1.Görsel</th>
+        <th>2.Görsel</th>
+        <th>3.Görsel</th>
+        <th>Güncelle</th>
+     
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.ID</th>
+            <td>@x.Title</td>
+            <td>@x.Description</td>
+            <td>@x.Photo1</td>
+            <td>@x.İmage2</td>
+            <td>@x.image3</td>
+          
+            <td><a href="/Admin/UpdateMainpage/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+          
+        </tr>
+
+    }
+</table>
+

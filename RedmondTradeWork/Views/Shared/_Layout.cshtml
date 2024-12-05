@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using RedmondTradeWork.App_GlobalResources
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
 
    
-
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -54,22 +55,22 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="~/Home/Index" class="active">Home</a></li>
-                    <li><a href="~/Home/About">About</a></li>
-                    <li><a href="~/Home/Service">Services</a></li>
-                    <li><a href="~/Home/Contact">Contact</a></li>
+                    <li><a href="~/Home/Index" class="active">@Resource.Home</a></li>
+                    <li><a href="~/Home/About">@Resource.About</a></li>
+                    <li><a href="~/Home/Service">@Resource.Service</a></li>
+                    <li><a href="~/Home/Contact">@Resource.Contact</a></li>
 
                     <li class="dropdown">
-                        <a href="#"><span>Language</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <a href="#"><span>@Resource.Lenguage</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="#">Turkish</a></li>
+                            <li><a href="?lang=tr">Turkish</a></li>
                            
-                            <li><a href="#">English</a></li>
-                            <li><a href="#">French</a></li>
+                            <li><a href="?lang=en">English</a></li>
+                            <li><a href="?lang=fr">French</a></li>
                            
                         </ul>
                     </li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="#">@Resource.Login</a></li>
 
 
 

@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+ @Html.Action("HeadPartial" , "Admin")
+
+<body>
+
+    @Html.Action("PreloaderPartial", "Admin")
+
+    <div id="main-wrapper">
+
+
+        @Html.Action("NavHeaderPartial", "Admin")
+
+
+        @Html.Action("HeaderPartial", "Admin")
+
+
+        @Html.Action("SideBarPartial", "Admin")
+
+
+        <div class="content-body">
+
+
+
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>@RenderBody()</p>
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+
+        @Html.Action("FooterPartial", "Admin")
+    </div>
+
+    @Html.Action("ScriptPartial", "Admin")
+</body>
+
+</html>
+
+
