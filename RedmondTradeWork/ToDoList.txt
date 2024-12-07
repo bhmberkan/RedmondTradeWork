@@ -1,7 +1,26 @@
-﻿Ana sayfa işlemleri tamamen bitti.
-yan sayfalar yapılacak.
-
+﻿
 
 
 https://icons.getbootstrap.com/
-bi bi icons page 
+bi bi icons page
+
+
+
+
+service,work ve solution_partners için ingilizce ve fransızca tabloları da oluşturulacak
+
+
+
+work kısmını halledicem.  //  Komple Bittii  !!! 
+Service kısmını halledicem. // Komple Bitti !!!
+messajlar kısmı da yapılacak
+kullanıcı ekleme işlemi admin tablosundan yapılacak
+
+sonra hepsi için ing ve fr sayfaları oluşturucam
+
+
+contact kısmına whatsapp yönlendirmesi yapacağım
+
+
+herşey bordo olacak. logo hover efectler vs  // Komple Bitti !!
+

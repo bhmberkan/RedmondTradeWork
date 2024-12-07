@@ -19,5 +19,9 @@ namespace RedmondTradeWork.Models.Entity
         public string Description { get; set; }
         public string İmage { get; set; }
         public string ServiceIcon { get; set; }
+        public string Title_En { get; set; }
+        public string Title_Fr { get; set; }
+        public string Description_En { get; set; }
+        public string Description_Fr { get; set; }
     }
 }

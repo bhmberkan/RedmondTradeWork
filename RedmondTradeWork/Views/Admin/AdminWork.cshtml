@@ -1,0 +1,50 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblWork>
+@{
+    ViewBag.Title = "AdminWork";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Admin Work - Service Pages Settings</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Başlık Tr</th>
+        <th>Başlık En</th>
+        <th>Başlık Fr</th>
+        <th>Açıklama Tr</th>
+        <th>Açıklama En</th>
+        <th>Açıklama Fr</th>
+        <th>Görsel</th>
+
+        <th>Güncelle</th>
+        <th>Sil</th>
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.WorkID</th>
+            <td>@x.Title</td>
+            <td>@x.Title_En</td>
+            <td>@x.Title_Fr</td>
+            <td>@x.Description</td>
+            <td>@x.Description_En</td>
+            <td>@x.Description_Fr</td>
+            <td>@x.Photo</td>
+         
+
+
+
+            <td><a href="/Admin/UpdateWorkPage/@x.WorkID" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+            <td><a href="/Admin/DeleteWork/@x.WorkID" class="btn mb-1 btn-rounded btn-outline-warning">Sil</a></td>
+
+        </tr>
+
+    }
+</table>
+
+
+<a href="/Admin/InsertWork/" class="btn  btn-outline-info">Ekle</a>

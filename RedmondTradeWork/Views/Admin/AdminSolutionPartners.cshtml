@@ -1,0 +1,40 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblSolution_Partners>
+@{
+    ViewBag.Title = "AdminSolutionPartners";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Admin Solution Partners</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Açıklama Tr</th>
+        <th>Açıklama En</th>
+        <th>Açıklama Fr</th>
+        <th>Görsel</th>
+        
+        <th>Güncelle</th>
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.SolutionPartnersID</th>
+            <td>@x.Title</td>
+            <td>@x.Description</td>
+            <td>@x.Description_En</td>
+            <td>@x.Description_Fr</td>
+            <td>@x.Photo</td>
+
+
+
+            <td><a href="/Admin/UpdateSolutionPage/@x.SolutionPartnersID" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+
+        </tr>
+
+    }
+</table>

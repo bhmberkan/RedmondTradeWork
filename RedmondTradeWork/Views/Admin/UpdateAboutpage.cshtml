@@ -1,0 +1,49 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model TblAboutUs
+@{
+    ViewBag.Title = "UpdateAboutpage";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Update About page</h2>
+
+
+
+<br />
+
+@using (Html.BeginForm("UpdateAboutpages", "Admin", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.AboutUsID) // hiddenfor arka planda çalışacak anlamında
+    <br />
+
+    @Html.Label("Başlık")
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    @Html.Label("Aciklama")
+    @Html.TextAreaFor(x => x.Description, 10, 4, new { @class = "form-control" })
+    <br />
+
+    <br />
+    @Html.Label("2.Başlık")
+    @Html.TextBoxFor(x => x.SubHeadingTitle, new { @class = "form-control" })
+    <br />
+
+    <br />
+    @Html.Label("2.Açıklama")
+    @Html.TextAreaFor(x => x.SubHeading, 10, 4, new { @class = "form-control" })
+    <br />
+
+    <br />
+    @Html.Label("1.Görsel")
+    @Html.TextBoxFor(x => x.Photo, new { @class = "form-control" })
+    <br />
+
+    <br />
+    @Html.Label("2.Görsel")
+    @Html.TextBoxFor(x => x.Photo2, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary"> Değişiklikleri Kaydet </button>
+
+}

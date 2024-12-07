@@ -24,6 +24,10 @@ namespace RedmondTradeWork.Models.Entity
         public string Photo { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Title_En { get; set; }
+        public string Title_Fr { get; set; }
+        public string Description_En { get; set; }
+        public string Description_Fr { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblMainPage> TblMainPage { get; set; }

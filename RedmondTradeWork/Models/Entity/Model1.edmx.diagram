@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="RedmondTradeDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblAboutUs" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblAdmin" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RedmondTradeDBModel.TblMainPage" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RedmondTradeDBModel.TblMainPage" Width="1.5" PointX="3" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblMessage" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblService" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblSolution_Partners" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />

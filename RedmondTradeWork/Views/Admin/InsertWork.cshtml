@@ -1,0 +1,48 @@
+﻿@model RedmondTradeWork.Models.Entity.TblWork
+@{
+    ViewBag.Title = "InsertWork";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Insert Work</h2>
+<br />
+
+<form method="post">
+
+    
+    @Html.Label("Başlık Tr")
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Başlık En")
+    @Html.TextBoxFor(x => x.Title_En, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Başlık Fr")
+    @Html.TextBoxFor(x => x.Title_Fr, new { @class = "form-control" })
+    <br />
+    @Html.Label("Aciklama Tr")
+    @Html.TextAreaFor(x => x.Description, 10, 4, new { @class = "form-control" })
+    <br />
+
+    <br />
+    @Html.Label("Aciklama En")
+    @Html.TextAreaFor(x => x.Description_En, 10, 4, new { @class = "form-control" })
+    <br />
+
+
+    <br />
+    @Html.Label("Aciklama Fr")
+    @Html.TextAreaFor(x => x.Description_Fr, 10, 4, new { @class = "form-control" })
+    <br />
+
+
+    <br />
+    @Html.Label("Görsel")
+    @Html.TextBoxFor(x => x.Photo, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-info"> Ekle </button>
+
+    
+</form>

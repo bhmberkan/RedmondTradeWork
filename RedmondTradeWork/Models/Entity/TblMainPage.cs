@@ -25,6 +25,7 @@ namespace RedmondTradeWork.Models.Entity
         public string image3 { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Language { get; set; }
     
         public virtual TblAboutUs TblAboutUs { get; set; }
         public virtual TblSolution_Partners TblSolution_Partners { get; set; }

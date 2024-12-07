@@ -5,10 +5,10 @@
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
 
-<h2>Hoşgeldiniz Kısmı</h2>
+<h2>page welcome partial</h2>
+<br />
 
-
-<table class="table table-bordered">
+<table class="table table-bordered form-group">
     <tr>
         <th>#</th>
         <th>Başlık</th>
@@ -16,8 +16,9 @@
         <th>1.Görsel</th>
         <th>2.Görsel</th>
         <th>3.Görsel</th>
+        <th>Dil</th>
         <th>Güncelle</th>
-     
+
     </tr>
     @foreach (var x in Model)
     {
@@ -28,6 +29,7 @@
             <td>@x.Photo1</td>
             <td>@x.İmage2</td>
             <td>@x.image3</td>
+            <td>@x.Language</td>
           
             <td><a href="/Admin/UpdateMainpage/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
           

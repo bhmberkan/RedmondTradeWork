@@ -176,7 +176,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -221,26 +220,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App_GlobalResources\Resource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\Resource.en.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.en.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\Resource.fr.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.fr.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\Resource.tr.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.tr.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Active\about.html" />
@@ -281,6 +260,7 @@
     <Content Include="Active\assets\img\portfolio\books-1.jpg" />
     <Content Include="Active\assets\img\portfolio\branding-1.jpg" />
     <Content Include="Active\assets\img\portfolio\product-1.jpg" />
+    <Content Include="Active\assets\img\redmond-logoa-120x89.png" />
     <Content Include="Active\assets\img\team\team-1.jpg" />
     <Content Include="Active\assets\img\team\team-2.jpg" />
     <Content Include="Active\assets\img\team\team-3.jpg" />
@@ -752,6 +732,7 @@
     <Content Include="adminweb\images\profile\9.jpg" />
     <Content Include="adminweb\images\profile\cover.jpg" />
     <Content Include="adminweb\images\profile\profile.png" />
+    <Content Include="adminweb\images\redmond-logoa-120x89.png" />
     <Content Include="adminweb\images\users\1.jpg" />
     <Content Include="adminweb\images\users\2.jpg" />
     <Content Include="adminweb\images\users\3.jpg" />
@@ -5652,6 +5633,16 @@
     <Content Include="Views\Admin\ScriptPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\UpdateMainpage.cshtml" />
+    <Content Include="Views\Admin\AdminAbout.cshtml" />
+    <Content Include="Views\Admin\UpdateAboutpage.cshtml" />
+    <Content Include="Views\Admin\AdminSolutionPartners.cshtml" />
+    <Content Include="Views\Admin\UpdateSolutionPage.cshtml" />
+    <Content Include="Views\Admin\AdminWork.cshtml" />
+    <Content Include="Views\Admin\UpdateWorkPage.cshtml" />
+    <Content Include="Views\Admin\InsertWork.cshtml" />
+    <Content Include="Views\Admin\AdminService.cshtml" />
+    <Content Include="Views\Admin\UpdateServicePage.cshtml" />
+    <Content Include="Views\Admin\InsertService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -5672,24 +5663,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="App_GlobalResources\Resource.en.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Resource.fr.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.fr.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Resource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Resource.tr.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.tr.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

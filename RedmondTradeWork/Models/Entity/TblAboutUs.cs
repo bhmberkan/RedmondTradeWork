@@ -27,6 +27,7 @@ namespace RedmondTradeWork.Models.Entity
         public string Photo2 { get; set; }
         public string SubHeadingTitle { get; set; }
         public string SubHeading { get; set; }
+        public string Langueage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblMainPage> TblMainPage { get; set; }

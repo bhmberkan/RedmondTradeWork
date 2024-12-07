@@ -26,6 +26,7 @@
           <Property Name="SubHeading" Type="varchar(max)" />
           <Property Name="Photo" Type="nchar" MaxLength="100" />
           <Property Name="Photo2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Langueage" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="TblAdmin">
           <Key>
@@ -51,6 +52,7 @@
           <Property Name="Work" Type="int" />
           <Property Name="About_Us" Type="int" />
           <Property Name="Photo3" Type="nchar" MaxLength="100" />
+          <Property Name="Language" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="TblMessage">
           <Key>
@@ -72,6 +74,10 @@
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="İmage" Type="nchar" MaxLength="100" />
           <Property Name="ServiceIcon" Type="nvarchar" MaxLength="100" />
+          <Property Name="Title_En" Type="nchar" MaxLength="20" />
+          <Property Name="Title_Fr" Type="nchar" MaxLength="20" />
+          <Property Name="Description_En" Type="varchar(max)" />
+          <Property Name="Description_Fr" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="TblSolution_Partners">
           <Key>
@@ -79,8 +85,10 @@
           </Key>
           <Property Name="SolutionPartnersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nchar" MaxLength="20" />
-          <Property Name="Description" Type="nchar" MaxLength="100" />
-          <Property Name="Photo" Type="nchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description_En" Type="varchar(max)" />
+          <Property Name="Description_Fr" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="TblWork">
           <Key>
@@ -89,7 +97,11 @@
           <Property Name="WorkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Photo" Type="nchar" MaxLength="100" />
           <Property Name="Title" Type="nchar" MaxLength="20" />
+          <Property Name="Title_En" Type="nvarchar" MaxLength="20" />
+          <Property Name="Title_Fr" Type="nvarchar" MaxLength="20" />
           <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Description_En" Type="varchar(max)" />
+          <Property Name="Description_Fr" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK_TblMainPage_TblAboutUs">
           <End Role="TblAboutUs" Type="Self.TblAboutUs" Multiplicity="0..1" />
@@ -175,6 +187,7 @@
           <NavigationProperty Name="TblMainPage" Relationship="Self.FK_TblMainPage_TblAboutUs" FromRole="TblAboutUs" ToRole="TblMainPage" />
           <Property Name="SubHeadingTitle" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="SubHeading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Langueage" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="TblAdmin">
           <Key>
@@ -203,6 +216,7 @@
           <Property Name="image3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Title" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="TblMessage">
           <Key>
@@ -224,6 +238,10 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="İmage" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="ServiceIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Title_En" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Title_Fr" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Description_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description_Fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TblSolution_Partners">
           <Key>
@@ -231,9 +249,11 @@
           </Key>
           <Property Name="SolutionPartnersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblMainPage" Relationship="Self.FK_TblMainPage_TblSolution_Partners" FromRole="TblSolution_Partners" ToRole="TblMainPage" />
+          <Property Name="Description_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description_Fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TblWork">
           <Key>
@@ -244,6 +264,10 @@
           <Property Name="Title" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TblMainPage" Relationship="Self.FK_TblMainPage_TblWork" FromRole="TblWork" ToRole="TblMainPage" />
+          <Property Name="Title_En" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Title_Fr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Description_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description_Fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_TblMainPage_TblAboutUs">
           <End Role="TblAboutUs" Type="Self.TblAboutUs" Multiplicity="0..1" />
@@ -323,6 +347,7 @@
           <EntitySetMapping Name="TblAboutUs">
             <EntityTypeMapping TypeName="RedmondTradeDBModel.TblAboutUs">
               <MappingFragment StoreEntitySet="TblAboutUs">
+                <ScalarProperty Name="Langueage" ColumnName="Langueage" />
                 <ScalarProperty Name="SubHeading" ColumnName="SubHeading" />
                 <ScalarProperty Name="SubHeadingTitle" ColumnName="SubHeadingTitle" />
                 <ScalarProperty Name="AboutUsID" ColumnName="AboutUsID" />
@@ -346,6 +371,7 @@
           <EntitySetMapping Name="TblMainPage">
             <EntityTypeMapping TypeName="RedmondTradeDBModel.TblMainPage">
               <MappingFragment StoreEntitySet="TblMainPage">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="image3" ColumnName="image3" />
@@ -375,6 +401,10 @@
           <EntitySetMapping Name="TblService">
             <EntityTypeMapping TypeName="RedmondTradeDBModel.TblService">
               <MappingFragment StoreEntitySet="TblService">
+                <ScalarProperty Name="Description_Fr" ColumnName="Description_Fr" />
+                <ScalarProperty Name="Description_En" ColumnName="Description_En" />
+                <ScalarProperty Name="Title_Fr" ColumnName="Title_Fr" />
+                <ScalarProperty Name="Title_En" ColumnName="Title_En" />
                 <ScalarProperty Name="ServiceIcon" ColumnName="ServiceIcon" />
                 <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -386,6 +416,8 @@
           <EntitySetMapping Name="TblSolution_Partners">
             <EntityTypeMapping TypeName="RedmondTradeDBModel.TblSolution_Partners">
               <MappingFragment StoreEntitySet="TblSolution_Partners">
+                <ScalarProperty Name="Description_Fr" ColumnName="Description_Fr" />
+                <ScalarProperty Name="Description_En" ColumnName="Description_En" />
                 <ScalarProperty Name="SolutionPartnersID" ColumnName="SolutionPartnersID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -396,6 +428,10 @@
           <EntitySetMapping Name="TblWork">
             <EntityTypeMapping TypeName="RedmondTradeDBModel.TblWork">
               <MappingFragment StoreEntitySet="TblWork">
+                <ScalarProperty Name="Description_Fr" ColumnName="Description_Fr" />
+                <ScalarProperty Name="Description_En" ColumnName="Description_En" />
+                <ScalarProperty Name="Title_Fr" ColumnName="Title_Fr" />
+                <ScalarProperty Name="Title_En" ColumnName="Title_En" />
                 <ScalarProperty Name="WorkID" ColumnName="WorkID" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

@@ -16,13 +16,13 @@ namespace RedmondTradeWork.Controllers
         RedmondTradeDBEntities db = new RedmondTradeDBEntities();
         public ActionResult Index()
         {
-            var deger = db.TblMainPage.ToList();
+            var deger = db.TblMainPage.Where(x=>x.ID==1).ToList();
             return View(deger);
         }
 
         public PartialViewResult MainAbaoutUsPartial()
         {
-            var deger = db.TblAboutUs.Where(x=>x.AboutUsID==1).ToList();
+            var deger = db.TblAboutUs.Where(x=>x.Langueage== "Tr").ToList();
             return PartialView(deger);
         }
 
@@ -40,7 +40,7 @@ namespace RedmondTradeWork.Controllers
 
         public ActionResult About()
         {
-            var deger = db.TblAboutUs.ToList();
+            var deger = db.TblAboutUs.Where(x=>x.AboutUsID==1).ToList();
 
             return View(deger);
         }
