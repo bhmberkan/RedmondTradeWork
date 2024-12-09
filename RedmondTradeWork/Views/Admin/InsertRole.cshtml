@@ -1,0 +1,36 @@
+﻿@model RedmondTradeWork.Models.Entity.TblAdmin
+
+@{
+    ViewBag.Title = "InsertRole";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>InsertRole</h2>
+
+
+
+<form method="post">
+
+
+
+    @Html.Label("İsim")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+    <br />
+
+
+    <button class="btn btn-primary">  Kaydet </button>
+
+
+
+
+</form>
+
+
+    
+    
+
+

@@ -1,0 +1,42 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblAdmin>
+@{
+    ViewBag.Title = "AdminRole";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Kullanıcılar</h2>
+
+
+
+<table class="table table-bordered form-group">
+    <tr>
+        <th>#</th>
+        <th>İsim</th>
+        <th>Şifre</th>
+        <th>Güncelle</th>
+        <th>Sİl</th>
+
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        
+        
+            <tr>
+                <th>@x.ID</th>
+                <td>@x.Name</td>
+                <td>@x.Password</td>
+                
+                <td><a href="/Admin/UpdateRole/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+                <td><a href="/Admin/DeleteRole/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+
+            </tr>
+        
+
+
+    }
+</table>
+
+<a href="/Admin/InsertRole/" class="btn  btn-info">Ekle</a>
+

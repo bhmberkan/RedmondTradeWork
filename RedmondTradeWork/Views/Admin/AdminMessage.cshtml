@@ -1,0 +1,39 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblMessage>
+@{
+    ViewBag.Title = "AdminMessage";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Message</h2>
+
+<br />
+
+
+<table class="table table-bordered form-group">
+    <tr>
+        <th>#</th>
+        <th>İsim</th>
+        <th>Mail Adresi</th>
+        <th>Başlık</th>
+        <th>Sil</th>
+        <th>Detay Gör</th>
+
+
+    </tr>
+    @foreach (var x in Model)
+    {
+<tr>
+    <th>@x.MessageID</th>
+    <td>@x.Name</td>
+    <td>@x.Email</td>
+    <td>@x.Title</td>
+
+    <td><a href="/Admin/AdminMessageDelete/@x.MessageID" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+    <td><a href="/Admin/AdminMessageDetailt/@x.MessageID" class="btn mb-1 btn-rounded btn-outline-dark">Detay</a></td>
+
+
+</tr>
+
+    }
+</table>

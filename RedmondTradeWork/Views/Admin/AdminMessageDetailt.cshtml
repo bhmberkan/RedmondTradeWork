@@ -1,0 +1,41 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model TblMessage
+@{
+    ViewBag.Title = "AdminMessageDetailt";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Message Detailt</h2>
+
+
+<table class="table table-bordered form-group">
+    <tr>
+        <th>#</th>
+        <th>İsim</th>
+        <th>Mail Adresi</th>
+        <th>Başlık</th>
+        <th>İçerik</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+     
+
+
+    </tr>
+  
+    
+        <tr>
+            <th>@Model.MessageID</th>
+            <td>@Model.Name</td>
+            <td>@Model.Email</td>
+            <td>@Model.Title</td>
+            <td>@Model.Message</td>
+            <td>@(((DateTime)Model.Date).ToString("dd-MMM-yyyy"))</td>
+
+            <td><a href="/Admin/AdminMessageDelete/@Model.MessageID" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+          
+
+
+        </tr>
+
+    
+</table>

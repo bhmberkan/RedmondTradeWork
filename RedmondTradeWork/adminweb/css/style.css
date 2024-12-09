@@ -7799,8 +7799,9 @@ sub {
   .dropdown-content-heading span {
     font-size: 1rem;
     color: #333; }
-  .dropdown-content-heading i {
-    color: #7571f9; }
+    .dropdown-content-heading i {
+        color: #7571f9;
+    }
 
 .dropdown-content-body ul {
   padding: 0 1.25rem;
@@ -7926,8 +7927,9 @@ sub {
   @media (max-width: 575.98px) {
     .dropdown-profile {
       width: 12.5rem !important; } }
-  .dropdown-profile .trial-day {
-    color: #7571f9; }
+.dropdown-profile .trial-day {
+    color: #7571f9;
+}
   .dropdown-profile ul {
     padding: 0rem 0; }
   .dropdown-profile li {
@@ -7985,14 +7987,15 @@ sub {
 /* pulse in SVG */
 svg.pulse-svg {
   overflow: visible; }
-  svg.pulse-svg .first-circle, svg.pulse-svg .second-circle, svg.pulse-svg .third-circle {
-    -webkit-transform: scale(0.3);
-    transform: scale(0.3);
-    -webkit-transform-origin: center center;
-    transform-origin: center center;
-    -webkit-animation: pulse-me 3s linear infinite;
-    animation: pulse-me 3s linear infinite;
-    fill: #7571f9; }
+    svg.pulse-svg .first-circle, svg.pulse-svg .second-circle, svg.pulse-svg .third-circle {
+        -webkit-transform: scale(0.3);
+        transform: scale(0.3);
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+        -webkit-animation: pulse-me 3s linear infinite;
+        animation: pulse-me 3s linear infinite;
+        fill: #7571f9;
+    }
   svg.pulse-svg .second-circle {
     -webkit-animation-delay: 1s;
     animation-delay: 1s; }
@@ -8205,7 +8208,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     .nk-sidebar .metismenu ul ul a {
       padding: 0.625rem 0.9375rem 0.625rem 3.75rem; }
     .nk-sidebar .metismenu .mega-menu ul.in li a:hover, .nk-sidebar .metismenu .mega-menu ul.in li a:focus, .nk-sidebar .metismenu .mega-menu ul.in li a.active {
-      color: #7571f9; }
+        color: #7571f9;
+    }
     .nk-sidebar .metismenu a {
       transition: all 0.4s ease-in-out; }
       .nk-sidebar .metismenu a:hover, .nk-sidebar .metismenu a:active, .nk-sidebar .metismenu a.active {
@@ -8261,8 +8265,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     left: 0; } }
 
 @media (max-width: 600px) {
-  .input {
-    background-color: #7571f9; }
+    .input {
+        background-color: #7571f9;
+    }
     .input span::after {
       color: #464a53; } }
 
@@ -9049,7 +9054,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   padding-bottom: 1.875rem; }
   [direction="rtl"] .sidebar-right .slimScrollDiv {
     overflow: visible !important; }
-  .sidebar-right .sidebar-right-trigger {
+.sidebar-right .sidebar-right-trigger {
     position: absolute;
     z-index: 9;
     top: 3.75rem;
@@ -9062,7 +9067,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     text-align: center;
     line-height: 3.5rem;
     font-size: 1.3125rem;
-    border-radius: 50px; }
+    border-radius: 50px;
+}
     .sidebar-right .sidebar-right-trigger span {
       display: inline-block;
       animation: bounce .7s infinite ease-in-out; }

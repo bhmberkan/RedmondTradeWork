@@ -36,7 +36,7 @@ namespace RedmondTradeWork.Controllers
             main.İmage2 = t.İmage2;
             main.image3 = t.image3;
             db.SaveChanges();
-            return View("UpdateMainpage");
+            return RedirectToAction("Index");
         }
 
 
@@ -65,7 +65,7 @@ namespace RedmondTradeWork.Controllers
             about.Photo = t.Photo;
             about.Photo2 = t.Photo2;
             db.SaveChanges();
-            return View("UpdateAboutpage");
+            return RedirectToAction("AdminAbout");
 
         }
 
@@ -93,7 +93,7 @@ namespace RedmondTradeWork.Controllers
             spartner.Description_En = t.Description_En;
             spartner.Description_Fr = t.Description_Fr;
             db.SaveChanges();
-            return View("UpdateSolutionPage");
+            return RedirectToAction("AdminSolutionPartners");
         }
 
 
@@ -121,7 +121,7 @@ namespace RedmondTradeWork.Controllers
             twork.Description_Fr = t.Description_Fr;
             twork.Photo = t.Photo;
             db.SaveChanges();
-            return View("UpdateWorkPage");
+            return RedirectToAction("AdminWork");
         }
 
 
@@ -183,7 +183,7 @@ namespace RedmondTradeWork.Controllers
             ServiceT.İmage = t.İmage;
             ServiceT.ServiceIcon = t.ServiceIcon;
             db.SaveChanges();
-            return View("UpdateServicePage");
+            return RedirectToAction("AdminService");
         }
 
 
@@ -219,6 +219,86 @@ namespace RedmondTradeWork.Controllers
         }
 
 
+
+
+
+        public ActionResult AdminMessage()
+        {
+            var deger = db.TblMessage.ToList();
+            return View(deger);
+        }
+
+
+
+
+        [HttpGet]
+        public ActionResult AdminMessageDetailt(int id)
+        {
+            var deger = db.TblMessage.Find(id);
+            return View(deger);
+        }
+
+        public ActionResult AdminMessageDelete(int id)
+        {
+            var deger = db.TblMessage.Find(id);
+            db.TblMessage.Remove(deger);
+            db.SaveChanges();
+            return RedirectToAction("AdminMessage");
+           
+        }
+
+        public ActionResult AdminRole()
+        {
+            var values = db.TblAdmin.Where(x=>x.Rol=="member").ToList();
+            return View(values);
+        }
+
+
+        [HttpGet]
+        public ActionResult UpdateRole(int id)
+        {
+            var value = db.TblAdmin.Find(id);
+            return View("UpdateRole", value);
+        }
+        
+        [HttpPost]
+        public ActionResult UpdateRoles(TblAdmin t)
+        {
+            var value = db.TblAdmin.Find(t.ID);
+            value.Name = t.Name;
+            value.Password = t.Password;
+            db.SaveChanges();
+            return RedirectToAction("AdminRole");
+        }
+
+        public ActionResult DeleteRole(int id)
+        {
+            var values = db.TblAdmin.Find(id);
+            db.TblAdmin.Remove(values);
+            db.SaveChanges();
+            return RedirectToAction("AdminRole");
+        }
+
+
+        [HttpGet]
+        public ActionResult InsertRole()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult InsertRole(TblAdmin t)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("InsertRole");
+            }
+            t.Rol = "member";
+            db.TblAdmin.Add(t);
+            db.SaveChanges();
+            return RedirectToAction("AdminRole");
+        }
 
 
 

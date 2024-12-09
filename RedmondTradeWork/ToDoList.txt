@@ -13,9 +13,13 @@ service,work ve solution_partners için ingilizce ve fransızca tabloları da ol
 
 work kısmını halledicem.  //  Komple Bittii  !!! 
 Service kısmını halledicem. // Komple Bitti !!!
-messajlar kısmı da yapılacak
-kullanıcı ekleme işlemi admin tablosundan yapılacak
+messajlar kısmı da yapılacak // Bitti!
+kullanıcı ekleme işlemi admin tablosundan yapılacak // Bitti Rolleme de bitti
 
+
+Login sayfası // tasarımı bitti kodlanması yapılacak
+// kullanıcı işlemlerinde silme işlemi eksikti tamamladım 
+ 
 sonra hepsi için ing ve fr sayfaları oluşturucam
 
 

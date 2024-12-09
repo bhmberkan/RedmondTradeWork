@@ -92,7 +92,7 @@ namespace RedmondTradeWork.Controllers
 
             db.TblMessage.Add(t);
             db.SaveChanges();
-
+           
             return RedirectToAction("Contact");
         }
 
