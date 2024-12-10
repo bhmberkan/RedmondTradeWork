@@ -1,25 +1,29 @@
 ﻿@using RedmondTradeWork.Models.Entity;
 @model List<TblWork>
+
 @{
-    ViewBag.Title = "Service";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Servisler";
+    Layout = "~/Views/Shared/_Layout - tr.cshtml";
 }
+
+
 
 
 
 <!-- Page Title -->
 <div class="page-title light-background">
     <div class="container">
-        <h1 style="color: #8e0723 !important">Services</h1>
+        <h1 style="color: #8e0723 !important">Servislerimiz</h1>
         <nav class="breadcrumbs">
             <ol>
-                <li><a href="Index">Home</a></li>
-                <li class="current">Services</li>
+                <li><a href="Index">Ana Sayfa</a></li>
+                <li class="current">Servis</li>
             </ol>
         </nav>
     </div>
 </div><!-- End Page Title -->
-<br /> <br /> 
+<br />
+<br />
 
 
 @foreach (var x in Model.OrderBy(x => x.WorkID))
@@ -37,11 +41,11 @@
                     <div class="col-lg-7 col-md-6">
                         <div class="section-header text-left">
 
-                            <h2 style="color: #8e0723">@x.Title_En</h2>
+                            <h2 style="color: #8e0723">@x.Title</h2>
                         </div>
                         <div class="about-text">
                             <p style="font: 20px 'playfair display', serif;">
-                                @x.Description_En
+                                @x.Description
                             </p>
 
 
@@ -64,11 +68,11 @@
                     <div class="col-lg-7 col-md-6">
                         <div class="section-header text-left">
 
-                            <h2 style="color: #8e0723">@x.Title_En</h2>
+                            <h2 style="color: #8e0723">@x.Title</h2>
                         </div>
                         <div class="about-text">
                             <p style="font: 20px 'playfair display', serif;">
-                                @x.Description_En
+                                @x.Description
                             </p>
 
 
@@ -89,4 +93,5 @@
 
 
 }
-<br /> <br /> 
+<br />
+<br /> 

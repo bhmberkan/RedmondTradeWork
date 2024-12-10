@@ -301,7 +301,10 @@ namespace RedmondTradeWork.Controllers
         }
 
 
-
+        public ActionResult AdminSearch()
+        {
+            return View();
+        }
 
 
 

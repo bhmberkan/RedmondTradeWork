@@ -1,5 +1,14 @@
 ﻿@using RedmondTradeWork.Models.Entity;
-@model List<TblMainPage>
+@model List <TblMainPage>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout - tr.cshtml";
+}
+
+
+
+
 
 
 <!-- About Section -->
@@ -35,33 +44,33 @@
                     </script>
                     @foreach (var x in Model)
                     {
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="@x.Photo1" alt="Image" class="img-fluid">
-            </div>
-            <div class="swiper-slide">
-                <img src="@x.İmage2" alt="Image" class="img-fluid">
-            </div>
-            <div class="swiper-slide">
-                <img src="@x.image3" alt="Image" class="img-fluid">
-            </div>
-        </div>}
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="@x.Photo1" alt="Image" class="img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="@x.İmage2" alt="Image" class="img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="@x.image3" alt="Image" class="img-fluid">
+                            </div>
+                        </div>}
 
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
             <div class="col-lg-4 order-lg-1">
-                <span class="section-subtitle" data-aos="fade-up">WELCOME!</span>
+                <span class="section-subtitle" data-aos="fade-up">HOŞGELDİNİZ!</span>
                 @foreach (var x in Model)
                 {
-    <h1 class="mb-4" data-aos="fade-up">
-        @x.Title
-    </h1>
+                    <h1 class="mb-4" data-aos="fade-up">
+                        @x.Title
+                    </h1>
                     <p data-aos="fade-up">
                         @x.Description
                     </p>}
                 <p class="mt-5" data-aos="fade-up">
-                    <a href="/Home/Service" class="btn btn-danger">Services</a>
+                    <a href="/HomeTr/Servisler" class="btn btn-danger">Servisler</a>
                 </p>
 
             </div>
@@ -69,19 +78,16 @@
     </div>
 </section>
 <!-- /About Section -->
-
-
-
 <!-- About 2 Section -->
-@Html.Action("MainAbaoutUsPartial", "Home")
+@Html.Action("MainAbaoutUsPartialTr", "HomeTr")
 <!-- /About 2 Section -->
 <!-- Services Section -->
 <section id="services" class="services section light-background">
 </section>
 <!-- /Services Section -->
 <!-- Blog Posts Section -->
-@Html.Action("MainSolutionPartners", "Home")
+@Html.Action("MainSolutionPartnersTr", "HomeTr")
 <!-- /Blog Posts Section -->
 <!-- Tabs Section -->
-@Html.Action("MainService", "Home")
+@Html.Action("MainServiceTr", "HomeTr")
 <!-- /Tabs Section -->

@@ -17,13 +17,13 @@ messajlar kısmı da yapılacak // Bitti!
 kullanıcı ekleme işlemi admin tablosundan yapılacak // Bitti Rolleme de bitti
 
 
-Login sayfası // tasarımı bitti kodlanması yapılacak
+Login sayfası // tasarımı bitti kodlanması yapılacak // tamamını bitirdim. 
 // kullanıcı işlemlerinde silme işlemi eksikti tamamladım 
  
-sonra hepsi için ing ve fr sayfaları oluşturucam
+sonra hepsi için ing ve fr sayfaları oluşturucam // tamamını bitirdim tüm linkler ve yazılar doğru şekilde çalışıyor.
 
 
-contact kısmına whatsapp yönlendirmesi yapacağım
+contact kısmına whatsapp yönlendirmesi yapacağım // yaptım.
 
 
 herşey bordo olacak. logo hover efectler vs  // Komple Bitti !!

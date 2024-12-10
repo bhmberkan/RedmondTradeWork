@@ -1,46 +1,46 @@
-﻿using System;
+﻿using MailKit.Net.Smtp;
+using MimeKit;
+using RedmondTradeWork.Models.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
-using System.Data.Entity;
-using RedmondTradeWork.Models.Entity;
-using MimeKit;
-using MailKit.Net.Smtp;
 
 namespace RedmondTradeWork.Controllers
 {
-    public class HomeController : Controller
+    public class HomeFrController : Controller
     {
         RedmondTradeDBEntities db = new RedmondTradeDBEntities();
+        // GET: HomeFr
         public ActionResult Index()
         {
-            var deger = db.TblMainPage.Where(x=>x.ID==2).ToList();
+            var deger = db.TblMainPage.Where(x => x.ID == 3).ToList();
             return View(deger);
         }
+      
 
-        public PartialViewResult MainAbaoutUsPartial()
+        public PartialViewResult MainAbaoutUsPartialFr()
         {
-            var deger = db.TblAboutUs.Where(x=>x.Langueage== "En").ToList();
+            var deger = db.TblAboutUs.Where(x => x.Langueage == "Fr").ToList();
             return PartialView(deger);
         }
 
-        public PartialViewResult MainSolutionPartners()
+        public PartialViewResult MainSolutionPartnersFr()
         {
             var deger = db.TblSolution_Partners.ToList();
             return PartialView(deger);
         }
 
-        public PartialViewResult MainService()
+        public PartialViewResult MainServiceFr()
         {
             var deger = db.TblService.ToList();
             return PartialView(deger);
         }
 
-        public ActionResult About()
+        public ActionResult SurNous()
         {
-            var deger = db.TblAboutUs.Where(x=>x.AboutUsID==2).ToList();
+            var deger = db.TblAboutUs.Where(x => x.AboutUsID == 3).ToList();
 
             return View(deger);
         }
@@ -55,11 +55,11 @@ namespace RedmondTradeWork.Controllers
         [HttpGet]
         public ActionResult Contact()
         {
-            
+
 
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult Contact(TblMessage t)
         {
@@ -72,7 +72,7 @@ namespace RedmondTradeWork.Controllers
             mimeMessage.To.Add(mailboxAddressTo); // mesaj kime 
 
             var bodyBuilder = new BodyBuilder();
-            bodyBuilder.TextBody = t.Message+ " \n \nSender : " + t.Email; // mesajın içerik ne 
+            bodyBuilder.TextBody = t.Message + " \n \nSender : " + t.Email; // mesajın içerik ne 
             mimeMessage.Body = bodyBuilder.ToMessageBody();
 
             mimeMessage.Subject = t.Title;
@@ -83,20 +83,17 @@ namespace RedmondTradeWork.Controllers
             client.Send(mimeMessage);
             client.Disconnect(true);
 
-            
-            
+
+
             //t.Email = "admin@gmail.com";
             //t.Name= "admin";
             t.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
-           
+
 
             db.TblMessage.Add(t);
             db.SaveChanges();
-           
+
             return RedirectToAction("Contact");
         }
-
-
-
     }
 }

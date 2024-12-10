@@ -177,6 +177,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeFrController.cs" />
+    <Compile Include="Controllers\HomeTrController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -5770,10 +5772,29 @@
     <Content Include="Views\Admin\UpdateRole.cshtml" />
     <Content Include="Views\Admin\InsertRole.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Admin\AdminSearch.cshtml" />
+    <Content Include="Views\Shared\_Layout - tr.cshtml" />
+    <Content Include="Views\HomeTr\Index.cshtml" />
+    <Content Include="Views\HomeTr\MainAbaoutUsPartialTr.cshtml" />
+    <Content Include="Views\HomeTr\MainSolutionPartnersTR.cshtml" />
+    <Content Include="Views\HomeTr\MainServiceTr.cshtml" />
+    <Content Include="Views\HomeTr\AboutTr.cshtml" />
+    <Content Include="Views\HomeTr\Hakkımızda.cshtml" />
+    <Content Include="Views\HomeTr\Servisler.cshtml" />
+    <Content Include="Views\HomeTr\İletişim.cshtml" />
+    <Content Include="Views\Shared\_Layout - Fr.cshtml" />
+    <Content Include="Views\HomeFr\Index.cshtml" />
+    <Content Include="Views\HomeFr\MainAbaoutUsPartialFr.cshtml" />
+    <Content Include="Views\HomeFr\MainSolutionPartnersFr.cshtml" />
+    <Content Include="Views\HomeFr\MainServiceFr.cshtml" />
+    <Content Include="Views\HomeFr\SurNous.cshtml" />
+    <Content Include="Views\HomeFr\Service.cshtml" />
+    <Content Include="Views\HomeFr\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\HomeEn\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
