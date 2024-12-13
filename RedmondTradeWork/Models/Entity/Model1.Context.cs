@@ -33,5 +33,6 @@ namespace RedmondTradeWork.Models.Entity
         public virtual DbSet<TblService> TblService { get; set; }
         public virtual DbSet<TblSolution_Partners> TblSolution_Partners { get; set; }
         public virtual DbSet<TblWork> TblWork { get; set; }
+        public virtual DbSet<TblConteiner> TblConteiner { get; set; }
     }
 }

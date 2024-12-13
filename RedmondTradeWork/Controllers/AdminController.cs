@@ -303,10 +303,23 @@ namespace RedmondTradeWork.Controllers
 
         public ActionResult AdminSearch()
         {
-            return View();
+            var values = db.TblConteiner.ToList();
+            return View(values);
         }
 
+        [HttpGet]
+        public ActionResult SearchDetails(int id)
+        {
+            // çok güzel sorgu oldu. ıd alıp başka bir değere göre sorgulama yaptık şimdi de direkt değeri alalim.
+               var contno = db.TblConteiner.Where(x => x.ID == id).Select(x => x.ContainerNo);
+               var values = db.TblConteiner.Where(x => contno.Contains(x.ContainerNo)).ToList();
+               return View("SearchDetails", values); 
 
+          
+
+
+
+        }
 
 
 

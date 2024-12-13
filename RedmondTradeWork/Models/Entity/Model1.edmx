@@ -37,6 +37,21 @@
           <Property Name="Password" Type="nchar" MaxLength="30" />
           <Property Name="Rol" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="TblConteiner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Short_Content" Type="varchar" MaxLength="150" />
+          <Property Name="ContainerNo" Type="varchar" MaxLength="200" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Deportune_Port" Type="varchar" MaxLength="200" />
+          <Property Name="Kim" Type="varchar" MaxLength="30" />
+          <Property Name="Product" Type="varchar" MaxLength="100" />
+          <Property Name="Pcs" Type="int" />
+          <Property Name="BuyerCompany" Type="varchar" MaxLength="200" />
+          <Property Name="Nots" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="TblMainPage">
           <Key>
             <PropertyRef Name="ID" />
@@ -71,13 +86,13 @@
           </Key>
           <Property Name="ServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nchar" MaxLength="20" />
-          <Property Name="Description" Type="varchar(max)" />
-          <Property Name="İmage" Type="nchar" MaxLength="100" />
-          <Property Name="ServiceIcon" Type="nvarchar" MaxLength="100" />
           <Property Name="Title_En" Type="nchar" MaxLength="20" />
           <Property Name="Title_Fr" Type="nchar" MaxLength="20" />
+          <Property Name="Description" Type="varchar(max)" />
           <Property Name="Description_En" Type="varchar(max)" />
           <Property Name="Description_Fr" Type="varchar(max)" />
+          <Property Name="İmage" Type="nchar" MaxLength="100" />
+          <Property Name="ServiceIcon" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="TblSolution_Partners">
           <Key>
@@ -143,6 +158,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAboutUs" EntityType="Self.TblAboutUs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblConteiner" EntityType="Self.TblConteiner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMainPage" EntityType="Self.TblMainPage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMessage" EntityType="Self.TblMessage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblService" EntityType="Self.TblService" Schema="dbo" store:Type="Tables" />
@@ -326,7 +342,23 @@
             <End Role="TblWork" EntitySet="TblWork" />
             <End Role="TblMainPage" EntitySet="TblMainPage" />
           </AssociationSet>
+          <EntitySet Name="TblConteiner" EntityType="RedmondTradeDBModel.TblConteiner" />
         </EntityContainer>
+        <EntityType Name="TblConteiner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Short_Content" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ContainerNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Deportune_Port" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Kim" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Product" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pcs" Type="Int32" />
+          <Property Name="BuyerCompany" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Nots" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -436,6 +468,22 @@
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblConteiner">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblConteiner">
+              <MappingFragment StoreEntitySet="TblConteiner">
+                <ScalarProperty Name="Nots" ColumnName="Nots" />
+                <ScalarProperty Name="BuyerCompany" ColumnName="BuyerCompany" />
+                <ScalarProperty Name="Pcs" ColumnName="Pcs" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Kim" ColumnName="Kim" />
+                <ScalarProperty Name="Deportune_Port" ColumnName="Deportune_Port" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ContainerNo" ColumnName="ContainerNo" />
+                <ScalarProperty Name="Short_Content" ColumnName="Short_Content" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

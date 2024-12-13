@@ -1,27 +1,24 @@
 ﻿@using RedmondTradeWork.Models.Entity;
 @model List<TblConteiner>
 @{
-    ViewBag.Title = "AdminSearch";
+    ViewBag.Title = "SearchDetails";
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
 
-<h2>Conteiner</h2>
-
-
-<a href="/Admin/InsertSearch/" class="btn  btn-outline-info">İnsert</a>
-<br />
-<br />
-
+<h2>Conteiner Details</h2>
+<td><a href="/Admin/AdminSearch/" class="btn mb-1 btn-rounded btn-outline-warning">Come Back</a></td>
+<br /><br />
 
 <table class="table table-bordered">
     <tr>
-        <th>#</th>
-        <th>Short Content</th>
+
         <th>Container No</th>
+        <th>Product</th>
+        <th>PCS</th>
+        <th>Buyer company</th>
         <th>Date</th>
-        <th>Deportune Port</th>
-        <th>Who</th>
-        <th>View</th>
+        <th>Deport Port</th>
+        <th>Nots</th>
         <th>Update</th>
         <th>Delete</th>
 
@@ -29,16 +26,19 @@
     @foreach (var x in Model)
     {
         <tr>
-            <th>@x.ID</th>
-            <td>@x.Short_Content</td>
+
             <td>@x.ContainerNo</td>
+            <td>@x.Product</td>
+            <td>@x.Pcs</td>
+            <td>@x.BuyerCompany</td>
             <td>@x.Date.Value.ToString("dd-MMM-yyyy")</td>
             <td>@x.Deportune_Port</td>
-            <td>@x.Kim</td>
+            <td>@x.Nots</td>
+            
 
 
 
-            <td><a href="/Admin/SearchDetails/@x.ID" class="btn mb-1 btn-rounded btn-outline-dark">Detail</a></td>
+           
             <td><a href="/Admin/UpdateSearchPage/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Update</a></td>
             <td><a href="/Admin/DeleteSearch/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Delete</a></td>
 
