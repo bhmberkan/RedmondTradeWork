@@ -332,7 +332,9 @@ namespace RedmondTradeWork.Controllers
                               // hız açısından
 
                           }).ToList();
+           
 
+            ViewBag.ContID = id;
 
             return View(values);
         }
@@ -409,31 +411,33 @@ namespace RedmondTradeWork.Controllers
           
 
             db.SaveChanges();
-            return RedirectToAction("SearchDetails", new { id =containerID});
+            return RedirectToAction("SearchDetails", new { id = containerID});
         }
 
         [HttpGet]
         public ActionResult InsertSearchDetail(int id)
         {
-            var values = db.TblContainer.Find(id);
-            return View(values);
+            ViewBag.contID = id;
+            return View();
         }
 
-
+        
         [HttpPost]
-        public ActionResult InsertSearchDetail(TblContainerContents t)
+        public ActionResult InsertSearchDetail(TblContainerContents t,int id)
         {
-           /* var values = db.TblContainer.Where(x=>x.ID)
+            var value = db.TblContainer.FirstOrDefault(x => x.ID == id);
+          
             if (!ModelState.IsValid)
             {
-                return View("InsertSearch");
+                return View("InsertSearchDetail");
             }
-            t.Container = id;
-            db.TblContainer.Add(t);
-            db.SaveChanges(); */   /*  burası bi dursun en son yapcam */ 
-            return RedirectToAction("AdminSearch");
-        }
-
+            
+            t.Container = value.ID;
+            db.TblContainerContents.Add(t);
+            db.SaveChanges();   
+            return RedirectToAction("SearchDetails", new {id= value.ID });
+        } 
+    
 
         [HttpGet]
         public ActionResult UpdateSearchPageDetail(int id)
@@ -445,7 +449,7 @@ namespace RedmondTradeWork.Controllers
         [HttpPost]
         public ActionResult UpdateSearchPageDetail(TblContainerContents t)
         {
-
+            var cıd = db.TblContainerContents.Where(x => x.ID == t.ID).Select(x => x.Container).FirstOrDefault();
             var value = db.TblContainerContents.Find(t.ID);
             value.Product= t.Product;
             value.Unit = t.Unit;
@@ -453,7 +457,7 @@ namespace RedmondTradeWork.Controllers
             value.BuyerCompany= t.BuyerCompany;
             value.Nots = t.Nots;
             db.SaveChanges();
-            return RedirectToAction("AdminSearch");
+            return RedirectToAction("SearchDetails", new { id = cıd });
         }
 
 

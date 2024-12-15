@@ -4,54 +4,21 @@ https://icons.getbootstrap.com/
 
 
 
-
-
-
-
-
-
 https://icons8.com/icons/set/r
 
 
 
-
-
-/*
-sol tarafa bir buton koyup.
-container numarası ve içerik olan bir kısım olucak arama yaptığımda hani ürün hangi containerde göreyim
-*/ arama butonunda container içeriğini yazınca ilgili container gelecek.
+// details kısmındaki crud işlemleri bitti
+// container kısmındaki crud işlemleri bitti
 
 
 
+arama işlemleri kaldı
 
 container yanına icon gelicek kopyalamaya yarıcak
 
-
-
-
-/*Bir takım kendimsel notlar*/
-insert kısmında ekle dediğimde ıd ye göre ekleme işlemi yaptırıcaz
-
-ekle dediğimde  detail kısmında
-
-product unit  alici firma seçip tak diye eklensin
+dropdown şeklinde olması gereken alanlar kaldı
 
 
 
 
-
-
-
-
-ilişkili tabloları tamamen okeyledim şimdi işlemler lazım. //
-
-
-
-
-// container kısmı güncelleme ekleme silme detail kısımları bitti. // search yapılacak en sonda
-container details kısmını kodlayacağım
-// dropdwan oluşturucam bir de o kaldı containerde
-
-
-
-// detailsteki silme işlemini hallettim ekleme güncelleme işlemleri kaldı bir de arama

@@ -1,0 +1,50 @@
+﻿@model RedmondTradeWork.Models.Entity.TblContainerContents
+@{
+    ViewBag.Title = "InsertSearchDetail";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>InsertSearchDetail</h2>
+
+
+
+<form method="post">
+
+
+    @Html.Label("Product")
+    @Html.TextBoxFor(x => x.Product, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Unit")
+    @Html.TextBoxFor(x => x.Unit, new { @class = "form-control" })
+    <br />
+
+
+    @Html.Label("Quantity")
+    @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("date")
+    @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control", type = "date" })
+    <br />
+    @Html.Label("Buyer Company")
+    @Html.TextAreaFor(x => x.BuyerCompany, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Nots")
+    @Html.TextAreaFor(x => x.Nots, new { @class = "form-control" })
+    <br />
+
+
+   
+
+
+    @*bu sayfa tamam sadece dropdawnlist olarak belirli kısımları çekicem*@
+
+
+
+    <button class="btn btn-info"> Ekle </button>
+
+
+</form>
+

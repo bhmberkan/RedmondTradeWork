@@ -1,0 +1,44 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model TblContainerContents
+@{
+    ViewBag.Title = "UpdateSearchPageDetail";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>UpdateSearchPageDetail</h2>
+
+
+@using (Html.BeginForm("UpdateSearchPageDetail", "Admin", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.ID) // hiddenfor arka planda çalışacak anlamında
+    <br />
+
+
+    @Html.Label("Product")
+    @Html.TextBoxFor(x => x.Product, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Unit")
+    @Html.TextBoxFor(x => x.Unit, new { @class = "form-control" })
+    <br />
+
+
+    @Html.Label("Quantity")
+    @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+    <br />
+
+    
+    @Html.Label("Buyer Company")
+    @Html.TextBoxFor(x => x.BuyerCompany, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Nots")
+    @Html.TextAreaFor(x => x.Nots, 10 , 4 ,  new { @class = "form-control" })
+    <br />
+
+    // dropdwondlist gelcek ilgili alanlara
+
+    <button class="btn btn-primary"> Değişiklikleri Kaydet </button>
+
+}
