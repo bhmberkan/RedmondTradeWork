@@ -12,17 +12,23 @@ namespace RedmondTradeWork.Models.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class TblConteiner
+    public partial class TblContainer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblContainer()
+        {
+            this.TblContainerContents = new HashSet<TblContainerContents>();
+        }
+    
         public int ID { get; set; }
         public string Short_Content { get; set; }
         public string ContainerNo { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string Deportune_Port { get; set; }
         public string Kim { get; set; }
-        public string Product { get; set; }
-        public Nullable<int> Pcs { get; set; }
-        public string BuyerCompany { get; set; }
-        public string Nots { get; set; }
+        public Nullable<bool> Durum { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblContainerContents> TblContainerContents { get; set; }
     }
 }

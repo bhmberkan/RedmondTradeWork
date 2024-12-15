@@ -1,4 +1,5 @@
 ﻿using RedmondTradeWork.Models.Entity;
+using RedmondTradeWork.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace RedmondTradeWork.Controllers
         public ActionResult Index()
         {
             var deger = db.TblMainPage.ToList();
-            return View(deger); 
+            return View(deger);
         }
 
 
@@ -167,7 +168,7 @@ namespace RedmondTradeWork.Controllers
         public ActionResult UpdateServicePage(int id)
         {
             var deger = db.TblService.Find(id);
-            return View("UpdateServicePage",deger);
+            return View("UpdateServicePage", deger);
         }
 
         [HttpPost]
@@ -244,12 +245,12 @@ namespace RedmondTradeWork.Controllers
             db.TblMessage.Remove(deger);
             db.SaveChanges();
             return RedirectToAction("AdminMessage");
-           
+
         }
 
         public ActionResult AdminRole()
         {
-            var values = db.TblAdmin.Where(x=>x.Rol=="member").ToList();
+            var values = db.TblAdmin.Where(x => x.Rol == "member").ToList();
             return View(values);
         }
 
@@ -260,7 +261,7 @@ namespace RedmondTradeWork.Controllers
             var value = db.TblAdmin.Find(id);
             return View("UpdateRole", value);
         }
-        
+
         [HttpPost]
         public ActionResult UpdateRoles(TblAdmin t)
         {
@@ -303,28 +304,157 @@ namespace RedmondTradeWork.Controllers
 
         public ActionResult AdminSearch()
         {
-            var values = db.TblConteiner.ToList();
+            var values = db.TblContainer.Where(x => x.Durum == true).ToList();
             return View(values);
         }
 
         [HttpGet]
         public ActionResult SearchDetails(int id)
         {
-            // çok güzel sorgu oldu. ıd alıp başka bir değere göre sorgulama yaptık şimdi de direkt değeri alalim.
+            /* çok güzel sorgu oldu. ıd alıp başka bir değere göre sorgulama yaptık şimdi de direkt değeri alalim.
                var contno = db.TblConteiner.Where(x => x.ID == id).Select(x => x.ContainerNo);
                var values = db.TblConteiner.Where(x => contno.Contains(x.ContainerNo)).ToList();
-               return View("SearchDetails", values); 
+            return View("SearchDetails", values);*/
+            var values = (from x in db.TblContainerContents
+                          where x.TblContainer.ID == id
+                          select new ContainerDetailsViewModel
+                          {
+                              ID = x.ID,
+                              ContainerNo = x.TblContainer.ContainerNo,
+                              Product = x.Product,
+                              Unit = x.Unit,
+                              Quantity = x.Quantity,
+                              BuyerCompany = x.BuyerCompany,
+                              Date = x.TblContainer.Date,
+                              DeportunePort = x.TblContainer.Deportune_Port,
+                              Nots = x.Nots
+                              // burada date kısmını listeleyelim ama eklerken ve güncelelrken direkt pc saati alsın bence
+                              // hız açısından
 
-          
+                          }).ToList();
 
 
+            return View(values);
+        }
 
+        public ActionResult DeleteSearch(int id)
+        {
+            var values = db.TblContainer.Find(id);
+            //  db.TblContainer.Remove(values);
+            values.Durum = false;
+            db.SaveChanges();
+            return RedirectToAction("AdminSearch");
+        }
+
+        [HttpGet]
+        public ActionResult InsertSearch()
+        {
+            return View();
         }
 
 
+        [HttpPost]
+        public ActionResult InsertSearch(TblContainer t)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("InsertSearch");
+            }
+            t.Durum = true;
+            db.TblContainer.Add(t);
+            db.SaveChanges();
+            return RedirectToAction("AdminSearch");
+        }
 
 
+        [HttpGet]
+        public ActionResult UpdateSearchPage(int id)
+        {
+            var values = db.TblContainer.Find(id);
+            return View("UpdateSearchPage", values);
 
+        }
+        [HttpPost]
+        public ActionResult UpdateSearchPage(TblContainer t)
+        {
+
+            var value = db.TblContainer.Find(t.ID);
+            value.Short_Content = t.Short_Content;
+            value.ContainerNo = t.ContainerNo;
+            value.Date = t.Date ?? DateTime.Now;
+            value.Deportune_Port = t.Deportune_Port;
+            value.Kim = t.Kim;
+            db.SaveChanges();
+            return RedirectToAction("AdminSearch");
+        }
+
+        /*
+        public ActionResult Arama()
+        {
+            return View();
+        }
+        */
+
+
+        public ActionResult DeleteSearchDetail(int id)
+        {
+          // şunu yapıyoruz.
+          // silme işlemi gerçekleştiğinde linkte bulunan /{id} alanına
+          // container contents alanında bulunan id numarasını atıyoruz böylece sayfada silme işlemi olsa bile hata vermeden çalışacak.
+            var values = db.TblContainerContents.Find(id);
+            db.TblContainerContents.Remove(values);
+
+            int? containerID = db.TblContainerContents.
+                Where(x => x.ID == id).Select(x => x.Container).FirstOrDefault();
+          
+
+            db.SaveChanges();
+            return RedirectToAction("SearchDetails", new { id =containerID});
+        }
+
+        [HttpGet]
+        public ActionResult InsertSearchDetail(int id)
+        {
+            var values = db.TblContainer.Find(id);
+            return View(values);
+        }
+
+
+        [HttpPost]
+        public ActionResult InsertSearchDetail(TblContainerContents t)
+        {
+           /* var values = db.TblContainer.Where(x=>x.ID)
+            if (!ModelState.IsValid)
+            {
+                return View("InsertSearch");
+            }
+            t.Container = id;
+            db.TblContainer.Add(t);
+            db.SaveChanges(); */   /*  burası bi dursun en son yapcam */ 
+            return RedirectToAction("AdminSearch");
+        }
+
+
+        [HttpGet]
+        public ActionResult UpdateSearchPageDetail(int id)
+        {
+            var values = db.TblContainerContents.Find(id);
+            return View("UpdateSearchPageDetail", values);
+
+        }
+        [HttpPost]
+        public ActionResult UpdateSearchPageDetail(TblContainerContents t)
+        {
+
+            var value = db.TblContainerContents.Find(t.ID);
+            value.Product= t.Product;
+            value.Unit = t.Unit;
+            value.Quantity = t.Quantity;
+            value.BuyerCompany= t.BuyerCompany;
+            value.Nots = t.Nots;
+            db.SaveChanges();
+            return RedirectToAction("AdminSearch");
+        }
 
 
 

@@ -16,7 +16,9 @@
         <AssociationConnector Association="RedmondTradeDBModel.FK_TblMainPage_TblAboutUs" ManuallyRouted="false" />
         <AssociationConnector Association="RedmondTradeDBModel.FK_TblMainPage_TblSolution_Partners" ManuallyRouted="false" />
         <AssociationConnector Association="RedmondTradeDBModel.FK_TblMainPage_TblWork" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="RedmondTradeDBModel.TblConteiner" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="RedmondTradeDBModel.TblContainer" Width="1.5" PointX="3.375" PointY="8" />
+        <EntityTypeShape EntityType="RedmondTradeDBModel.TblContainerContents" Width="1.5" PointX="5.625" PointY="8" />
+        <AssociationConnector Association="RedmondTradeDBModel.FK_TblContainerContents_TblContainer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
