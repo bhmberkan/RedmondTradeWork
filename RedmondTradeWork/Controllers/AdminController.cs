@@ -305,6 +305,7 @@ namespace RedmondTradeWork.Controllers
         public ActionResult AdminSearch()
         {
             var values = db.TblContainer.Where(x => x.Durum == true).ToList();
+
             return View(values);
         }
 
@@ -332,7 +333,7 @@ namespace RedmondTradeWork.Controllers
                               // hız açısından
 
                           }).ToList();
-           
+
 
             ViewBag.ContID = id;
 
@@ -349,19 +350,82 @@ namespace RedmondTradeWork.Controllers
         }
 
         [HttpGet]
-        public ActionResult InsertSearch()
+        public ActionResult InsertSearch(string selectedValue)
         {
+            ViewBag.SelectedValue = selectedValue ?? "";
+            ViewBag.KimList = new List<SelectListItem>
+            {
+             new SelectListItem { Text = "Nihat", Value = "Nihat" },
+             new SelectListItem { Text = "Emin", Value = "Emin" },
+             new SelectListItem { Text = "Mustafa", Value = "Mustafa" },
+
+             new SelectListItem { Text = "Diğer", Value = "Other" }
+            };
+
+
+
+            //  ViewBag.SelectedValue = selectedValue ?? "";
+            ViewBag.Deplist = new List<SelectListItem>
+            {
+             new SelectListItem { Text = "Sancaktepe ", Value = "Sancaktepe" },
+            new SelectListItem { Text = "Gebze ", Value = "Gebze" },
+            new SelectListItem { Text = "Mersin ", Value = "Mersin" },
+            new SelectListItem { Text = "Aliağa ", Value = "Aliağa" },
+          //   new SelectListItem { Text = "", Value = "" },
+
+             new SelectListItem { Text = "Diğer", Value = "Other" }
+            };
+
+
             return View();
         }
-
-
         [HttpPost]
         public ActionResult InsertSearch(TblContainer t)
         {
             if (!ModelState.IsValid)
             {
+
+                ViewBag.Deplist = new List<SelectListItem>
+            {
+             new SelectListItem { Text = "Sancaktepe ", Value = "Sancaktepe" },
+            new SelectListItem { Text = "Gebze ", Value = "Gebze" },
+            new SelectListItem { Text = "Mersin ", Value = "Mersin" },
+            new SelectListItem { Text = "Aliağa ", Value = "Aliağa" },
+          //   new SelectListItem { Text = "", Value = "" },
+
+             new SelectListItem { Text = "Diğer", Value = "Other" }
+            };
+
+
+
+                ViewBag.KimList = new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Nihat", Value = "Nihat" },
+            new SelectListItem { Text = "Emin", Value = "Emin" },
+            new SelectListItem { Text = "Mustafa", Value = "Mustafa" },
+            new SelectListItem { Text = "Diğer", Value = "Other" }
+        };
+
                 return View("InsertSearch");
             }
+
+            if (t.Kim == "Other" && !string.IsNullOrWhiteSpace(Request.Form["Kim"]))
+            {
+
+                t.Kim = Request.Form["Kim"];
+            }
+
+            if (t.Deportune_Port == "Other" && !string.IsNullOrWhiteSpace(Request.Form["Deportune_Port"]))
+            {
+                t.Deportune_Port = Request.Form["Deportune_Port"];
+            }
+
+
+            if (!t.Date.HasValue)
+            { // tarih boş geçildiyse günün tarihini ata
+                t.Date = DateTime.Now;
+            }
+
             t.Durum = true;
             db.TblContainer.Add(t);
             db.SaveChanges();
@@ -400,44 +464,110 @@ namespace RedmondTradeWork.Controllers
 
         public ActionResult DeleteSearchDetail(int id)
         {
-          // şunu yapıyoruz.
-          // silme işlemi gerçekleştiğinde linkte bulunan /{id} alanına
-          // container contents alanında bulunan id numarasını atıyoruz böylece sayfada silme işlemi olsa bile hata vermeden çalışacak.
+            // şunu yapıyoruz.
+            // silme işlemi gerçekleştiğinde linkte bulunan /{id} alanına
+            // container contents alanında bulunan id numarasını atıyoruz böylece sayfada silme işlemi olsa bile hata vermeden çalışacak.
             var values = db.TblContainerContents.Find(id);
             db.TblContainerContents.Remove(values);
 
             int? containerID = db.TblContainerContents.
                 Where(x => x.ID == id).Select(x => x.Container).FirstOrDefault();
-          
+
 
             db.SaveChanges();
-            return RedirectToAction("SearchDetails", new { id = containerID});
+            return RedirectToAction("SearchDetails", new { id = containerID });
         }
 
         [HttpGet]
         public ActionResult InsertSearchDetail(int id)
         {
+
+            //  ViewBag.SelectedValue = selectedValue ?? "";
+            ViewBag.Buyerlist = new List<SelectListItem>
+            {
+             new SelectListItem { Text = "Sonecomx", Value = "Sonecomx" },
+            new SelectListItem { Text = "Turkuaz ", Value = "Turkuaz " },
+          //   new SelectListItem { Text = "", Value = "" },
+
+             new SelectListItem { Text = "Diğer", Value = "Other" }
+            };
+
+
+            ViewBag.Unitlist = new List<SelectListItem>
+            {
+             new SelectListItem { Text = "Palet", Value = "Palet" },
+            new SelectListItem { Text = "Koli", Value = "Koli" },
+            new SelectListItem { Text = "M²", Value = "M²" },
+            new SelectListItem { Text = "Adet", Value = "Adet" },
+            new SelectListItem { Text = "Boy", Value = "Boy" },
+            new SelectListItem { Text = "Bag", Value = "Bag" },
+          //   new SelectListItem { Text = "", Value = "" },
+
+             new SelectListItem { Text = "Diğer", Value = "Other" }
+            };
+
+
             ViewBag.contID = id;
             return View();
         }
 
-        
+
         [HttpPost]
-        public ActionResult InsertSearchDetail(TblContainerContents t,int id)
+        public ActionResult InsertSearchDetail(TblContainerContents t, int id)
         {
             var value = db.TblContainer.FirstOrDefault(x => x.ID == id);
-          
+
             if (!ModelState.IsValid)
             {
+
+                ViewBag.Unitlist = new List<SelectListItem>
+            {
+             new SelectListItem { Text = "Palet", Value = "Palet" },
+            new SelectListItem { Text = "Koli", Value = "Koli" },
+            new SelectListItem { Text = "M²", Value = "M²" },
+            new SelectListItem { Text = "Adet", Value = "Adet" },
+            new SelectListItem { Text = "Boy", Value = "Boy" },
+            new SelectListItem { Text = "Bag", Value = "Bag" },
+          //   new SelectListItem { Text = "", Value = "" },
+
+             new SelectListItem { Text = "Diğer", Value = "Other" }
+            };
+
+
+
+
+                ViewBag.Buyerlist = new List<SelectListItem>
+         {
+            new SelectListItem { Text = "Sonecomx", Value = "Sonecomx" },
+            new SelectListItem { Text = "Turkuaz ", Value = "Turkuaz " },
+           // new SelectListItem { Text = "", Value = "" },
+            new SelectListItem { Text = "Diğer", Value = "Other" }
+         };
+
                 return View("InsertSearchDetail");
             }
-            
+
+            if (t.BuyerCompany == "Other" && !string.IsNullOrWhiteSpace(Request.Form["BuyerCompany"]))
+            {
+
+                t.BuyerCompany = Request.Form["BuyerCompany"];
+
+            }
+
+
+            if (t.Unit=="Other" && !string.IsNullOrWhiteSpace(Request.Form["Unit"]))
+            {
+                t.Unit = Request.Form["Unit"];
+            }
+
             t.Container = value.ID;
             db.TblContainerContents.Add(t);
-            db.SaveChanges();   
-            return RedirectToAction("SearchDetails", new {id= value.ID });
-        } 
+            db.SaveChanges();
+            return RedirectToAction("SearchDetails", new { id = value.ID });
+        }
+
     
+
 
         [HttpGet]
         public ActionResult UpdateSearchPageDetail(int id)
@@ -451,10 +581,10 @@ namespace RedmondTradeWork.Controllers
         {
             var cıd = db.TblContainerContents.Where(x => x.ID == t.ID).Select(x => x.Container).FirstOrDefault();
             var value = db.TblContainerContents.Find(t.ID);
-            value.Product= t.Product;
+            value.Product = t.Product;
             value.Unit = t.Unit;
             value.Quantity = t.Quantity;
-            value.BuyerCompany= t.BuyerCompany;
+            value.BuyerCompany = t.BuyerCompany;
             value.Nots = t.Nots;
             db.SaveChanges();
             return RedirectToAction("SearchDetails", new { id = cıd });

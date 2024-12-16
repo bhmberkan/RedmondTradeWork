@@ -8,17 +8,11 @@ https://icons8.com/icons/set/r
 
 
 
-// details kısmındaki crud işlemleri bitti
-// container kısmındaki crud işlemleri bitti
-
-
 
 arama işlemleri kaldı
 
-container yanına icon gelicek kopyalamaya yarıcak
-
-dropdown şeklinde olması gereken alanlar kaldı
 
 
 
 
+güncelleme işlemleri için soracağım istiyorlar mı diye

@@ -1,17 +1,12 @@
 ﻿@model RedmondTradeWork.Models.Entity.TblContainer
-@{
-    ViewBag.Title = "InsertSearch";
-    Layout = "~/Views/Admin/_AdminLayout.cshtml";
-}
+
+@{ ViewBag.Title = "InsertSearch";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml"; }
 
 <h2>Insert Container</h2>
 <br />
 
-
-
 <form method="post">
-
-
     @Html.Label("Short Content")
     @Html.TextBoxFor(x => x.Short_Content, new { @class = "form-control" })
     <br />
@@ -24,22 +19,98 @@
     @Html.TextBoxFor(x => x.Date, new { @class = "form-control", type = "date" })
     <br />
     @Html.Label("Deportune Port")
-    @Html.TextAreaFor(x => x.Deportune_Port, new { @class = "form-control" })
+    @Html.DropDownList("Deportune_Port", ViewBag.Deplist as List<SelectListItem>, "Seçiniz", new { @class = "form-control", id = "DepDropdown" })
     <br />
+
+    @if (ViewBag.SelectedValue == "Other")
+    {
+    @Html.TextAreaFor(x => x.Deportune_Port, new { @class = "form-control", id = "DepTextarea", style = "display: block;" }) }
+    else
+     {
+     @Html.TextAreaFor(x => x.Deportune_Port, new { @class = "form-control", id = "DepTextarea", style = "display: none;" })
+    <br />    
+    }
+ 
+    
 
     @Html.Label("Who")
-    @Html.TextAreaFor(x => x.Kim, new { @class = "form-control" })
+    @Html.DropDownList("Kim", ViewBag.KimList as List<SelectListItem>, "Seçiniz", new { @class = "form-control", id = "KimDropdown" })
     <br />
 
- 
-    @*bu sayfa tamam sadece dropdawnlist olarak belirli kısımları çekicem*@
-
-   
+    @if (ViewBag.SelectedValue == "Other")
+     {
+    @Html.TextAreaFor(x => x.Kim, new { @class = "form-control", id = "KimTextarea", style = "display: block;" }) } 
+    else
+     {
+    @Html.TextAreaFor(x => x.Kim, new { @class = "form-control", id = "KimTextarea", style = "display: none;" })
+    <br />
+    }
+    
 
     <button class="btn btn-info"> Ekle </button>
-
-
 </form>
 
+<script>
+    // Dropdown'da seçim değiştiğinde çalışacak fonksiyon   
+    document.getElementById("KimDropdown").addEventListener("change", function () {
+        var selectedText = this.options[this.selectedIndex].text; // Seçilen metni al
+        var otherTextArea = document.getElementById("KimTextarea"); // TextArea'yı seç
+
+        // Eğer seçilen metin "Diğer" ise TextArea'yı göster, değilse gizle
+        if (selectedText === "Diğer") {
+            otherTextArea.style.display = "block";
+
+            // TextArea'dan gelen değeri DropDownList'in value'su olarak ayarla
+            this.value = otherTextArea.value;
+        } else {
+            otherTextArea.style.display = "none";
+
+            // Eğer "Diğer" seçili değilse, TextArea'dan gelen değeri temizle
+            otherTextArea.value = '';
+        }
+    });
+
+    // TextArea'daki değeri değiştirdiğinizde, DropDownList'in value'sunu güncelle
+    document.getElementById("KimTextarea").addEventListener("input", function () {
+        var dropdown = document.getElementById("KimDropdown");
+
+        // TextArea'daki değeri DropDownList'in value'su olarak ayarla
+        dropdown.value = this.value;
+    });
 
 
+
+    //2. kısım için yapıyorum 
+
+
+    // Dropdown'da seçim değiştiğinde çalışacak fonksiyon   
+    document.getElementById("DepDropdown").addEventListener("change", function () {
+        var selectedText = this.options[this.selectedIndex].text; // Seçilen metni al
+        var otherTextArea = document.getElementById("DepTextarea"); // TextArea'yı seç
+
+        // Eğer seçilen metin "Diğer" ise TextArea'yı göster, değilse gizle
+        if (selectedText === "Diğer") {
+            otherTextArea.style.display = "block";
+
+            // TextArea'dan gelen değeri DropDownList'in value'su olarak ayarla
+            this.value = otherTextArea.value;
+        } else {
+            otherTextArea.style.display = "none";
+
+            // Eğer "Diğer" seçili değilse, TextArea'dan gelen değeri temizle
+            otherTextArea.value = '';
+        }
+    });
+
+    // TextArea'daki değeri değiştirdiğinizde, DropDownList'in value'sunu güncelle
+    document.getElementById("DepTextarea").addEventListener("input", function () {
+        var dropdown = document.getElementById("DepDropdown");
+
+        // TextArea'daki değeri DropDownList'in value'su olarak ayarla
+        dropdown.value = this.value;
+    });
+
+
+
+     
+</script>

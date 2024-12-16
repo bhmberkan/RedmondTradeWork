@@ -8,7 +8,9 @@
 <h2>Container</h2>
 
 
-<a href="/Admin/InsertSearch/" class="btn  btn-outline-info">İnsert</a>
+<a href="/Admin/InsertSearch/" class="btn  btn-outline-info">İnsert</a> &ensp; &ensp;
+
+<a href="https://www.searates.com/tr/" class="btn  btn-outline-danger" target="_blank">Tracking</a>
 <br />
 <br />
 
@@ -31,19 +33,34 @@
         <tr>
             <th>@x.ID</th>
             <td>@x.Short_Content</td>
-            <td>@x.ContainerNo</td>
-            <td>@x.Date.Value.ToString("dd-MMM-yyyy")</td>
-            <td>@x.Deportune_Port</td>
-            <td>@x.Kim</td>
+            <td style="display: flex; justify-content: space-between; align-items: center;">
+                @x.ContainerNo
+            <button class="btn btn-sm btn-outline-primary" onclick="copyToClipboard('@x.ContainerNo')">
+                <i class="fa fa-copy"></i>
+            </button>
+
+        </td>
+        <td>@x.Date.Value.ToString("dd-MMM-yyyy")</td>
+        <td>@x.Deportune_Port</td>
+        <td>@x.Kim</td>
 
 
 
-            <td><a href="/Admin/SearchDetails/@x.ID" class="btn mb-1 btn-rounded btn-outline-dark">Detail</a></td>
-            <td><a href="/Admin/UpdateSearchPage/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Update</a></td>
-            <td><a href="/Admin/DeleteSearch/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Delete</a></td>
+        <td><a href="/Admin/SearchDetails/@x.ID" class="btn mb-1 btn-rounded btn-outline-dark">Detail</a></td>
+        <td><a href="/Admin/UpdateSearchPage/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Update</a></td>
+        <td><a href="/Admin/DeleteSearch/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Delete</a></td>
 
-        </tr>
+    </tr>
 
-    }
+}
 </table>
 
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function () {
+            alert("Kopyalandı: " + text);
+        }).catch(function (err) {
+            alert("Kopyalama başarısız oldu: " + err);
+        });
+    }
+</script>
