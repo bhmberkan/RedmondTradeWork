@@ -1,34 +1,19 @@
 ﻿@using RedmondTradeWork.Models.Entity;
 @model List<TblContainer>
 @{
-    ViewBag.Title = "AdminSearch";
+    ViewBag.Title = "AdminDeletedContainerPage";
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
 
-<h2>Container</h2>
+<h2>Deleted Container </h2>
 
 
 
-<br />
-<br />
-
-@using (Html.BeginForm("AdminSearch", "Admin", FormMethod.Get))
-{
-    <div class="input-group mb-3">
-        @Html.TextBox("search", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "search..." }) &ensp;
-
-        <button type="submit" class="btn btn-warning">Search</button>
-    </div>
-}
-
-
-
-
-<a href="/Admin/InsertSearch/" class="btn  btn-outline-info">İnsert</a> &ensp; &ensp;
 
 <a href="https://www.searates.com/tr/container/tracking/" class="btn  btn-outline-danger" target="_blank">Tracking</a>
 <br />
 <br />
+
 
 <table class="table table-bordered">
     <tr>
@@ -39,8 +24,8 @@
         <th>Deportune Port</th>
         <th>Who</th>
         <th>View</th>
-        <th>Update</th>
-        <th>Delete</th>
+        <th>active</th>
+       
 
     </tr>
     @foreach (var x in Model)
@@ -62,8 +47,8 @@
 
 
             <td><a href="/Admin/SearchDetails/@x.ID" class="btn mb-1 btn-rounded btn-outline-dark">Detail</a></td>
-            <td><a href="/Admin/UpdateSearchPage/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Update</a></td>
-            <td><a href="/Admin/DeleteSearch/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Delete</a></td>
+            <td><a href="/Admin/UnDeleteSearch/@x.ID" class="btn mb-1 btn-rounded btn-outline-secondary">Active</a></td>
+           
 
         </tr>
 

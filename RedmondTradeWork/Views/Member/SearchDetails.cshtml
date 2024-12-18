@@ -2,12 +2,14 @@
 @model  List<RedmondTradeWork.ViewModels.ContainerDetailsViewModel>
 @{
     ViewBag.Title = "SearchDetails";
-    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+    Layout = "~/Views/Member/_MemberLayout - .cshtml";
 }
 
-<h2>Conteiner Details</h2>
+<h2>SearchDetails</h2>
 
-@using (Html.BeginForm("SearchDetails", "Admin", FormMethod.Get))
+
+
+@using (Html.BeginForm("SearchDetails", "Member", FormMethod.Get))
 {
     <div class="input-group mb-3">
         @Html.TextBox("srch", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "Search..." }) &ensp;
@@ -17,9 +19,9 @@
 }
 
 
-<a href="/Admin/AdminSearch/" class="btn mb-1 btn-rounded btn-outline-warning">Come Back</a> &ensp;
+<a href="/Member/Search/" class="btn mb-1 btn-rounded btn-outline-warning">Come Back</a> &ensp;
 
-<a href="/Admin/InsertSearchDetail/@ViewBag.ContID" class="btn mb-1 btn-rounded btn-outline-info">İnsert</a>
+
 
 <br />
 <br />
@@ -35,8 +37,7 @@
         <th>Date</th>
         <th>Deport Port</th>
         <th>Nots</th>
-        <th>Update</th>
-        <th>Delete</th>
+
 
     </tr>
     @foreach (var x in Model)
@@ -57,8 +58,7 @@
 
 
 
-            <td><a href="/Admin/UpdateSearchPageDetail/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Update</a></td>
-            <td><a href="/Admin/DeleteSearchDetail/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Delete</a></td>
+
 
         </tr>
 

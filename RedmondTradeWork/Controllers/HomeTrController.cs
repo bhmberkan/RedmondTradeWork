@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace RedmondTradeWork.Controllers
 {
+  //  [AllowAnonymous]
     public class HomeTrController : Controller
     {
         RedmondTradeDBEntities db = new RedmondTradeDBEntities();

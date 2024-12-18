@@ -34,9 +34,7 @@
     @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control", @type = "number", @min = "0" })
     <br />
 
-    @Html.Label("date")
-    @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control", type = "date" })
-    <br />
+  
     @Html.Label("Buyer Company")
     @Html.DropDownList("BuyerCompany", ViewBag.Buyerlist as List<SelectListItem>, "Seçiniz", new { @class = "form-control", id = "BuyerDropdown" })
 <br />

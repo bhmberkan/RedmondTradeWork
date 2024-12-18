@@ -1,0 +1,30 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model TblAdmin
+
+@{
+    ViewBag.Title = "UpdateAdminSettings";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Update Admin </h2>
+
+
+
+@using (Html.BeginForm("UpdateAdminSettings", "Admin", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.ID) // hiddenfor arka planda çalışacak anlamında
+    <br />
+
+    @Html.Label("İsim")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+    <br />
+
+
+    <button class="btn btn-primary"> Değişiklikleri Kaydet </button>
+
+}

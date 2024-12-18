@@ -7,12 +7,21 @@ https://icons.getbootstrap.com/
 https://icons8.com/icons/set/r
 
 
-
-
-arama işlemleri kaldı
-
-
+https://pictogrammers.github.io/@mdi/font/2.0.46/
+// mdi mdi iconları burda 
 
 
 
-güncelleme işlemleri için soracağım istiyorlar mı diye
+
+
+session işlemleri uygulayacağım.
+autohorization allowanonyms doğru çalışmadı
+
+
+
+
+
+admin için oturum yapılandırması yaptım member için de yapıcam
+bir de admin member sayfasına admın panelinden ulaşabilsin onu sağlıcam
+
+404 sayfasını yaparım tamamdır

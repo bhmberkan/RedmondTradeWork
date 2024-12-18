@@ -1,0 +1,41 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblAdmin>
+
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Admin Settings</h2>
+
+
+
+<table class="table table-bordered form-group">
+    <tr>
+        <th>#</th>
+        <th>İsim</th>
+        <th>Şifre</th>
+        <th>Güncelle</th>
+       
+
+
+    </tr>
+    @foreach (var x in Model)
+    {
+
+
+        <tr>
+            <th>@x.ID</th>
+            <td>@x.Name</td>
+            <td>@x.Password</td>
+
+            <td><a href="/Admin/UpdateAdminSettings/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+          
+
+        </tr>
+
+
+
+    }
+</table>
+

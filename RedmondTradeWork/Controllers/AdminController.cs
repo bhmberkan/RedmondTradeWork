@@ -8,12 +8,15 @@ using System.Web.Mvc;
 
 namespace RedmondTradeWork.Controllers
 {
-    public class AdminController : Controller
+  //  [Authorize]
+    public class AdminController : BaseController
     {
         RedmondTradeDBEntities db = new RedmondTradeDBEntities();
         // GET: Admin
         public ActionResult Index()
         {
+
+
             var deger = db.TblMainPage.ToList();
             return View(deger);
         }
@@ -302,42 +305,143 @@ namespace RedmondTradeWork.Controllers
         }
 
 
-        public ActionResult AdminSearch()
-        {
-            var values = db.TblContainer.Where(x => x.Durum == true).ToList();
 
+
+        public ActionResult AdminSearch(string search)
+        {
+
+            /* using (var db = new RedmondTradeDBEntities())
+             {
+                 var aranacak = db.TblContainer.AsQueryable();
+
+                 aranacak = aranacak.Where(x => x.Durum == true);
+                 // Arama parametresi boş değilse filtre uygula
+                 if (!string.IsNullOrEmpty(search))
+                 {
+                     aranacak = aranacak.Where(x => x.ContainerNo.Contains(search) ||
+                                                        x.Short_Content.Contains(search) ||
+                                                        x.Deportune_Port.Contains(search) ||
+                                                         x.Date.ToString().Contains(search) ||
+                                                        x.Kim.Contains(search));
+                 }
+
+                 return View(aranacak.ToList());
+
+                // var values = db.TblContainer.Where(x => x.Durum == true).ToList();
+
+                 // return View(values); 
+             }*/
+
+            using (var db = new RedmondTradeDBEntities())
+            {
+                var query = db.TblContainer.AsQueryable();
+
+                // Arama parametresi boş değilse
+                if (!string.IsNullOrEmpty(search))
+                {
+                    // TblContainerContents tablosunda arama yap
+                    var containerIds = db.TblContainerContents
+                                         .Where(c => c.Product.Contains(search) ||
+                                         c.TblContainer.Date.ToString().Contains(search) ||
+                                         c.TblContainer.Short_Content.Contains(search) ||
+                                         c.TblContainer.ContainerNo.Contains(search) ||
+                                         c.TblContainer.Deportune_Port.Contains(search) ||
+                                         c.TblContainer.Kim.Contains(search) 
+
+                                         ) // Burada Content alanında arama yapıyorsunuz
+                                         .Select(c => c.Container)            // ContainerID'leri çek
+                                         .ToList();
+
+                    // TblContainer'da ContainerID'lerine göre filtrele
+                    query = query.Where(x => x.Durum == true && containerIds.Contains(x.ID));
+                }
+                else
+                {
+                    query = query.Where(x => x.Durum == true).OrderByDescending(x=>x.ID);
+                }
+
+
+              
+
+                return View(query.ToList());
+            }
+        }
+
+
+
+
+
+        public ActionResult AdminDeletedContainerPage()
+        {
+            var values = db.TblContainer.Where(x => x.Durum == false).ToList();
             return View(values);
         }
 
         [HttpGet]
-        public ActionResult SearchDetails(int id)
+        public ActionResult SearchDetails(int id, string srch)
         {
             /* çok güzel sorgu oldu. ıd alıp başka bir değere göre sorgulama yaptık şimdi de direkt değeri alalim.
                var contno = db.TblConteiner.Where(x => x.ID == id).Select(x => x.ContainerNo);
                var values = db.TblConteiner.Where(x => contno.Contains(x.ContainerNo)).ToList();
             return View("SearchDetails", values);*/
-            var values = (from x in db.TblContainerContents
-                          where x.TblContainer.ID == id
-                          select new ContainerDetailsViewModel
-                          {
-                              ID = x.ID,
-                              ContainerNo = x.TblContainer.ContainerNo,
-                              Product = x.Product,
-                              Unit = x.Unit,
-                              Quantity = x.Quantity,
-                              BuyerCompany = x.BuyerCompany,
-                              Date = x.TblContainer.Date,
-                              DeportunePort = x.TblContainer.Deportune_Port,
-                              Nots = x.Nots
-                              // burada date kısmını listeleyelim ama eklerken ve güncelelrken direkt pc saati alsın bence
-                              // hız açısından
+            /*  var values = (from x in db.TblContainerContents
+                            where x.TblContainer.ID == id
+                            select new ContainerDetailsViewModel
+                            {
+                                ID = x.ID,
+                                ContainerNo = x.TblContainer.ContainerNo,
+                                Product = x.Product,
+                                Unit = x.Unit,
+                                Quantity = x.Quantity,
+                                BuyerCompany = x.BuyerCompany,
+                                Date = x.TblContainer.Date,
+                                DeportunePort = x.TblContainer.Deportune_Port,
+                                Nots = x.Nots
+                                // burada date kısmını listeleyelim ama eklerken ve güncelelrken direkt pc saati alsın bence
+                                // hız açısından
 
-                          }).ToList();
+                            }).ToList();
 
+
+              ViewBag.ContID = id;
+
+              return View(values); */
+
+            var query = db.TblContainerContents.Where(x => x.TblContainer.ID == id);
+
+            // Eğer arama terimi boş değilse, sorguyu filtrele
+            if (!string.IsNullOrEmpty(srch))
+            {
+                query = query.Where(x =>
+                    x.Unit.Contains(srch) ||
+                    x.Quantity.ToString().Contains(srch) ||
+                    x.TblContainer.Deportune_Port.Contains(srch) ||
+
+                    x.Product.Contains(srch) ||
+                    x.Nots.Contains(srch) ||
+                    x.BuyerCompany.Contains(srch)); // Burada arama yapılacak sütunları belirtiyoruz
+            }
+
+            var values = query.Select(x => new ContainerDetailsViewModel
+            {
+                ID = x.ID,
+                ContainerNo = x.TblContainer.ContainerNo,
+                Product = x.Product,
+                Unit = x.Unit,
+                Quantity = x.Quantity,
+                BuyerCompany = x.BuyerCompany,
+                Date = x.TblContainer.Date,
+                DeportunePort = x.TblContainer.Deportune_Port,
+                Nots = x.Nots
+            }).ToList();
 
             ViewBag.ContID = id;
+            // Arama terimini View'a geri göndermek için
 
             return View(values);
+
+
+
         }
 
         public ActionResult DeleteSearch(int id)
@@ -345,6 +449,14 @@ namespace RedmondTradeWork.Controllers
             var values = db.TblContainer.Find(id);
             //  db.TblContainer.Remove(values);
             values.Durum = false;
+            db.SaveChanges();
+            return RedirectToAction("AdminSearch");
+        }
+
+        public ActionResult UnDeleteSearch(int id)
+        {
+            var values = db.TblContainer.Find(id);
+            values.Durum = true;
             db.SaveChanges();
             return RedirectToAction("AdminSearch");
         }
@@ -454,12 +566,8 @@ namespace RedmondTradeWork.Controllers
             return RedirectToAction("AdminSearch");
         }
 
-        /*
-        public ActionResult Arama()
-        {
-            return View();
-        }
-        */
+
+
 
 
         public ActionResult DeleteSearchDetail(int id)
@@ -555,7 +663,7 @@ namespace RedmondTradeWork.Controllers
             }
 
 
-            if (t.Unit=="Other" && !string.IsNullOrWhiteSpace(Request.Form["Unit"]))
+            if (t.Unit == "Other" && !string.IsNullOrWhiteSpace(Request.Form["Unit"]))
             {
                 t.Unit = Request.Form["Unit"];
             }
@@ -566,7 +674,7 @@ namespace RedmondTradeWork.Controllers
             return RedirectToAction("SearchDetails", new { id = value.ID });
         }
 
-    
+
 
 
         [HttpGet]
@@ -591,8 +699,31 @@ namespace RedmondTradeWork.Controllers
         }
 
 
+        public ActionResult Settings()
+        {
+
+            var values = db.TblAdmin.Where(x => x.Rol == "admin").ToList();
+            return View(values);
+
+        }
 
 
+        [HttpGet]
+        public ActionResult UpdateAdminSettings(int id)
+        {
+            var value = db.TblAdmin.Find(id);
+            return View("UpdateAdminSettings", value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateAdminSettings(TblAdmin t)
+        {
+            var value = db.TblAdmin.Find(t.ID);
+            value.Name = t.Name;
+            value.Password = t.Password;
+            db.SaveChanges();
+            return RedirectToAction("Settings");
+        }
 
 
 
@@ -631,6 +762,12 @@ namespace RedmondTradeWork.Controllers
 
 
         public PartialViewResult SideBarPartial()
+        {
+            return PartialView();
+        }
+
+
+        public PartialViewResult SideBarPartialMember()
         {
             return PartialView();
         }

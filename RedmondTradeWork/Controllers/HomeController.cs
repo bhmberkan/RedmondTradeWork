@@ -11,6 +11,7 @@ using MailKit.Net.Smtp;
 
 namespace RedmondTradeWork.Controllers
 {
+ //   [AllowAnonymous]
     public class HomeController : Controller
     {
         RedmondTradeDBEntities db = new RedmondTradeDBEntities();
@@ -93,6 +94,7 @@ namespace RedmondTradeWork.Controllers
             db.TblMessage.Add(t);
             db.SaveChanges();
            
+          
             return RedirectToAction("Contact");
         }
 

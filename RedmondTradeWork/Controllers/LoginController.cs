@@ -20,21 +20,45 @@ namespace RedmondTradeWork.Controllers
         [HttpPost]
         public ActionResult Index(TblAdmin p)
         {
-            var bilgiler = db.TblAdmin.FirstOrDefault(x => x.Name == p.Name && x.Password == p.Password && x.Rol == "admin");
-            var bgm = db.TblAdmin.FirstOrDefault(x => x.Name == p.Name && x.Password == p.Password && x.Rol == "member");
-            if (bilgiler!=null)
+            var adminBilgiler = db.TblAdmin.FirstOrDefault(x => x.Name == p.Name && x.Password == p.Password && x.Rol == "admin");
+            var memberBilgiler = db.TblAdmin.FirstOrDefault(x => x.Name == p.Name && x.Password == p.Password && x.Rol == "member");
+
+            if (adminBilgiler != null)
             {
-                return RedirectToAction("Index","Admin");
+                // Admin kullanıcı bilgilerini session'a kaydet
+                Session["UserName"] = adminBilgiler.Name;
+                Session["UserRole"] = "admin";
+                return RedirectToAction("AdminSearch", "Admin");
             }
-            else if(bgm!=null)
+            else if (memberBilgiler != null)
             {
-                return RedirectToAction("Index","Search");
+                // Member kullanıcı bilgilerini session'a kaydet
+                Session["UserName"] = memberBilgiler.Name;
+                Session["UserRole"] = "member";
+             
+                return RedirectToAction("Search", "Member");
             }
             else
             {
-                return RedirectToAction("Index");
+                // Hatalı giriş durumunda login sayfasına dön
+                ViewBag.ErrorMessage = "Geçersiz kullanıcı adı veya şifre.";
+                return View();
             }
-           
+
+        }
+
+
+
+        public ActionResult Cikis()
+        {
+            Session.Clear();
+            return RedirectToAction("Index","Login");
+        }
+
+        public ActionResult CikisSite()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
