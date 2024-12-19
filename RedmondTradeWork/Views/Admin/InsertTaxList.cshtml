@@ -1,0 +1,91 @@
+﻿@model RedmondTradeWork.Models.Entity.TblTax
+@{
+    ViewBag.Title = "InsertTaxList";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>InsertTaxList</h2>
+
+
+<form method="post">
+
+
+
+    @Html.Label("Cont Name")
+    @Html.TextBoxFor(x => x.ContName, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("DESCRIPTION DU PRODUIT ")
+    @Html.TextBoxFor(x => x.DesProd, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("QUANTITE")
+    @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Gtip/Hs Code")
+    @Html.TextBoxFor(x => x.GtipHis, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("DD%")
+    @Html.TextBoxFor(x => x.DD, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Container No")
+    @Html.TextBoxFor(x => x.ContNo, new { @class = "form-control" })
+    <br />
+
+
+    @Html.Label("Hc")
+    @Html.TextBoxFor(x => x.HC, new { @class = "form-control" })
+    <br />
+
+      @Html.Label("Invoice No")
+    @Html.TextBoxFor(x => x.INVOICENO, new { @class = "form-control" })
+    <br />
+
+
+    @Html.Label("SGS No")
+    @Html.TextBoxFor(x => x.SGSNO, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Date")
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" , type = "date" })
+    <br />
+
+    @Html.Label("VAELUR DOUEANE")
+    @Html.TextBoxFor(x => x.Vaelur, new { @class = "form-control" })
+    <br />
+
+
+    @Html.Label("DROITS ET TAXES")
+    @Html.TextBoxFor(x => x.Droist, new { @class = "form-control" })
+    <br />
+    
+    @Html.Label("TOTAL DROITS ET TAXES EVALUES")
+    @Html.TextBoxFor(x => x.TotalDroist, new { @class = "form-control" })
+    <br />
+
+     @Html.Label("Bizim Beyan")
+    @Html.TextBoxFor(x => x.BizimBeyan, new { @class = "form-control" })
+    <br />
+
+     @Html.Label("Montant Fob")
+    @Html.TextBoxFor(x => x.Montant, new { @class = "form-control" })
+    <br />
+    
+    @Html.Label("SG")
+    @Html.TextBoxFor(x => x.SG, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Import")
+    @Html.TextBoxFor(x => x.Import, new { @class = "form-control" })
+    <br />
+
+
+    <button class="btn btn-primary">  Kaydet </button>
+
+
+
+
+</form>

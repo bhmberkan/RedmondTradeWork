@@ -14,14 +14,20 @@ https://pictogrammers.github.io/@mdi/font/2.0.46/
 
 
 
-session işlemleri uygulayacağım.
-autohorization allowanonyms doğru çalışmadı
+
+gtip kısmı tamamlandı. ekleme silme güncelleme işlemleri ve sayfa tasarımları tamamlandı.
+
+TaxList kısmı tamamlandı. ekleme silme güncelleme işlemleri ve sayfa tasarımları tamamlandı.
 
 
 
 
 
-admin için oturum yapılandırması yaptım member için de yapıcam
-bir de admin member sayfasına admın panelinden ulaşabilsin onu sağlıcam
 
-404 sayfasını yaparım tamamdır
+
+
+
+
+
+
+

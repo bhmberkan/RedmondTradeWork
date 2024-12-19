@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace RedmondTradeWork.Controllers
 {
-  //  [Authorize]
+    //  [Authorize]
     public class AdminController : BaseController
     {
         RedmondTradeDBEntities db = new RedmondTradeDBEntities();
@@ -346,7 +346,7 @@ namespace RedmondTradeWork.Controllers
                                          c.TblContainer.Short_Content.Contains(search) ||
                                          c.TblContainer.ContainerNo.Contains(search) ||
                                          c.TblContainer.Deportune_Port.Contains(search) ||
-                                         c.TblContainer.Kim.Contains(search) 
+                                         c.TblContainer.Kim.Contains(search)
 
                                          ) // Burada Content alanında arama yapıyorsunuz
                                          .Select(c => c.Container)            // ContainerID'leri çek
@@ -357,11 +357,11 @@ namespace RedmondTradeWork.Controllers
                 }
                 else
                 {
-                    query = query.Where(x => x.Durum == true).OrderByDescending(x=>x.ID);
+                    query = query.Where(x => x.Durum == true).OrderByDescending(x => x.ID);
                 }
 
 
-              
+
 
                 return View(query.ToList());
             }
@@ -725,6 +725,184 @@ namespace RedmondTradeWork.Controllers
             return RedirectToAction("Settings");
         }
 
+
+
+        public ActionResult Gtip(string search)
+        {
+            using (var db = new RedmondTradeDBEntities())
+            {
+                var query = db.TblGtip.AsQueryable();
+
+                // Arama parametresi boş değilse
+                if (!string.IsNullOrEmpty(search))
+                {
+                    // TblContainerContents tablosunda arama yap
+                    var Gıd = db.TblGtip
+                                .Where(c => c.StokKod.Contains(search) || c.Gtip.Contains(search))
+                                .Select(c => c.ID) // ID'leri çek
+                                .ToList();
+
+                    // TblGtip tablosunda ID'lere göre filtrele
+                    query = query.Where(c => Gıd.Contains(c.ID));
+                }
+
+                return View(query.ToList());
+            }
+
+        }
+
+
+
+        [HttpGet]
+        public ActionResult InsertGtip()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertGtip(TblGtip t)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("InsertGtip");
+            }
+           
+            db.TblGtip.Add(t);
+            db.SaveChanges();
+            return RedirectToAction("Gtip");
+
+        }
+
+
+        [HttpGet]
+        public ActionResult UpdateGtip(int id)
+        {
+            var value = db.TblGtip.Find(id);
+            return View("UpdateGtip", value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateGtip(TblGtip t)
+        {
+            var value = db.TblGtip.Find(t.ID);
+            value.StokKod = t.StokKod;
+            value.Mal_Hizmet = t.Mal_Hizmet;
+            value.Miktar = t.Miktar;
+            value.BirimF = t.BirimF;
+            value.MalHizTut = t.MalHizTut;
+            value.Gtip = t.Gtip;
+            db.SaveChanges();
+            return RedirectToAction("Gtip");
+        }
+
+        public ActionResult DeleteGtip(int id)
+        {
+            var values = db.TblGtip.Find(id);
+            db.TblGtip.Remove(values);
+            db.SaveChanges();
+
+            return RedirectToAction("Gtip");
+              
+        }
+
+
+        public ActionResult TaxList(string search)
+        {
+            using (var db = new RedmondTradeDBEntities())
+            {
+                var query = db.TblTax.AsQueryable();
+
+                // Arama parametresi boş değilse
+                if (!string.IsNullOrEmpty(search))
+                {
+                    // TblContainerContents tablosunda arama yap
+                    var Tax = db.TblTax
+                                .Where(c => c.ContName.Contains(search) || c.DesProd.Contains(search))
+                                .Select(c => c.ID) // ID'leri çek
+                                .ToList();
+
+                    // TblGtip tablosunda ID'lere göre filtrele
+                    query = query.Where(c => Tax.Contains(c.ID));
+                }
+
+                return View(query.ToList());
+
+            }
+
+
+        }
+
+
+        [HttpGet]
+        public ActionResult InsertTaxList()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertTaxList(TblTax t)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("InsertTaxList");
+            }
+
+            if (!t.Date.HasValue)
+            { // tarih boş geçildiyse günün tarihini ata
+                t.Date = DateTime.Now;
+            }
+
+
+            db.TblTax.Add(t);
+            db.SaveChanges();
+            return RedirectToAction("TaxList");
+
+        }
+
+
+        [HttpGet]
+        public ActionResult UpdateTaxList(int id) 
+        {
+            var value = db.TblTax.Find(id);
+            return View("UpdateTaxList", value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateTaxList(TblTax t)
+        {
+            var value = db.TblTax.Find(t.ID);
+            value.ContName = t.ContName;
+            value.DesProd = t.DesProd;
+            value.Quantity = t.Quantity;
+            value.GtipHis = t.GtipHis;
+            value.DD= t.DD;
+            value.ContNo = t.ContNo;
+            value.HC = t.HC;
+            value.INVOICENO = t.INVOICENO;
+            value.SGSNO = t.SGSNO;
+            value.Date = t.Date ?? DateTime.Now;
+            value.Vaelur = t.Vaelur;
+            value.Droist = t.Droist;
+            value.TotalDroist = t.TotalDroist;
+            value.BizimBeyan= t.BizimBeyan;
+            value.Montant= t.Montant;
+            value.SG= t.SG;
+            value.Import= t.Import;
+            db.SaveChanges();
+            return RedirectToAction("TaxList");
+        }
+
+        public ActionResult DeleteTaxList(int id)
+        {
+            var values = db.TblTax.Find(id);
+            db.TblTax.Remove(values);
+            db.SaveChanges();
+
+            return RedirectToAction("TaxList");
+
+        }
 
 
         public PartialViewResult FooterPartial()

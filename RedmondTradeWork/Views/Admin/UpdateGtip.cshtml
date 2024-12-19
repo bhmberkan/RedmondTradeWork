@@ -1,0 +1,45 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model TblGtip
+@{
+    ViewBag.Title = "UpdateGtip";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>UpdateGtip</h2>
+
+
+@using (Html.BeginForm("UpdateGtip", "Admin", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.ID) // hiddenfor arka planda çalışacak anlamında
+    <br />
+
+    @Html.Label("Stok Kod")
+    @Html.TextBoxFor(x => x.StokKod, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Mal Hizmet")
+    @Html.TextBoxFor(x => x.Mal_Hizmet, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Miktar")
+    @Html.TextBoxFor(x => x.Miktar, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Birim Fiyat")
+    @Html.TextBoxFor(x => x.BirimF, new { @class = "form-control" })
+    <br />
+
+
+    @Html.Label("Mal Hizmet Tutarı")
+    @Html.TextBoxFor(x => x.MalHizTut, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Gtip")
+    @Html.TextBoxFor(x => x.Gtip, new { @class = "form-control" })
+    <br />
+
+
+    <button class="btn btn-primary"> Değişiklikleri Kaydet </button>
+
+}

@@ -216,6 +216,9 @@
     <Compile Include="Models\Entity\TblContainerContents.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\TblGtip.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\TblMainPage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -226,6 +229,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\TblSolution_Partners.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TblTax.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\TblWork.cs">
@@ -5814,6 +5820,12 @@
     <Content Include="Views\Admin\SideBarPartialMember.cshtml" />
     <Content Include="Views\Member\Search.cshtml" />
     <Content Include="Views\Member\SearchDetails.cshtml" />
+    <Content Include="Views\Admin\Gtip.cshtml" />
+    <Content Include="Views\Admin\TaxList.cshtml" />
+    <Content Include="Views\Admin\InsertGtip.cshtml" />
+    <Content Include="Views\Admin\UpdateGtip.cshtml" />
+    <Content Include="Views\Admin\InsertTaxList.cshtml" />
+    <Content Include="Views\Admin\UpdateTaxList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

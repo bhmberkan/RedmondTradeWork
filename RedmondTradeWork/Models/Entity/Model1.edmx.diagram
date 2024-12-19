@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ede0178b74ab407bbf45c014c3cf7b78" Name="Diagram1">
+      <Diagram DiagramId="ede0178b74ab407bbf45c014c3cf7b78" Name="Diagram1" ZoomLevel="97">
         <EntityTypeShape EntityType="RedmondTradeDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblAboutUs" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblAdmin" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
@@ -19,6 +19,8 @@
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblContainer" Width="1.5" PointX="3.375" PointY="8" />
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblContainerContents" Width="1.5" PointX="5.625" PointY="8" />
         <AssociationConnector Association="RedmondTradeDBModel.FK_TblContainerContents_TblContainer" />
+        <EntityTypeShape EntityType="RedmondTradeDBModel.TblGtip" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="RedmondTradeDBModel.TblTax" Width="1.5" PointX="8.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -61,6 +61,18 @@
           <Property Name="Nots" Type="varchar(max)" />
           <Property Name="Container" Type="int" />
         </EntityType>
+        <EntityType Name="TblGtip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StokKod" Type="varchar" MaxLength="300" />
+          <Property Name="Mal_Hizmet" Type="varchar(max)" />
+          <Property Name="Miktar" Type="varchar" MaxLength="150" />
+          <Property Name="BirimF" Type="varchar" MaxLength="150" />
+          <Property Name="MalHizTut" Type="varchar" MaxLength="150" />
+          <Property Name="Gtip" Type="varchar" MaxLength="24" />
+        </EntityType>
         <EntityType Name="TblMainPage">
           <Key>
             <PropertyRef Name="ID" />
@@ -113,6 +125,29 @@
           <Property Name="Photo" Type="nvarchar" MaxLength="200" />
           <Property Name="Description_En" Type="varchar(max)" />
           <Property Name="Description_Fr" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TblTax">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContName" Type="varchar" MaxLength="10" />
+          <Property Name="DesProd" Type="varchar(max)" />
+          <Property Name="Quantity" Type="varchar" MaxLength="100" />
+          <Property Name="GtipHis" Type="varchar" MaxLength="100" />
+          <Property Name="DD" Type="varchar" MaxLength="15" />
+          <Property Name="ContNo" Type="varchar" MaxLength="50" />
+          <Property Name="HC" Type="varchar" MaxLength="10" />
+          <Property Name="INVOICENO" Type="varchar" MaxLength="50" />
+          <Property Name="SGSNO" Type="nchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Vaelur" Type="varchar" MaxLength="50" />
+          <Property Name="Droist" Type="varchar" MaxLength="50" />
+          <Property Name="TotalDroist" Type="varchar" MaxLength="50" />
+          <Property Name="BizimBeyan" Type="varchar" MaxLength="50" />
+          <Property Name="Montant" Type="varchar" MaxLength="50" />
+          <Property Name="SG" Type="varchar" MaxLength="50" />
+          <Property Name="Import" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TblWork">
           <Key>
@@ -181,10 +216,12 @@
           <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblContainer" EntityType="Self.TblContainer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblContainerContents" EntityType="Self.TblContainerContents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblGtip" EntityType="Self.TblGtip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMainPage" EntityType="Self.TblMainPage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMessage" EntityType="Self.TblMessage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblService" EntityType="Self.TblService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblSolution_Partners" EntityType="Self.TblSolution_Partners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblTax" EntityType="Self.TblTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblWork" EntityType="Self.TblWork" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TblContainerContents_TblContainer" Association="Self.FK_TblContainerContents_TblContainer">
             <End Role="TblContainer" EntitySet="TblContainer" />
@@ -374,6 +411,8 @@
             <End Role="TblContainer" EntitySet="TblContainer" />
             <End Role="TblContainerContents" EntitySet="TblContainerContents" />
           </AssociationSet>
+          <EntitySet Name="TblGtip" EntityType="RedmondTradeDBModel.TblGtip" />
+          <EntitySet Name="TblTax" EntityType="RedmondTradeDBModel.TblTax" />
         </EntityContainer>
         <EntityType Name="TblContainer">
           <Key>
@@ -413,6 +452,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TblGtip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mal_Hizmet" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Miktar" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="BirimF" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="MalHizTut" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Gtip" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="StokKod" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblTax">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DesProd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GtipHis" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ContNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="INVOICENO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SGSNO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Vaelur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Droist" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalDroist" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BizimBeyan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Montant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Import" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -547,6 +621,43 @@
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblGtip">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblGtip">
+              <MappingFragment StoreEntitySet="TblGtip">
+                <ScalarProperty Name="StokKod" ColumnName="StokKod" />
+                <ScalarProperty Name="Gtip" ColumnName="Gtip" />
+                <ScalarProperty Name="MalHizTut" ColumnName="MalHizTut" />
+                <ScalarProperty Name="BirimF" ColumnName="BirimF" />
+                <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+                <ScalarProperty Name="Mal_Hizmet" ColumnName="Mal_Hizmet" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblTax">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblTax">
+              <MappingFragment StoreEntitySet="TblTax">
+                <ScalarProperty Name="Import" ColumnName="Import" />
+                <ScalarProperty Name="SG" ColumnName="SG" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+                <ScalarProperty Name="BizimBeyan" ColumnName="BizimBeyan" />
+                <ScalarProperty Name="TotalDroist" ColumnName="TotalDroist" />
+                <ScalarProperty Name="Droist" ColumnName="Droist" />
+                <ScalarProperty Name="Vaelur" ColumnName="Vaelur" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SGSNO" ColumnName="SGSNO" />
+                <ScalarProperty Name="INVOICENO" ColumnName="INVOICENO" />
+                <ScalarProperty Name="HC" ColumnName="HC" />
+                <ScalarProperty Name="ContNo" ColumnName="ContNo" />
+                <ScalarProperty Name="DD" ColumnName="DD" />
+                <ScalarProperty Name="GtipHis" ColumnName="GtipHis" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="DesProd" ColumnName="DesProd" />
+                <ScalarProperty Name="ContName" ColumnName="ContName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

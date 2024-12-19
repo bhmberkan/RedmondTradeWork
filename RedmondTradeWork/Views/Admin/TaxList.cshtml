@@ -1,0 +1,123 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblTax>
+@{
+    ViewBag.Title = "TaxList";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>TaxList</h2>
+
+
+<br />
+
+
+@using (Html.BeginForm("TaxList", "Admin", FormMethod.Get))
+{
+    <div class="input-group mb-3">
+        @Html.TextBox("search", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "search..." }) &ensp;
+
+        <button type="submit" class="btn btn-warning">Search</button>
+    </div>
+}
+
+
+
+<a href="/Admin/InsertTaxList/" class="btn  btn-outline-info">İnsert</a> &ensp; &ensp;
+<br />
+<br />
+
+
+
+
+
+<table class="table table-bordered custom-table">
+    <tr>
+        <th>#</th>
+        <th>
+            CONT
+            NAME
+        </th>
+        <th>DESCRIPTION DU PRODUIT</th>
+        <th>QUANTITE</th>
+        <th>GTIP /HS CODE</th>
+        <th>DD %</th>
+        <th>CONTAINER NO</th>
+        <th>INVOICE NO</th>
+        <th>SGS NO</th>
+        <th>DATE</th>
+        <th>VAELUR DOUEANE</th>
+        <th>DROITS ET TAXES</th>
+        <th>
+            TOTAL DROITS ET
+            TAXES EVALUES
+        </th>
+        <th>
+            BİZİM
+            BEYAN
+        </th>
+        <th>
+            MONTANT
+            FOB
+        </th>
+        <th>SG</th>
+        <th>IMPORT</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+
+
+    </tr>
+    @foreach (var x in Model)
+    {
+<tr>
+    <th>@x.ID</th>
+    <th>@x.ContName</th>
+    <td>@x.DesProd</td>
+    <td>@x.Quantity</td>
+    <td>@x.GtipHis</td>
+    <td>@x.DD</td>
+    <td>@x.ContNo</td>
+    <td>@x.HC</td>
+    <td>@x.INVOICENO</td>
+    <td>@x.SGSNO</td>
+    <td>@x.Date.Value.ToString("dd-MMM-yyyy")</td>
+    <td>@x.Vaelur</td>
+    <td>@x.Droist</td>
+    <td>@x.BizimBeyan</td>
+    <td>@x.Import</td>
+    <td>@x.SG</td>
+    <td>@x.Import</td>
+
+
+
+
+
+
+    <td><a href="/Admin/UpdateTaxList/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Update</a></td>
+    <td><a href="/Admin/DeleteTaxList/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Delete</a></td>
+
+
+
+
+</tr>
+
+    }
+</table>
+
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function () {
+            alert("Kopyalandı: " + text);
+        }).catch(function (err) {
+            alert("Kopyalama başarısız oldu: " + err);
+        });
+    }
+</script>
+
+<style>
+    table.custom-table th {
+        font-size: 11px; /* Yazı boyutunu belirleyin */
+        font-weight: 400; /* Yazı kalınlığı (isteğe bağlı) */
+        text-align: center; /* Yazıları ortalar */
+        padding: 8px; /* Hücre içi boşluk */
+    }
+</style>

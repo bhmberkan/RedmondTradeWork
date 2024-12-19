@@ -1,0 +1,77 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblGtip>
+
+@{
+    ViewBag.Title = "Gtip";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Gtip</h2>
+
+
+<br />
+
+@using (Html.BeginForm("Gtip", "Admin", FormMethod.Get))
+{
+    <div class="input-group mb-3">
+        @Html.TextBox("search", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "search..." }) &ensp;
+
+        <button type="submit" class="btn btn-warning">Search</button>
+    </div>
+}
+
+
+
+<a href="/Admin/InsertGtip/" class="btn  btn-outline-info">İnsert</a> &ensp; &ensp;
+<br /> <br />
+
+
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Stok Kodu</th>
+        <th>Mal Hizmet</th>
+        <th>Miktar</th>
+        <th>Birim Fiyat</th>
+        <th>Mal Hizmet Tutarı</th>
+        <th>GTİP</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+
+
+    </tr>
+    @foreach (var x in Model)
+    {
+<tr>
+    <th>@x.ID</th>
+    <th>@x.StokKod</th>
+    <td>@x.Mal_Hizmet</td>
+    <td>@x.Miktar</td>
+    <td>@x.BirimF</td>
+    <td>@x.MalHizTut</td>
+    <td>@x.Gtip</td>
+
+
+
+    <td><a href="/Admin/UpdateGtip/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Update</a></td>
+    <td><a href="/Admin/DeleteGtip/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Delete</a></td>
+
+
+
+
+</tr>
+
+    }
+</table>
+
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function () {
+            alert("Kopyalandı: " + text);
+        }).catch(function (err) {
+            alert("Kopyalama başarısız oldu: " + err);
+        });
+    }
+</script>
