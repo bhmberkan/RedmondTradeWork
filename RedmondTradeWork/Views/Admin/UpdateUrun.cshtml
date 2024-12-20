@@ -1,0 +1,59 @@
+﻿@using RedmondTradeWork.Models.Entity
+@model TblUrun
+
+
+@{
+    ViewBag.Title = "UpdateUrun";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>UpdateUrun</h2>
+
+
+
+@using (Html.BeginForm("UpdateUrun", "Admin", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.ID) // hiddenfor arka planda çalışacak anlamında
+    <br />
+
+
+
+    @Html.Label("Description")
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Quantity1")
+    @Html.TextBoxFor(x => x.Quantity1, new { @class = "form-control", @type = "text", @step = "any", placeholder = "Ondalık ayraç için ',' kullanın ve bu alana sayı girin" })
+    <br />
+
+    @Html.Label("Quantiy2")
+    @Html.TextBoxFor(x => x.Quantity2, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Unit Price")
+    @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control", @type = "text", @step = "any", placeholder = "Ondalık ayraç için ',' kullanın ve bu alana sayı girin" })
+    <br />
+
+    @Html.Label("Total")
+    @Html.TextBoxFor(x => x.Total, new { @class = "form-control", @type = "text", @step = "any", placeholder = "Ondalık ayraç için ',' kullanın ve bu alana sayı girin" })
+    <br />
+
+    @Html.Label("Container")
+    @Html.TextBoxFor(x => x.Container, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Net Weight KG")
+    @Html.TextBoxFor(x => x.NetWeightKG, new { @class = "form-control", @type = "text", @step = "any", placeholder = "Ondalık ayraç için ',' kullanın ve bu alana sayı girin" })
+    <br />
+
+    @Html.Label("Hs Code")
+    @Html.TextBoxFor(x => x.HSCode, new { @class = "form-control", @type = "number" })
+    <br />
+
+
+
+    <button class="btn btn-primary"> Değişiklikleri Kaydet </button>
+
+}
+

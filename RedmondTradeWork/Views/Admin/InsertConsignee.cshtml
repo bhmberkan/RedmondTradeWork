@@ -1,0 +1,42 @@
+﻿@model RedmondTradeWork.Models.Entity.TblConsignee
+@{
+    ViewBag.Title = "InsertConsignee";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>InsertConsignee</h2>
+
+
+<form method="post">
+
+
+
+
+    @Html.Label("Company Name")
+    @Html.TextBoxFor(x => x.CCompanyName, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Adress ")
+    @Html.TextAreaFor(x => x.CAdress, 5, 3, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Telefon")
+    @Html.TextBoxFor(x => x.CTelefon, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Email")
+    @Html.TextBoxFor(x => x.CEmail, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Tax/Office Number")
+    @Html.TextBoxFor(x => x.CTaxOfficeNumber, new { @class = "form-control" })
+    <br />
+
+
+    <button class="btn btn-primary">  Kaydet </button>
+
+
+
+
+</form>
+

@@ -1,0 +1,44 @@
+﻿@model RedmondTradeWork.Models.Entity.TblShipper
+@{
+    ViewBag.Title = "InsertShipper";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>InsertShipper</h2>
+
+
+
+<form method="post">
+
+
+
+
+    @Html.Label("Company Name")
+    @Html.TextBoxFor(x => x.SCompanyName, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Adress ")
+    @Html.TextAreaFor(x => x.SAdress, 5, 3, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Telefon")
+    @Html.TextBoxFor(x => x.STelefon, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Email")
+    @Html.TextBoxFor(x => x.SEmail, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Tax/Office Number")
+    @Html.TextBoxFor(x => x.STaxOfficeNumber, new { @class = "form-control" })
+    <br />
+
+
+    <button class="btn btn-primary">  Kaydet </button>
+
+
+
+
+</form>
+
+

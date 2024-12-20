@@ -210,6 +210,9 @@
     <Compile Include="Models\Entity\TblAdmin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\TblConsignee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\TblContainer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -228,10 +231,16 @@
     <Compile Include="Models\Entity\TblService.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\TblShipper.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\TblSolution_Partners.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\TblTax.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TblUrun.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\TblWork.cs">
@@ -5826,6 +5835,16 @@
     <Content Include="Views\Admin\UpdateGtip.cshtml" />
     <Content Include="Views\Admin\InsertTaxList.cshtml" />
     <Content Include="Views\Admin\UpdateTaxList.cshtml" />
+    <Content Include="Views\Admin\deneme.cshtml" />
+    <Content Include="Views\Admin\Shipper.cshtml" />
+    <Content Include="Views\Admin\UpdateShipper.cshtml" />
+    <Content Include="Views\Admin\InsertShipper.cshtml" />
+    <Content Include="Views\Admin\Consignee.cshtml" />
+    <Content Include="Views\Admin\InsertConsignee.cshtml" />
+    <Content Include="Views\Admin\UpdateConsignee.cshtml" />
+    <Content Include="Views\Admin\Urun.cshtml" />
+    <Content Include="Views\Admin\InsertUrun.cshtml" />
+    <Content Include="Views\Admin\UpdateUrun.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -767,7 +767,7 @@ namespace RedmondTradeWork.Controllers
             {
                 return View("InsertGtip");
             }
-           
+
             db.TblGtip.Add(t);
             db.SaveChanges();
             return RedirectToAction("Gtip");
@@ -803,7 +803,7 @@ namespace RedmondTradeWork.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Gtip");
-              
+
         }
 
 
@@ -863,7 +863,7 @@ namespace RedmondTradeWork.Controllers
 
 
         [HttpGet]
-        public ActionResult UpdateTaxList(int id) 
+        public ActionResult UpdateTaxList(int id)
         {
             var value = db.TblTax.Find(id);
             return View("UpdateTaxList", value);
@@ -877,7 +877,7 @@ namespace RedmondTradeWork.Controllers
             value.DesProd = t.DesProd;
             value.Quantity = t.Quantity;
             value.GtipHis = t.GtipHis;
-            value.DD= t.DD;
+            value.DD = t.DD;
             value.ContNo = t.ContNo;
             value.HC = t.HC;
             value.INVOICENO = t.INVOICENO;
@@ -886,10 +886,10 @@ namespace RedmondTradeWork.Controllers
             value.Vaelur = t.Vaelur;
             value.Droist = t.Droist;
             value.TotalDroist = t.TotalDroist;
-            value.BizimBeyan= t.BizimBeyan;
-            value.Montant= t.Montant;
-            value.SG= t.SG;
-            value.Import= t.Import;
+            value.BizimBeyan = t.BizimBeyan;
+            value.Montant = t.Montant;
+            value.SG = t.SG;
+            value.Import = t.Import;
             db.SaveChanges();
             return RedirectToAction("TaxList");
         }
@@ -903,6 +903,308 @@ namespace RedmondTradeWork.Controllers
             return RedirectToAction("TaxList");
 
         }
+
+
+
+
+
+        public ActionResult Shipper(string search)
+        {
+            using (var db = new RedmondTradeDBEntities())
+            {
+                var query = db.TblShipper.AsQueryable();
+
+                // Arama parametresi boş değilse
+                if (!string.IsNullOrEmpty(search))
+                {
+                    // TblContainerContents tablosunda arama yap
+                    var Gıd = db.TblShipper
+                                .Where(c => c.SCompanyName.Contains(search) ||
+                                c.STelefon.Contains(search) ||
+                                c.SAdress.Contains(search) ||
+                                c.SEmail.Contains(search) ||
+                                c.STaxOfficeNumber.Contains(search)
+
+
+                                )
+
+                                .Select(c => c.ID) // ID'leri çek
+                                .ToList();
+
+                    // TblGtip tablosunda ID'lere göre filtrele
+                    query = query.Where(c => Gıd.Contains(c.ID));
+                }
+
+                return View(query.ToList());
+            }
+
+        }
+
+
+
+        [HttpGet]
+        public ActionResult InsertShipper()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertShipper(TblShipper t)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("InsertShipper");
+            }
+
+            db.TblShipper.Add(t);
+            db.SaveChanges();
+            return RedirectToAction("Shipper");
+
+        }
+
+
+        [HttpGet]
+        public ActionResult UpdateShipper(int id)
+        {
+            var value = db.TblShipper.Find(id);
+            return View("UpdateShipper", value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateShipper(TblShipper t)
+        {
+            var value = db.TblShipper.Find(t.ID);
+            value.SCompanyName = t.SCompanyName;
+            value.SAdress = t.SAdress;
+            value.STelefon = t.STelefon;
+            value.SEmail = t.SEmail;
+            value.STaxOfficeNumber = t.STaxOfficeNumber;
+
+            db.SaveChanges();
+            return RedirectToAction("Shipper");
+        }
+
+        public ActionResult DeleteShipper(int id)
+        {
+            var values = db.TblShipper.Find(id);
+            db.TblShipper.Remove(values);
+            db.SaveChanges();
+
+            return RedirectToAction("Shipper");
+
+        }
+
+
+
+        public ActionResult Consignee(string search)
+        {
+            using (var db = new RedmondTradeDBEntities())
+            {
+                var query = db.TblConsignee.AsQueryable();
+
+                // Arama parametresi boş değilse
+                if (!string.IsNullOrEmpty(search))
+                {
+                    // TblContainerContents tablosunda arama yap
+                    var Gıd = db.TblConsignee
+                                .Where(c => c.CCompanyName.Contains(search) ||
+                                c.CTelefon.Contains(search) ||
+                                c.CAdress.Contains(search) ||
+                                c.CEmail.Contains(search) ||
+                                c.CTaxOfficeNumber.Contains(search)
+
+
+                                )
+
+                                .Select(c => c.ID) // ID'leri çek
+                                .ToList();
+
+                    // TblGtip tablosunda ID'lere göre filtrele
+                    query = query.Where(c => Gıd.Contains(c.ID));
+                }
+
+                return View(query.ToList());
+            }
+
+        }
+
+
+
+        [HttpGet]
+        public ActionResult InsertConsignee()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertConsignee(TblConsignee t)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("InsertConsignee");
+            }
+
+            db.TblConsignee.Add(t);
+            db.SaveChanges();
+            return RedirectToAction("Consignee");
+
+        }
+
+
+        [HttpGet]
+        public ActionResult UpdateConsignee(int id)
+        {
+            var value = db.TblConsignee.Find(id);
+            return View("UpdateConsignee", value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateConsignee(TblConsignee t)
+        {
+            var value = db.TblConsignee.Find(t.ID);
+            value.CCompanyName = t.CCompanyName;
+            value.CAdress = t.CAdress;
+            value.CTelefon = t.CTelefon;
+            value.CEmail = t.CEmail;
+            value.CTaxOfficeNumber = t.CTaxOfficeNumber;
+
+            db.SaveChanges();
+            return RedirectToAction("Consignee");
+        }
+
+        public ActionResult DeleteConsignee(int id)
+        {
+            var values = db.TblConsignee.Find(id);
+            db.TblConsignee.Remove(values);
+            db.SaveChanges();
+
+            return RedirectToAction("Consignee");
+
+        }
+
+
+
+
+        public ActionResult Urun(string search)
+        {
+            using (var db = new RedmondTradeDBEntities())
+            {
+                var query = db.TblUrun.AsQueryable();
+
+                // Arama parametresi boş değilse
+                if (!string.IsNullOrEmpty(search))
+                {
+                    // TblContainerContents tablosunda arama yap
+                    var Gıd = db.TblUrun
+                                .Where(c => c.Description.Contains(search) ||
+                                c.Quantity1.ToString().Contains(search) ||
+                                c.Quantity2.Contains(search) ||
+                                c.UnitPrice.ToString().Contains(search) ||
+                                c.Container.Contains(search) ||
+                                c.NetWeightKG.ToString().Contains(search) ||
+                                c.HSCode.ToString().Contains(search)
+
+
+                                )
+
+                                .Select(c => c.ID) // ID'leri çek
+                                .ToList();
+
+                    // TblGtip tablosunda ID'lere göre filtrele
+                    query = query.Where(c => Gıd.Contains(c.ID));
+                }
+
+                return View(query.ToList());
+            }
+
+        }
+
+
+
+        [HttpGet]
+        public ActionResult InsertUrun()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertUrun(TblUrun t)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("InsertUrun");
+            }
+            // hesaplama işlemleri burda yapılacak önce bi yazdıralım sonra hesaplatmayı da yaparız
+
+            // ekikler. quanty2 değeri ürünün adı olmalı.
+            // ürün kg sini almalıyız.
+            // adet sayısısı quantıty 1 değeri unutma
+            db.TblUrun.Add(t);
+            db.SaveChanges();
+            return RedirectToAction("Urun");
+
+        }
+
+
+        [HttpGet]
+        public ActionResult UpdateUrun(int id)
+        {
+            var value = db.TblUrun.Find(id);
+            return View("UpdateUrun", value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateUrun(TblUrun t)
+        {
+            var value = db.TblUrun.Find(t.ID);
+            value.Description = t.Description;
+            value.Quantity1 = t.Quantity1;
+            value.Quantity2 = t.Quantity2;
+            value.UnitPrice = t.UnitPrice;
+            value.Total = t.Total; // totalı hesaplatma olayı olmalı quantity1 * unit price = total 
+            value.Container= t.Container;
+            value.NetWeightKG = t.NetWeightKG; // bu da paletse ona göre çarpım falan yapmalı 
+            value.HSCode = t.HSCode;
+
+            db.SaveChanges();
+            return RedirectToAction("Urun");
+        }
+
+        public ActionResult DeleteUrun(int id)
+        {
+            var values = db.TblUrun.Find(id);
+            db.TblUrun.Remove(values);
+            db.SaveChanges();
+
+            return RedirectToAction("Urun");
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public ActionResult deneme()
+        {
+            return View();
+        }
+
+
+
 
 
         public PartialViewResult FooterPartial()

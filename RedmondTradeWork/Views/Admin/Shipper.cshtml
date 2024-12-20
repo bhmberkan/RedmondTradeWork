@@ -1,0 +1,82 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<TblShipper>
+@{
+    ViewBag.Title = "Shipper";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Shipper</h2>
+
+
+<br />
+
+
+@using (Html.BeginForm("Shipper", "Admin", FormMethod.Get))
+{
+    <div class="input-group mb-3">
+        @Html.TextBox("search", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "search..." }) &ensp;
+
+        <button type="submit" class="btn btn-warning">Search</button>
+    </div>
+}
+
+
+
+<a href="/Admin/InsertShipper/" class="btn  btn-outline-info">İnsert</a> &ensp; &ensp;
+<br />
+<br />
+
+
+
+
+
+<table class="table table-bordered custom-table">
+    <tr>
+        <th>#</th>
+        <th>Company Name</th>
+        <th>Adress</th>
+        <th>Telefon</th>
+        <th>Email</th>
+        <th>Tax/OfficeNumber </th>
+
+        <th>Güncelle</th>
+        <th>Sil</th>
+
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.ID</th>
+            <th>@x.SCompanyName</th>
+            <td>@x.SAdress</td>
+            <td>@x.STelefon</td>
+            <td>@x.SEmail</td>
+            <td>@x.STaxOfficeNumber</td>
+           
+
+
+
+
+
+
+            <td><a href="/Admin/UpdateShipper/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Update</a></td>
+            <td><a href="/Admin/DeleteShipper/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Delete</a></td>
+
+
+
+
+        </tr>
+
+    }
+</table>
+
+
+<style>
+    table.custom-table th {
+        font-size: 11px; /* Yazı boyutunu belirleyin */
+        font-weight: 400; /* Yazı kalınlığı (isteğe bağlı) */
+        text-align: center; /* Yazıları ortalar */
+        padding: 8px; /* Hücre içi boşluk */
+    }
+</style>

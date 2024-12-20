@@ -1,0 +1,235 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proforma Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .invoice-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            border: 1px solid #000;
+            padding: 20px;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            background-color: #c5d9f1;
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 24px;
+                text-transform: uppercase;
+                color: #000;
+            }
+
+            .header p {
+                margin: 5px 0;
+            }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+            .section h2 {
+                margin: 0 0 10px 0;
+                font-size: 14px;
+                font-weight: bold;
+                border-bottom: 1px solid #000;
+                padding-bottom: 5px;
+                background-color: #dae8fc;
+                padding: 5px;
+            }
+
+            .section p {
+                margin: 3px 0;
+            }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+            .table th, .table td {
+                border: 1px solid #000;
+                padding: 8px;
+                text-align: left;
+            }
+
+            .table th {
+                background-color: #f2f2f2;
+                text-align: center;
+            }
+
+            .table td {
+                text-align: center;
+            }
+
+        .footer {
+            text-align: center;
+            border-top: 2px solid #000;
+            padding-top: 10px;
+            margin-top: 20px;
+        }
+
+        .signature {
+            margin-top: 30px;
+            height: 100px;
+            border: 1px dashed #000;
+            text-align: center;
+            line-height: 100px;
+            font-style: italic;
+            color: #777;
+        }
+
+        .totals {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+            .totals p {
+                margin: 5px 0;
+                text-align: right;
+            }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>PROFORMA INVOICE</h1>
+            <p><strong>Invoice no:</strong> EKHMBR19102024 &nbsp;&nbsp;&nbsp; <strong>Date:</strong> 19.10.2024</p>
+        </div>
+
+        <!-- Shipper and Consignee Details -->
+        <div class="section">
+            <h2>SHIPPER</h2>
+            <p><strong>Company name:</strong> REDMOND INSAAT VE DIS TICARET LTD. STI.</p>
+            <p><strong>Address:</strong> YUSUF PASA MAH. 916. SK. NO:2/C ENYUBIRE/SANLIURFA/TURKEY</p>
+            <p><strong>Telephones:</strong> +90 532 055 96 63</p>
+            <p><strong>Email:</strong> info@redmondtrade.com</p>
+            <p><strong>Tax office/number:</strong> SEHITLIK V.D. 7324571792</p>
+        </div>
+
+        <div class="section">
+            <h2>CONSIGNEE</h2>
+            <p><strong>Company name:</strong> SHN SARL</p>
+            <p><strong>Address:</strong> AKWA BP 5018 DOUALA CAMEROON</p>
+            <p><strong>Telephones:</strong> +237 673 77 91 71</p>
+            <p><strong>Email:</strong> shnsarl@proto.me</p>
+            <p><strong>Tax number:</strong> CIME DOUALA / M032146620854F</p>
+        </div>
+
+        <!-- Invoice Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th colspan="2">Quantity</th>  <!-- Birleştirilen Quantity Başlığı -->
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                    <th>Container</th>
+                    <th>Net Weight (KG)</th>
+                    <th>HS Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>QR01</td>
+                    <td>5</td>  <!-- Quantity için değerler -->
+                    <td>5</td> @*quantıty alanı*@
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>QR02</td>
+                    <td>5</td> @*quantıty alanı*@
+                    <td>5</td> @*quantıty alanı*@
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>QR03</td>
+                    <td>5</td>  @*quantıty alanı*@
+                    <td>5</td> @*quantıty alanı*@
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>QR04</td>
+                    <td>16.00 / burası</td> @*quantıty alanı*@
+                    <td>16.00 / burası</td> @*quantıty alanı*@
+                    <td>$330.00</td>
+                    <td>$5,280.00</td>
+                    <td>1x20DC</td>
+                    <td>22980.0 KG</td>
+                    <td>842199</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Totals -->
+        <div class="totals">
+            <p><strong>Freight:</strong> $2,030.00</p>
+            <p><strong>Assurance:</strong> $17.50</p>
+            <p><strong>General CIF Value:</strong> $7,327.50</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Term of Delivery:</strong> CIF (KRIBI PORT)</p>
+            <p><strong>Country of Origin:</strong> TURKEY (ALL GOODS MADE IN TURKEY)</p>
+            <p><strong>Terms of Payment:</strong> RECEPTION OF GOODS IN CAMEROON</p>
+            <p><strong>Bank Account:</strong></p>
+            <p>
+                REDMOND INSAAT VE DIS TICARET LTD. STI.<br>
+                T. GARANTI BANKASI A.S.<br>
+                Branch: SANLIURFA (451)<br>
+                Swift Code: TGBATRISXXX<br>
+                IBAN Number (USD): TR18 0006 2000 4510 0093 0674 62
+            </p>
+        </div>
+
+        <!-- Signature Section -->
+        <div class="signature">
+            Signature Area
+        </div>
+    </div>
+</body>
+</html>

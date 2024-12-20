@@ -37,6 +37,17 @@
           <Property Name="Password" Type="nchar" MaxLength="30" />
           <Property Name="Rol" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="TblConsignee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CCompanyName" Type="varchar" MaxLength="200" />
+          <Property Name="CAdress" Type="varchar(max)" />
+          <Property Name="CTelefon" Type="varchar" MaxLength="20" />
+          <Property Name="CEmail" Type="varchar" MaxLength="200" />
+          <Property Name="CTaxOfficeNumber" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="TblContainer">
           <Key>
             <PropertyRef Name="ID" />
@@ -115,6 +126,17 @@
           <Property Name="İmage" Type="nchar" MaxLength="100" />
           <Property Name="ServiceIcon" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="TblShipper">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SCompanyName" Type="varchar" MaxLength="200" />
+          <Property Name="SAdress" Type="varchar(max)" />
+          <Property Name="STelefon" Type="varchar" MaxLength="20" />
+          <Property Name="SEmail" Type="varchar" MaxLength="200" />
+          <Property Name="STaxOfficeNumber" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="TblSolution_Partners">
           <Key>
             <PropertyRef Name="SolutionPartnersID" />
@@ -148,6 +170,20 @@
           <Property Name="Montant" Type="varchar" MaxLength="50" />
           <Property Name="SG" Type="varchar" MaxLength="50" />
           <Property Name="Import" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblUrun">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="15" />
+          <Property Name="Quantity1" Type="float" />
+          <Property Name="Quantity2" Type="varchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="float" />
+          <Property Name="Total" Type="float" />
+          <Property Name="Container" Type="varchar" MaxLength="50" />
+          <Property Name="NetWeightKG" Type="float" />
+          <Property Name="HSCode" Type="int" />
         </EntityType>
         <EntityType Name="TblWork">
           <Key>
@@ -214,14 +250,17 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAboutUs" EntityType="Self.TblAboutUs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblConsignee" EntityType="Self.TblConsignee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblContainer" EntityType="Self.TblContainer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblContainerContents" EntityType="Self.TblContainerContents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblGtip" EntityType="Self.TblGtip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMainPage" EntityType="Self.TblMainPage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMessage" EntityType="Self.TblMessage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblService" EntityType="Self.TblService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblShipper" EntityType="Self.TblShipper" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblSolution_Partners" EntityType="Self.TblSolution_Partners" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblTax" EntityType="Self.TblTax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblUrun" EntityType="Self.TblUrun" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblWork" EntityType="Self.TblWork" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TblContainerContents_TblContainer" Association="Self.FK_TblContainerContents_TblContainer">
             <End Role="TblContainer" EntitySet="TblContainer" />
@@ -413,6 +452,9 @@
           </AssociationSet>
           <EntitySet Name="TblGtip" EntityType="RedmondTradeDBModel.TblGtip" />
           <EntitySet Name="TblTax" EntityType="RedmondTradeDBModel.TblTax" />
+          <EntitySet Name="TblConsignee" EntityType="RedmondTradeDBModel.TblConsignee" />
+          <EntitySet Name="TblShipper" EntityType="RedmondTradeDBModel.TblShipper" />
+          <EntitySet Name="TblUrun" EntityType="RedmondTradeDBModel.TblUrun" />
         </EntityContainer>
         <EntityType Name="TblContainer">
           <Key>
@@ -486,6 +528,42 @@
           <Property Name="Montant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Import" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblConsignee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CTelefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CTaxOfficeNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblShipper">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="STelefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STaxOfficeNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblUrun">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity1" Type="Double" />
+          <Property Name="Quantity2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="Container" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NetWeightKG" Type="Double" />
+          <Property Name="HSCode" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -658,6 +736,45 @@
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="DesProd" ColumnName="DesProd" />
                 <ScalarProperty Name="ContName" ColumnName="ContName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblConsignee">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblConsignee">
+              <MappingFragment StoreEntitySet="TblConsignee">
+                <ScalarProperty Name="CTaxOfficeNumber" ColumnName="CTaxOfficeNumber" />
+                <ScalarProperty Name="CEmail" ColumnName="CEmail" />
+                <ScalarProperty Name="CTelefon" ColumnName="CTelefon" />
+                <ScalarProperty Name="CAdress" ColumnName="CAdress" />
+                <ScalarProperty Name="CCompanyName" ColumnName="CCompanyName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblShipper">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblShipper">
+              <MappingFragment StoreEntitySet="TblShipper">
+                <ScalarProperty Name="STaxOfficeNumber" ColumnName="STaxOfficeNumber" />
+                <ScalarProperty Name="SEmail" ColumnName="SEmail" />
+                <ScalarProperty Name="STelefon" ColumnName="STelefon" />
+                <ScalarProperty Name="SAdress" ColumnName="SAdress" />
+                <ScalarProperty Name="SCompanyName" ColumnName="SCompanyName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblUrun">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.TblUrun">
+              <MappingFragment StoreEntitySet="TblUrun">
+                <ScalarProperty Name="HSCode" ColumnName="HSCode" />
+                <ScalarProperty Name="NetWeightKG" ColumnName="NetWeightKG" />
+                <ScalarProperty Name="Container" ColumnName="Container" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity2" ColumnName="Quantity2" />
+                <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

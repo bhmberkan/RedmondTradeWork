@@ -1,0 +1,78 @@
+﻿@using RedmondTradeWork.Models.Entity
+@model List<TblUrun>
+@{
+    ViewBag.Title = "Urun";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Urun</h2>
+
+
+<br />
+
+
+@using (Html.BeginForm("Urun", "Admin", FormMethod.Get))
+{
+    <div class="input-group mb-3">
+        @Html.TextBox("search", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "search..." }) &ensp;
+
+        <button type="submit" class="btn btn-warning">Search</button>
+    </div>
+}
+
+
+
+<a href="/Admin/InsertUrun/" class="btn  btn-outline-info">İnsert</a> &ensp; &ensp;
+<br />
+<br />
+
+
+
+
+
+<table class="table table-bordered custom-table">
+    <tr>
+        <th>#</th>
+        <th>Description</th>
+        <th>Quantity1</th>
+        <th>Quantity2</th>
+        <th>Unit Price</th>
+        <th>Total </th>
+        <th>Container </th>
+        <th>Net Weight KG </th>
+        <th>Hs Code </th>
+
+        <th>Güncelle</th>
+        <th>Sil</th>
+
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.ID</th>
+            <th>@x.Description</th>
+            <th>@x.Quantity1</th>
+            <td>@x.Quantity2</td>
+            <td>@x.UnitPrice</td>
+            <td>@x.Total</td>
+            <td>@x.Container</td>
+            <td>@x.NetWeightKG</td>
+            <td>@x.HSCode</td>
+
+
+
+
+
+
+
+            <td><a href="/Admin/UpdateUrun/@x.ID" class="btn mb-1 btn-rounded btn-outline-success">Update</a></td>
+            <td><a href="/Admin/DeleteUrun/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Delete</a></td>
+
+
+
+
+        </tr>
+
+    }
+</table>

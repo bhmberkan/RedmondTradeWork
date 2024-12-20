@@ -22,6 +22,11 @@ TaxList kısmı tamamlandı. ekleme silme güncelleme işlemleri ve sayfa tasar�
 
 
 
+consignee ve shipper kısımları bitti
+ürünler için bu tarz bir işlem gelicek bir de ayrıca bu üçünün verilerini tuttuğum bir tablo olmalı. 
+onun tablosunu oluşturucam
+
+o tabloya eklenecek veriler sayfadan seçilecek
 
 
 
@@ -30,4 +35,7 @@ TaxList kısmı tamamlandı. ekleme silme güncelleme işlemleri ve sayfa tasar�
 
 
 
+virgül muhabbetini belirtiriz. zaten ilk alanda quantity 1 yani ürünün fiyatı  1 tanesının kg sı  olmalı
+quantity1 adet. total netweight. bu sayfada olmamalı diğerinde hesaplanmalı
 
+sabah düzelticem bu yukarıyı

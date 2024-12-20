@@ -1,0 +1,42 @@
+﻿@using RedmondTradeWork.Models.Entity
+@model TblShipper
+@{
+    ViewBag.Title = "UpdateShipper";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>UpdateShipper</h2>
+
+
+@using (Html.BeginForm("UpdateShipper", "Admin", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.ID) // hiddenfor arka planda çalışacak anlamında
+    <br />
+
+
+    @Html.Label("Company Name")
+    @Html.TextBoxFor(x => x.SCompanyName, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Adress ")
+    @Html.TextAreaFor(x => x.SAdress, 5,3, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Telefon")
+    @Html.TextBoxFor(x => x.STelefon, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Email")
+    @Html.TextBoxFor(x => x.SEmail, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Tax/Office Number")
+    @Html.TextBoxFor(x => x.STaxOfficeNumber, new { @class = "form-control" })
+    <br />
+
+
+
+    <button class="btn btn-primary"> Değişiklikleri Kaydet </button>
+
+}

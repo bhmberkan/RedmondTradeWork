@@ -21,6 +21,9 @@
         <AssociationConnector Association="RedmondTradeDBModel.FK_TblContainerContents_TblContainer" />
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblGtip" Width="1.5" PointX="8.375" PointY="0.75" />
         <EntityTypeShape EntityType="RedmondTradeDBModel.TblTax" Width="1.5" PointX="8.375" PointY="7.75" />
+        <EntityTypeShape EntityType="RedmondTradeDBModel.TblConsignee" Width="1.5" PointX="9.375" PointY="4.75" />
+        <EntityTypeShape EntityType="RedmondTradeDBModel.TblShipper" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="RedmondTradeDBModel.TblUrun" Width="1.5" PointX="10.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
