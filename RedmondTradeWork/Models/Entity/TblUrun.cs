@@ -16,12 +16,10 @@ namespace RedmondTradeWork.Models.Entity
     {
         public int ID { get; set; }
         public string Description { get; set; }
-        public Nullable<double> Quantity1 { get; set; }
         public string Quantity2 { get; set; }
         public Nullable<double> UnitPrice { get; set; }
-        public Nullable<double> Total { get; set; }
         public string Container { get; set; }
-        public Nullable<double> NetWeightKG { get; set; }
+        public Nullable<double> Weight_KG { get; set; }
         public Nullable<int> HSCode { get; set; }
     }
 }

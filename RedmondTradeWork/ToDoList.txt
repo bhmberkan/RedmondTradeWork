@@ -15,18 +15,6 @@ https://pictogrammers.github.io/@mdi/font/2.0.46/
 
 
 
-gtip kısmı tamamlandı. ekleme silme güncelleme işlemleri ve sayfa tasarımları tamamlandı.
-
-TaxList kısmı tamamlandı. ekleme silme güncelleme işlemleri ve sayfa tasarımları tamamlandı.
-
-
-
-
-consignee ve shipper kısımları bitti
-ürünler için bu tarz bir işlem gelicek bir de ayrıca bu üçünün verilerini tuttuğum bir tablo olmalı. 
-onun tablosunu oluşturucam
-
-o tabloya eklenecek veriler sayfadan seçilecek
 
 
 
@@ -34,8 +22,34 @@ o tabloya eklenecek veriler sayfadan seçilecek
 
 
 
+deneme sayfasında
+proformayi geçiyorum. tüm verileri de getiriyorum.
 
-virgül muhabbetini belirtiriz. zaten ilk alanda quantity 1 yani ürünün fiyatı  1 tanesının kg sı  olmalı
-quantity1 adet. total netweight. bu sayfada olmamalı diğerinde hesaplanmalı
+description kısmında ufak eksiklikler var hesaplatma ve diğer 3 ürün için yapcam
 
-sabah düzelticem bu yukarıyı
+total value
+Freight gibi alanlar işte oralar kaldı
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

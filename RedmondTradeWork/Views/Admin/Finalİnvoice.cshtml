@@ -1,0 +1,193 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .invoice {
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .header h1 {
+                margin: 0;
+            }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+            .details div {
+                width: 48%;
+            }
+
+            .details table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .details td {
+                padding: 5px;
+                border: 1px solid #000;
+            }
+
+        .table-container {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .footer {
+            margin-top: 20px;
+        }
+
+            .footer div {
+                margin-bottom: 20px;
+            }
+
+            .footer table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .footer td {
+                padding: 5px;
+                border: 1px solid #000;
+            }
+
+        .bank-info {
+            margin-top: 20px;
+        }
+
+            .bank-info td {
+                border: none;
+            }
+
+        .logo {
+            text-align: right;
+        }
+
+            .logo img {
+                width: 150px;
+            }
+    </style>
+</head>
+<body>
+    <div class="invoice">
+        <div class="header">
+            <h1>FINAL INVOICE</h1>
+            <p>Invoice no.: EKHMBR19102024 | Booking no.: ISB1581983 | Container no.: FCUI4632</p>
+            <p>Date: 19.10.2024</p>
+        </div>
+
+        <div class="details">
+            <div>
+                <h3>SHIPPER</h3>
+                <table>
+                    <tr><td>Company Name:</td><td>REDMOND INŞAAT VE DIŞ TİCARET LTD. ŞTİ.</td></tr>
+                    <tr><td>Address:</td><td>YUSUF PAŞA MAH. 916, SK. NO:2/C EYÜBIYE/ŞANLIURFA/TURKEY</td></tr>
+                    <tr><td>Telephones:</td><td>+90 532 085 65 63</td></tr>
+                    <tr><td>Email:</td><td>info@redmondtrade.com</td></tr>
+                    <tr><td>Tax Office/Number:</td><td>ŞEHİTLİK V.D. 7342571792</td></tr>
+                </table>
+            </div>
+            <div>
+                <h3>CONSIGNEE</h3>
+                <table>
+                    <tr><td>Company Name:</td><td>SHN SARL</td></tr>
+                    <tr><td>Address:</td><td>AKWA BP 6018 DOUALA CAMEROUN</td></tr>
+                    <tr><td>Telephones:</td><td>+237 673 97 71 91</td></tr>
+                    <tr><td>Email:</td><td>shnsarl@proton.me</td></tr>
+                    <tr><td>Tax Number:</td><td>CIME DOUALA / M032416203854P</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                    <th>Container</th>
+                    <th>Net Weight (KG)</th>
+                    <th>HS Code</th>
+                </tr>
+                <tr>
+                    <td>ORN04</td>
+                    <td>16,00 PALLET</td>
+                    <td>330,00</td>
+                    <td>$5,280.00</td>
+                    <td>1X20DC</td>
+                    <td>22990,0 KG</td>
+                    <td>842199</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="footer">
+            <div>
+                <table>
+                    <tr><td>Term of Delivery:</td><td>CIF (KRIBI PORT)</td></tr>
+                    <tr><td>Country of Origin:</td><td>TURKEY (ALL GOODS MADE IN TURKEY)</td></tr>
+                    <tr><td>Terms of Payment:</td><td>RECEPTION OF GOOD IN CAMEROON</td></tr>
+                </table>
+            </div>
+
+            <div class="bank-info">
+                <h3>Bank Account</h3>
+                <table>
+                    <tr><td>Beneficiary:</td><td>REDMOND INŞAAT VE DIŞ TİCARET LTD. ŞTİ.</td></tr>
+                    <tr><td>Name of Bank:</td><td>T. GARANTİ BANKASI A.Ş.</td></tr>
+                    <tr><td>Branch:</td><td>ŞANLIURFA (451)</td></tr>
+                    <tr><td>Swift Code:</td><td>TGBATRISXXX</td></tr>
+                    <tr><td>Account:</td><td>451-9076524</td></tr>
+                    <tr><td>IBAN Number (USD):</td><td>TR18 0006 2004 4510 0009 0676 42</td></tr>
+                </table>
+            </div>
+
+            <div class="logo">
+                <img src="logo.png" alt="Company Logo">
+                <p>REDMOND INŞAAT VE DIŞ TİCARET LTD. ŞTİ.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -112,6 +112,34 @@
           <Property Name="Message" Type="varchar(max)" />
           <Property Name="Date" Type="date" />
         </EntityType>
+        <EntityType Name="Tblortakproforma">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceNo" Type="varchar" MaxLength="50" />
+          <Property Name="BookingNo" Type="varchar" MaxLength="50" />
+          <Property Name="ContainerNo" Type="varchar" MaxLength="50" />
+          <Property Name="CCompanyName" Type="varchar" MaxLength="200" />
+          <Property Name="CAdress" Type="varchar(max)" />
+          <Property Name="CTelefon" Type="varchar" MaxLength="20" />
+          <Property Name="CEmail" Type="varchar" MaxLength="200" />
+          <Property Name="CTaxOfficeNumber" Type="varchar" MaxLength="200" />
+          <Property Name="SCompanyName" Type="varchar" MaxLength="200" />
+          <Property Name="SAdress" Type="varchar(max)" />
+          <Property Name="STelefon" Type="varchar" MaxLength="20" />
+          <Property Name="SEmail" Type="varchar" MaxLength="200" />
+          <Property Name="STaxOfficeNumber" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar" MaxLength="15" />
+          <Property Name="Quantity1" Type="int" />
+          <Property Name="Quantity2" Type="varchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="float" />
+          <Property Name="TotalPrice" Type="float" />
+          <Property Name="Container" Type="varchar" MaxLength="50" />
+          <Property Name="WeightKG" Type="float" />
+          <Property Name="NetWeightKG" Type="float" />
+          <Property Name="HSCode" Type="varchar" MaxLength="40" />
+        </EntityType>
         <EntityType Name="TblService">
           <Key>
             <PropertyRef Name="ServiceID" />
@@ -177,12 +205,10 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="15" />
-          <Property Name="Quantity1" Type="float" />
           <Property Name="Quantity2" Type="varchar" MaxLength="50" />
           <Property Name="UnitPrice" Type="float" />
-          <Property Name="Total" Type="float" />
           <Property Name="Container" Type="varchar" MaxLength="50" />
-          <Property Name="NetWeightKG" Type="float" />
+          <Property Name="Weight KG" Type="float" />
           <Property Name="HSCode" Type="int" />
         </EntityType>
         <EntityType Name="TblWork">
@@ -256,6 +282,7 @@
           <EntitySet Name="TblGtip" EntityType="Self.TblGtip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMainPage" EntityType="Self.TblMainPage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMessage" EntityType="Self.TblMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tblortakproforma" EntityType="Self.Tblortakproforma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblService" EntityType="Self.TblService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblShipper" EntityType="Self.TblShipper" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblSolution_Partners" EntityType="Self.TblSolution_Partners" Schema="dbo" store:Type="Tables" />
@@ -455,6 +482,7 @@
           <EntitySet Name="TblConsignee" EntityType="RedmondTradeDBModel.TblConsignee" />
           <EntitySet Name="TblShipper" EntityType="RedmondTradeDBModel.TblShipper" />
           <EntitySet Name="TblUrun" EntityType="RedmondTradeDBModel.TblUrun" />
+          <EntitySet Name="Tblortakproforma" EntityType="RedmondTradeDBModel.Tblortakproforma" />
         </EntityContainer>
         <EntityType Name="TblContainer">
           <Key>
@@ -557,13 +585,39 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Quantity1" Type="Double" />
           <Property Name="Quantity2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UnitPrice" Type="Double" />
-          <Property Name="Total" Type="Double" />
           <Property Name="Container" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NetWeightKG" Type="Double" />
+          <Property Name="Weight_KG" Type="Double" />
           <Property Name="HSCode" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tblortakproforma">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContainerNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CTelefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CTaxOfficeNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="STelefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STaxOfficeNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity1" Type="Int32" />
+          <Property Name="Quantity2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="TotalPrice" Type="Double" />
+          <Property Name="Container" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WeightKG" Type="Double" />
+          <Property Name="NetWeightKG" Type="Double" />
+          <Property Name="HSCode" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -768,13 +822,40 @@
             <EntityTypeMapping TypeName="RedmondTradeDBModel.TblUrun">
               <MappingFragment StoreEntitySet="TblUrun">
                 <ScalarProperty Name="HSCode" ColumnName="HSCode" />
-                <ScalarProperty Name="NetWeightKG" ColumnName="NetWeightKG" />
+                <ScalarProperty Name="Weight_KG" ColumnName="Weight KG" />
                 <ScalarProperty Name="Container" ColumnName="Container" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity2" ColumnName="Quantity2" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tblortakproforma">
+            <EntityTypeMapping TypeName="RedmondTradeDBModel.Tblortakproforma">
+              <MappingFragment StoreEntitySet="Tblortakproforma">
+                <ScalarProperty Name="HSCode" ColumnName="HSCode" />
+                <ScalarProperty Name="NetWeightKG" ColumnName="NetWeightKG" />
+                <ScalarProperty Name="WeightKG" ColumnName="WeightKG" />
+                <ScalarProperty Name="Container" ColumnName="Container" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Quantity2" ColumnName="Quantity2" />
                 <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="STaxOfficeNumber" ColumnName="STaxOfficeNumber" />
+                <ScalarProperty Name="SEmail" ColumnName="SEmail" />
+                <ScalarProperty Name="STelefon" ColumnName="STelefon" />
+                <ScalarProperty Name="SAdress" ColumnName="SAdress" />
+                <ScalarProperty Name="SCompanyName" ColumnName="SCompanyName" />
+                <ScalarProperty Name="CTaxOfficeNumber" ColumnName="CTaxOfficeNumber" />
+                <ScalarProperty Name="CEmail" ColumnName="CEmail" />
+                <ScalarProperty Name="CTelefon" ColumnName="CTelefon" />
+                <ScalarProperty Name="CAdress" ColumnName="CAdress" />
+                <ScalarProperty Name="CCompanyName" ColumnName="CCompanyName" />
+                <ScalarProperty Name="ContainerNo" ColumnName="ContainerNo" />
+                <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

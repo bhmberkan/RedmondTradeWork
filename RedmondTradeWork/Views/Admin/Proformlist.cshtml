@@ -1,0 +1,46 @@
+﻿@using RedmondTradeWork.Models.Entity;
+@model List<Tblortakproforma>
+@{
+    ViewBag.Title = "Proformlist";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Proformlist</h2>
+<br />
+<a href="/Admin/Proforma/" class="btn mb-1 btn btn-info">insert </a>
+<br /> <br />
+<table class="table table-bordered form-group">
+    <tr>
+        <th>#</th>
+        <th>Invoice No</th>
+        <th>BookingNo</th>
+        <th>Consignee Company</th>
+        <th>Shipper Company</th>
+        <th>Ürün</th>
+
+        <th>Proforma Oluştur</th>
+        <th>Final Oluştur</th>
+        <th>Sil</th>
+
+    </tr>
+    @foreach (var x in Model)
+    {
+<tr>
+    <th>@x.ID</th>
+    <td>@x.InvoiceNo</td>
+    <td>@x.BookingNo</td>
+    <td>@x.CCompanyName</td>
+    <td>@x.SCompanyName</td>
+    <td>@x.Quantity2</td>
+
+
+    <td><a href="/Admin/AdminMessageDetailt/@x.ID" class="btn mb-1 btn-rounded btn-outline-warning">Proforma </a></td>
+    <td><a href="/Admin/AdminMessageDetailt/@x.ID" class="btn mb-1 btn-rounded btn-outline-dark">Final</a></td>
+    <td><a href="/Admin/ProformaDelete/@x.ID" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+
+
+
+</tr>
+
+    }
+</table>

@@ -1099,11 +1099,10 @@ namespace RedmondTradeWork.Controllers
                     // TblContainerContents tablosunda arama yap
                     var Gıd = db.TblUrun
                                 .Where(c => c.Description.Contains(search) ||
-                                c.Quantity1.ToString().Contains(search) ||
                                 c.Quantity2.Contains(search) ||
                                 c.UnitPrice.ToString().Contains(search) ||
                                 c.Container.Contains(search) ||
-                                c.NetWeightKG.ToString().Contains(search) ||
+                                c.Weight_KG.ToString().Contains(search) ||
                                 c.HSCode.ToString().Contains(search)
 
 
@@ -1161,12 +1160,12 @@ namespace RedmondTradeWork.Controllers
         {
             var value = db.TblUrun.Find(t.ID);
             value.Description = t.Description;
-            value.Quantity1 = t.Quantity1;
+          
             value.Quantity2 = t.Quantity2;
             value.UnitPrice = t.UnitPrice;
-            value.Total = t.Total; // totalı hesaplatma olayı olmalı quantity1 * unit price = total 
+            // totalı hesaplatma olayı olmalı quantity1 * unit price = total 
             value.Container= t.Container;
-            value.NetWeightKG = t.NetWeightKG; // bu da paletse ona göre çarpım falan yapmalı 
+            value.Weight_KG = t.Weight_KG; // bu da paletse ona göre çarpım falan yapmalı 
             value.HSCode = t.HSCode;
 
             db.SaveChanges();
@@ -1184,14 +1183,143 @@ namespace RedmondTradeWork.Controllers
         }
 
 
+      
+
+        [HttpGet]
+        public ActionResult Proforma()
+        {
+
+
+            // consignee için olan kısım
+            ViewBag.CCompanylist = db.TblConsignee.Select(x => new SelectListItem
+            {
+                Text = x.CCompanyName,
+                Value = x.CCompanyName
+            }).ToList();
+
+            ViewBag.CAdreslist = db.TblConsignee.Select(x => new SelectListItem
+            {
+                Text = x.CAdress,
+                Value = x.CAdress
+            }).ToList();
+
+            ViewBag.CTelList = db.TblConsignee.Select(x => new SelectListItem
+            {
+                Text = x.CTelefon,
+                Value = x.CTelefon
+            }).ToList();
+
+
+            ViewBag.CEmaillist = db.TblConsignee.Select(x => new SelectListItem
+            {
+                Text = x.CEmail,
+                Value = x.CEmail
+            }).ToList();
+
+            ViewBag.CtaxOfficeList = db.TblConsignee.Select(x => new SelectListItem
+            {
+                Text = x.CTaxOfficeNumber,
+                Value = x.CTaxOfficeNumber
+            }).ToList();
+
+
+            // Shipper için olan kısım
+            ViewBag.SCompanylist = db.TblShipper.Select(x => new SelectListItem
+            {
+                Text = x.SCompanyName,
+                Value = x.SCompanyName
+            }).ToList();
+
+            ViewBag.SAdreslist = db.TblShipper.Select(x => new SelectListItem
+            {
+                Text = x.SAdress,
+                Value = x.SAdress
+            }).ToList();
+
+            ViewBag.STelList = db.TblShipper.Select(x => new SelectListItem
+            {
+                Text = x.STelefon,
+                Value = x.STelefon
+            }).ToList();
+
+
+            ViewBag.SEmaillist = db.TblShipper.Select(x => new SelectListItem
+            {
+                Text = x.SEmail,
+                Value = x.SEmail
+            }).ToList();
+
+            ViewBag.StaxOfficeList = db.TblShipper.Select(x => new SelectListItem
+            {
+                Text = x.STaxOfficeNumber,
+                Value = x.STaxOfficeNumber
+            }).ToList();
 
 
 
 
 
+            // ürünler için olan kısım
+            ViewBag.UrunList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.Quantity2, // ürünün kendisi
+                Value = x.Quantity2
+            }).ToList();
+
+            ViewBag.DescriptionList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.Description,
+                Value = x.Description
+            }).ToList();
+
+            ViewBag.UnitpriceList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.UnitPrice.ToString(),
+                Value = x.UnitPrice.ToString()
+            }).ToList();
+
+            ViewBag.ContainerList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.Container,
+                Value = x.Container
+            }).ToList();
+
+            ViewBag.WeightList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.Weight_KG.ToString(),
+                Value = x.Weight_KG.ToString()
+            }).ToList();
+
+            ViewBag.HsList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.HSCode.ToString(),
+                Value = x.HSCode.ToString()
+            }).ToList();
 
 
 
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Proforma(Tblortakproforma t)
+        {
+
+            t.TotalPrice = t.Quantity1 * t.UnitPrice;
+            t.NetWeightKG = t.Quantity1 * t.WeightKG;
+
+            db.Tblortakproforma.Add(t);
+            db.SaveChanges();
+            return RedirectToAction("AdminSearch");
+        }
+
+
+
+        public ActionResult Proformlist()
+        {
+            var values = db.Tblortakproforma.ToList();
+            return View(values);
+        }
 
 
 
@@ -1200,11 +1328,129 @@ namespace RedmondTradeWork.Controllers
 
         public ActionResult deneme()
         {
+
+            // consignee için olan kısım
+            ViewBag.CCompanylist = db.TblConsignee.Select(x => new SelectListItem
+            {
+                Text = x.CCompanyName,
+                Value = x.CCompanyName
+            }).ToList();
+
+            ViewBag.CAdreslist = db.TblConsignee.Select(x => new SelectListItem
+            {
+                Text = x.CAdress,
+                Value = x.CAdress
+            }).ToList();
+
+            ViewBag.CTelList = db.TblConsignee.Select(x => new SelectListItem
+            {
+                Text = x.CTelefon,
+                Value = x.CTelefon
+            }).ToList();
+
+
+            ViewBag.CEmaillist = db.TblConsignee.Select(x => new SelectListItem
+            {
+                Text = x.CEmail,
+                Value = x.CEmail
+            }).ToList();
+
+            ViewBag.CtaxOfficeList = db.TblConsignee.Select(x => new SelectListItem
+            {
+                Text = x.CTaxOfficeNumber,
+                Value = x.CTaxOfficeNumber
+            }).ToList();
+
+
+            // Shipper için olan kısım
+            ViewBag.SCompanylist = db.TblShipper.Select(x => new SelectListItem
+            {
+                Text = x.SCompanyName,
+                Value = x.SCompanyName
+            }).ToList();
+
+            ViewBag.SAdreslist = db.TblShipper.Select(x => new SelectListItem
+            {
+                Text = x.SAdress,
+                Value = x.SAdress
+            }).ToList();
+
+            ViewBag.STelList = db.TblShipper.Select(x => new SelectListItem
+            {
+                Text = x.STelefon,
+                Value = x.STelefon
+            }).ToList();
+
+
+            ViewBag.SEmaillist = db.TblShipper.Select(x => new SelectListItem
+            {
+                Text = x.SEmail,
+                Value = x.SEmail
+            }).ToList();
+
+            ViewBag.StaxOfficeList = db.TblShipper.Select(x => new SelectListItem
+            {
+                Text = x.STaxOfficeNumber,
+                Value = x.STaxOfficeNumber
+            }).ToList();
+
+
+
+
+
+            // ürünler için olan kısım
+            ViewBag.UrunList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.Quantity2, // ürünün kendisi
+                Value = x.Quantity2
+            }).ToList();
+
+            ViewBag.DescriptionList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.Description,
+                Value = x.Description
+            }).ToList();
+
+            ViewBag.UnitpriceList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.UnitPrice.ToString(),
+                Value = x.UnitPrice.ToString()
+            }).ToList();
+
+            ViewBag.ContainerList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.Container,
+                Value = x.Container
+            }).ToList();
+
+            ViewBag.WeightList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.Weight_KG.ToString(),
+                Value = x.Weight_KG.ToString()
+            }).ToList();
+
+            ViewBag.HsList = db.TblUrun.Select(x => new SelectListItem
+            {
+                Text = x.HSCode.ToString(),
+                Value = x.HSCode.ToString()
+            }).ToList();
+
+            return View();
+        }
+
+
+        public ActionResult Deneme2()
+        {
             return View();
         }
 
 
 
+
+        public ActionResult Finalİnvoice()
+        {
+            return View();
+        }
 
 
         public PartialViewResult FooterPartial()

@@ -228,6 +228,9 @@
     <Compile Include="Models\Entity\TblMessage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\Tblortakproforma.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\TblService.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -5845,6 +5848,10 @@
     <Content Include="Views\Admin\Urun.cshtml" />
     <Content Include="Views\Admin\InsertUrun.cshtml" />
     <Content Include="Views\Admin\UpdateUrun.cshtml" />
+    <Content Include="Views\Admin\Proforma.cshtml" />
+    <Content Include="Views\Admin\Finalİnvoice.cshtml" />
+    <Content Include="Views\Admin\Proformlist.cshtml" />
+    <Content Include="Views\Admin\Deneme2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

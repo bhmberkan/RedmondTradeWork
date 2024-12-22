@@ -1,0 +1,389 @@
+﻿@model RedmondTradeWork.Models.Entity.Tblortakproforma
+
+@{
+    ViewBag.Title = "Proforma";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Proforma oluştur</h2>
+<br />
+<br />
+
+<form method="post">
+
+    @Html.Label("Invoice No")
+    @Html.TextBoxFor(x => x.InvoiceNo, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Booking No")
+    @Html.TextBoxFor(x => x.BookingNo, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Container No")
+    @Html.TextBoxFor(x => x.ContainerNo, new { @class = "form-control" })
+    <br />
+
+
+    <h2>Shipper</h2>
+
+    @Html.Label("Shipper Company")
+    @Html.DropDownList("SCompanylist", (IEnumerable<SelectListItem>)ViewBag.SCompanylist, "Seçiniz", new { @class = "form-control", id = "SCompanylist" })
+    @Html.TextBoxFor(x => x.SCompanyName, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Shipper Adres")
+    @Html.DropDownList("SAdreslist", (IEnumerable<SelectListItem>)ViewBag.SAdreslist, "Seçiniz", new { @class = "form-control", id = "SAdreslist" })
+    @Html.TextBoxFor(x => x.SAdress, new { @class = "form-control" })
+    <br />
+
+
+    @Html.Label("Shipper Tel")
+    @Html.DropDownList("STelList", (IEnumerable<SelectListItem>)ViewBag.STelList, "Seçiniz", new { @class = "form-control", id = "STelList" })
+    @Html.TextBoxFor(x => x.STelefon, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Shipper Email")
+    @Html.DropDownList("SEmaillist", (IEnumerable<SelectListItem>)ViewBag.SEmaillist, "Seçiniz", new { @class = "form-control", id = "SEmaillist" })
+    @Html.TextBoxFor(x => x.SEmail, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Shipper Tax")
+    @Html.DropDownList("StaxOfficeList", (IEnumerable<SelectListItem>)ViewBag.StaxOfficeList, "Seçiniz", new { @class = "form-control", id = "StaxOfficeList" })
+    @Html.TextBoxFor(x => x.STaxOfficeNumber, new { @class = "form-control" })
+    <br /> <br />
+
+
+
+
+
+
+    <h2> Consignee</h2>
+    @Html.Label("Consignee Company")
+    @Html.DropDownList("CCompanylist", (IEnumerable<SelectListItem>)ViewBag.CCompanylist, "Seçiniz", new { @class = "form-control", id = "CCompanylist" })
+    @Html.TextBoxFor(x => x.CCompanyName, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Consignee Adress")
+    @Html.DropDownList("CAdreslist", (IEnumerable<SelectListItem>)ViewBag.CAdreslist, "Seçiniz", new { @class = "form-control", id = "CAdreslist" })
+    @Html.TextBoxFor(x => x.CAdress, new { @class = "form-control" })
+    <br />
+
+
+    @Html.Label("Consignee Telefon")
+    @Html.DropDownList("CTelList", (IEnumerable<SelectListItem>)ViewBag.CTelList, "Seçiniz", new { @class = "form-control", id = "CTelList" })
+    @Html.TextBoxFor(x => x.CTelefon, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Consignee Email")
+    @Html.DropDownList("CEmaillist", (IEnumerable<SelectListItem>)ViewBag.CEmaillist, "Seçiniz", new { @class = "form-control", id = "CEmaillist" })
+    @Html.TextBoxFor(x => x.CEmail, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Consignee Tax")
+    @Html.DropDownList("CtaxOfficeList", (IEnumerable<SelectListItem>)ViewBag.CtaxOfficeList, "Seçiniz", new { @class = "form-control", id = "CtaxOfficeList" })
+    @Html.TextBoxFor(x => x.CTaxOfficeNumber, new { @class = "form-control" })
+    <br /> <br />
+
+
+    <h2>Ürün</h2>
+
+    @Html.Label("Ürün ")
+    @Html.DropDownList("UrunList", (IEnumerable<SelectListItem>)ViewBag.UrunList, "Seçiniz", new { @class = "form-control", id = "UrunList" })
+    @Html.TextBoxFor(x => x.Quantity2, new { @class = "form-control" })
+    <br />
+
+
+    @Html.Label("Adet")
+    @Html.TextBoxFor(x => x.Quantity1, new { @class = "form-control", @type = "number", @min = "0", id = "Quantity1" })
+    <br />
+
+    @Html.Label("Description")
+    @Html.DropDownList("DescriptionList", (IEnumerable<SelectListItem>)ViewBag.DescriptionList, "Seçiniz", new { @class = "form-control", id = "DescriptionList" })
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+
+
+    @Html.Label("Unit Price")
+    @Html.DropDownList("UnitpriceList", (IEnumerable<SelectListItem>)ViewBag.UnitpriceList, "Seçiniz", new { @class = "form-control", id = "UnitpriceList" })
+    @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Total Price")
+    @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control", @type = "number", @min = "0" })
+
+    <br />
+
+    @Html.Label("Container")
+    @Html.DropDownList("ContainerList", (IEnumerable<SelectListItem>)ViewBag.ContainerList, "Seçiniz", new { @class = "form-control", id = "ContainerList" })
+    @Html.TextBoxFor(x => x.Container, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Weight")
+    @Html.DropDownList("WeightList", (IEnumerable<SelectListItem>)ViewBag.WeightList, "Seçiniz", new { @class = "form-control", id = "WeightList" })
+    @Html.TextBoxFor(x => x.WeightKG, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Net Weight")
+    @Html.TextBoxFor(x => x.NetWeightKG, new { @class = "form-control", @type = "number", @min = "0" })
+    <br />
+
+    @Html.Label("Hs")
+    @Html.DropDownList("HsList", (IEnumerable<SelectListItem>)ViewBag.HsList, "Seçiniz", new { @class = "form-control", id = "HsList" })
+    @Html.TextBoxFor(x => x.HSCode, new { @class = "form-control" })
+    <br />
+
+
+
+
+
+
+
+
+
+    <button class="btn btn-info"> Ekle </button>
+
+</form>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // CCompanylist Dropdown'da bir değişiklik olduğunda tetiklenir
+        $('#CCompanylist').change(function () {
+            // Seçilen indeks değerini al
+            var selectedIndex = $(this).prop('selectedIndex');
+
+            // Diğer DropDownList'lerin seçimini güncelle
+            $('#CAdreslist').prop('selectedIndex', selectedIndex);
+            $('#CTelList').prop('selectedIndex', selectedIndex);
+            $('#CEmaillist').prop('selectedIndex', selectedIndex);
+            $('#CtaxOfficeList').prop('selectedIndex', selectedIndex);
+        });
+
+
+
+        // Shipper için işlev
+        $('#SCompanylist').change(function () {
+            var selectedIndex = $(this).prop('selectedIndex');
+
+            $('#SAdreslist').prop('selectedIndex', selectedIndex);
+            $('#STelList').prop('selectedIndex', selectedIndex);
+            $('#SEmaillist').prop('selectedIndex', selectedIndex);
+            $('#StaxOfficeList').prop('selectedIndex', selectedIndex);
+        });
+
+
+
+        // Shipper için işlev
+        $('#UrunList').change(function () {
+            var selectedIndex = $(this).prop('selectedIndex');
+
+            $('#DescriptionList').prop('selectedIndex', selectedIndex);
+            $('#UnitpriceList').prop('selectedIndex', selectedIndex);
+            $('#ContainerList').prop('selectedIndex', selectedIndex);
+            $('#WeightList').prop('selectedIndex', selectedIndex);
+            $('#HsList').prop('selectedIndex', selectedIndex);
+        });
+
+
+
+        $('#Quantity1, #UnitpriceList').on('input change', function () {
+            var quantity = parseFloat($('#Quantity1').val()) || 0; // Quantity alanındaki değeri al
+            var unitPrice = parseFloat($('#UnitpriceList').find(':selected').val()) || 0; // UnitpriceList'teki seçili değerin değerini al
+
+            var totalPrice = quantity * unitPrice; // Çarpma işlemi
+            $('#TotalPrice').val(totalPrice.toFixed(2)); // Sonucu TotalPrice alanına yazdır
+        });
+
+
+
+
+        $('#Quantity1, #UnitpriceList').on('input change', function () {
+            var quantity = parseFloat($('#Quantity1').val()) || 0; // Quantity alanındaki değeri al
+            var unitPrice = parseFloat($('#WeightList').find(':selected').val()) || 0; // UnitpriceList'teki seçili değerin değerini al
+
+            var totalPrice = quantity * unitPrice; // Çarpma işlemi
+            $('#NetWeightKG').val(totalPrice.toFixed(2)); // Sonucu TotalPrice alanına yazdır
+        });
+
+
+
+
+
+    });
+</script>
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        // Consignee için işlev
+        $('#CCompanylist').change(function () {
+            var selectedIndex = $(this).prop('selectedIndex');
+
+            // DropDownList'lerin seçimini güncelle
+            $('#CAdreslist').prop('selectedIndex', selectedIndex);
+            $('#CTelList').prop('selectedIndex', selectedIndex);
+            $('#CEmaillist').prop('selectedIndex', selectedIndex);
+            $('#CtaxOfficeList').prop('selectedIndex', selectedIndex);
+
+            // TextBox'ları doldur
+            $('#CCompanyName').val($(this).find(':selected').text());
+            $('#CAdress').val($('#CAdreslist').find(':selected').text());
+            $('#CTelefon').val($('#CTelList').find(':selected').text());
+            $('#CEmail').val($('#CEmaillist').find(':selected').text());
+            $('#CTaxOfficeNumber').val($('#CtaxOfficeList').find(':selected').text());
+        });
+
+        // Shipper için işlev
+        $('#SCompanylist').change(function () {
+            var selectedIndex = $(this).prop('selectedIndex');
+
+            // DropDownList'lerin seçimini güncelle
+            $('#SAdreslist').prop('selectedIndex', selectedIndex);
+            $('#STelList').prop('selectedIndex', selectedIndex);
+            $('#SEmaillist').prop('selectedIndex', selectedIndex);
+            $('#StaxOfficeList').prop('selectedIndex', selectedIndex);
+
+            // TextBox'ları doldur
+            $('#SCompanyName').val($(this).find(':selected').text());
+            $('#SAdress').val($('#SAdreslist').find(':selected').text());
+            $('#STelefon').val($('#STelList').find(':selected').text());
+            $('#SEmail').val($('#SEmaillist').find(':selected').text());
+            $('#STaxOfficeNumber').val($('#StaxOfficeList').find(':selected').text());
+        });
+
+        // Ürün için işlev
+        $('#UrunList').change(function () {
+            var selectedIndex = $(this).prop('selectedIndex');
+
+            // DropDownList'lerin seçimini güncelle
+            $('#DescriptionList').prop('selectedIndex', selectedIndex);
+            $('#UnitpriceList').prop('selectedIndex', selectedIndex);
+            $('#ContainerList').prop('selectedIndex', selectedIndex);
+            $('#WeightList').prop('selectedIndex', selectedIndex);
+            $('#HsList').prop('selectedIndex', selectedIndex);
+
+            // TextBox'ları doldur
+            $('#Quantity2').val($(this).find(':selected').text());
+            $('#Description').val($('#DescriptionList').find(':selected').text());
+            $('#UnitPrice').val($('#UnitpriceList').find(':selected').text());
+            $('#Container').val($('#ContainerList').find(':selected').text());
+            $('#WeightKG').val($('#WeightList').find(':selected').text());
+            $('#HSCode').val($('#HsList').find(':selected').text());
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        // Shipper için işlev
+        $('#SCompanylist').change(function () {
+            var selectedValue = $(this).val(); // Dropdown'daki seçili değeri al
+            $('#SCompanyName').val(selectedValue); // TextBox'a aktar
+        });
+
+        $('#SAdreslist').change(function () {
+            var selectedValue = $(this).val();
+            $('#SAdress').val(selectedValue);
+        });
+
+        $('#STelList').change(function () {
+            var selectedValue = $(this).val();
+            $('#STelefon').val(selectedValue);
+        });
+
+        $('#SEmaillist').change(function () {
+            var selectedValue = $(this).val();
+            $('#SEmail').val(selectedValue);
+        });
+
+        $('#StaxOfficeList').change(function () {
+            var selectedValue = $(this).val();
+            $('#STaxOfficeNumber').val(selectedValue);
+        });
+
+        // Consignee için işlev
+        $('#CCompanylist').change(function () {
+            var selectedValue = $(this).val();
+            $('#CCompanyName').val(selectedValue);
+        });
+
+        $('#CAdreslist').change(function () {
+            var selectedValue = $(this).val();
+            $('#CAdress').val(selectedValue);
+        });
+
+        $('#CTelList').change(function () {
+            var selectedValue = $(this).val();
+            $('#CTelefon').val(selectedValue);
+        });
+
+        $('#CEmaillist').change(function () {
+            var selectedValue = $(this).val();
+            $('#CEmail').val(selectedValue);
+        });
+
+        $('#CtaxOfficeList').change(function () {
+            var selectedValue = $(this).val();
+            $('#CTaxOfficeNumber').val(selectedValue);
+        });
+
+        // Ürün için işlev
+        $('#UrunList').change(function () {
+            var selectedValue = $(this).val();
+            $('#Quantity2').val(selectedValue);
+        });
+
+        $('#DescriptionList').change(function () {
+            var selectedValue = $(this).val();
+            $('#Description').val(selectedValue);
+        });
+
+        $('#UnitpriceList').change(function () {
+            var selectedValue = $(this).val();
+            $('#UnitPrice').val(selectedValue);
+        });
+
+        $('#ContainerList').change(function () {
+            var selectedValue = $(this).val();
+            $('#Container').val(selectedValue);
+        });
+
+        $('#WeightList').change(function () {
+            var selectedValue = $(this).val();
+            $('#WeightKG').val(selectedValue);
+        });
+
+        $('#HsList').change(function () {
+            var selectedValue = $(this).val();
+            $('#HSCode').val(selectedValue);
+        });
+    });
+</script>

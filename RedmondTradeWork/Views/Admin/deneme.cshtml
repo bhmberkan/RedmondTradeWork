@@ -1,14 +1,10 @@
 ﻿
-@{
-    Layout = null;
-}
-
-
 
 
 @{
     Layout = null;
 }
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +18,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            width: 100%; /* Sayfa genişliğini tam yap */
+            height: 100%; /* Sayfa yüksekliğini tam yap */
         }
 
         .invoice-container {
@@ -39,7 +37,7 @@
             border-bottom: 2px solid #000;
             padding-bottom: 10px;
             margin-bottom: 20px;
-            background-color: #c5d9f1;
+            background-color: #f2f2f2;
         }
 
             .header h1 {
@@ -67,31 +65,52 @@
                 padding: 5px;
             }
 
-            .section p {
-                margin: 3px 0;
+            .section table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px;
             }
 
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-            .table th, .table td {
+            .section th, .section td {
                 border: 1px solid #000;
                 padding: 8px;
                 text-align: left;
             }
 
-            .table th {
+            .section th {
                 background-color: #f2f2f2;
+                width: 200px;
+            }
+
+        /* Invoice Table Styles */
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+            .invoice-table th, .invoice-table td {
+                border: 1px solid #000;
+                padding: 8px;
                 text-align: center;
             }
 
-            .table td {
-                text-align: center;
+            .invoice-table th {
+                background-color: #f2f2f2;
             }
 
+        /* Totals Section */
+        .totals {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+            .totals p {
+                margin: 5px 0;
+                text-align: right;
+            }
+
+        /* Footer Styles */
         .footer {
             text-align: center;
             border-top: 2px solid #000;
@@ -99,6 +118,7 @@
             margin-top: 20px;
         }
 
+        /* Signature Section */
         .signature {
             margin-top: 30px;
             height: 100px;
@@ -109,50 +129,96 @@
             color: #777;
         }
 
-        .totals {
-            width: 100%;
-            margin-top: 20px;
+        .dropdownsss {
+            width: 100%; /* Dropdown'ın genişliğini %100 yap */
+            box-sizing: border-box; /* Padding ve border dahil edilerek genişlik ayarlanır */
+            border: none; /* Kenarlıkları gizle */
+            outline: none; /* Fokuslandığında görünmesini engelle */
+            background: none; /* Arka planı sıfırla */
+            appearance: none; /* Tarayıcı varsayılan ok işaretini gizler */
+            -webkit-appearance: none; /* Webkit tabanlı tarayıcılar için ok işaretini gizler */
+            -moz-appearance: none; /* Firefox için ok işaretini gizler */
         }
-
-            .totals p {
-                margin: 5px 0;
-                text-align: right;
-            }
     </style>
 </head>
 <body>
     <div class="invoice-container">
         <!-- Header -->
         <div class="header">
-            <h1>PROFORMA INVOICE</h1>
-            <p><strong>Invoice no:</strong> EKHMBR19102024 &nbsp;&nbsp;&nbsp; <strong>Date:</strong> 19.10.2024</p>
+            <h1>PROFORMA INVOICE</h1> <br />
+            <p>
+                <strong>Invoice no:</strong> <input type="text" value="EKHMBR19102024" style="border:none; width: 10%; background: none; text-align: left;">
+                            
+            </p>
+            <p style="text-align:right;"> <strong>Date:</strong> @DateTime.Now.ToString("dd.M.yyyy") &ensp;  &ensp;  &ensp;</p>
         </div>
 
-        <!-- Shipper and Consignee Details -->
+        <!-- Shipper Details -->
         <div class="section">
-            <h2>SHIPPER</h2>
-            <p><strong>Company name:</strong> REDMOND INSAAT VE DIS TICARET LTD. STI.</p>
-            <p><strong>Address:</strong> YUSUF PASA MAH. 916. SK. NO:2/C ENYUBIRE/SANLIURFA/TURKEY</p>
-            <p><strong>Telephones:</strong> +90 532 055 96 63</p>
-            <p><strong>Email:</strong> info@redmondtrade.com</p>
-            <p><strong>Tax office/number:</strong> SEHITLIK V.D. 7324571792</p>
+
+            <table>
+                <tr>
+                    <th rowspan="6" style="text-align: center; vertical-align: middle; border: none;">SHIPPER</th>
+                </tr>
+                <tr>
+                    <th style="border: none; text-align: right; ">Company Name:</th>
+                    <td style="border-left:none;"> @Html.DropDownList("SCompanylist", (IEnumerable<SelectListItem>)ViewBag.SCompanylist, "Seçiniz", new { @class = "dropdownsss", id = "SCompanylist" })</td>
+                </tr>
+                <tr>
+                    <th style="border: none; text-align: right;">Address:</th>
+                    <td style="border-left:none;"> @Html.DropDownList("SAdreslist", (IEnumerable<SelectListItem>)ViewBag.SAdreslist, "Seçiniz", new { @class = "dropdownsss", id = "SAdreslist" })</td>
+                </tr>
+                <tr>
+                    <th style="border: none; text-align: right;">Telephones:</th>
+                    <td style="border-left:none;">  @Html.DropDownList("STelList", (IEnumerable<SelectListItem>)ViewBag.STelList, "Seçiniz", new { @class = "dropdownsss", id = "STelList" })</td>
+                </tr>
+                <tr>
+                    <th style="border: none; text-align: right;">Email:</th>
+                    <td style="border-left:none;"> @Html.DropDownList("SEmaillist", (IEnumerable<SelectListItem>)ViewBag.SEmaillist, "Seçiniz", new { @class = "dropdownsss", id = "SEmaillist" })</td>
+                </tr>
+                <tr>
+                    <th style="border: none; text-align: right;">Tax/Office Number:</th>
+                    <td style="border-left:none;"> @Html.DropDownList("StaxOfficeList", (IEnumerable<SelectListItem>)ViewBag.StaxOfficeList, "Seçiniz", new { @class = "dropdownsss", id = "StaxOfficeList" })</td>
+                </tr>
+            </table>
         </div>
 
+        <!-- Consignee Details -->
         <div class="section">
-            <h2>CONSIGNEE</h2>
-            <p><strong>Company name:</strong> SHN SARL</p>
-            <p><strong>Address:</strong> AKWA BP 5018 DOUALA CAMEROON</p>
-            <p><strong>Telephones:</strong> +237 673 77 91 71</p>
-            <p><strong>Email:</strong> shnsarl@proto.me</p>
-            <p><strong>Tax number:</strong> CIME DOUALA / M032146620854F</p>
+
+            <table>
+                <tr>
+                    <th rowspan="6" style="text-align: center; vertical-align: middle; border:none;">CONSIGNEE</th>
+                </tr>
+                <tr>
+                    <th style="border: none; text-align: right;">Company Name:</th>
+                    <td style="border-left:none;"> @Html.DropDownList("CCompanylist", (IEnumerable<SelectListItem>)ViewBag.CCompanylist, "Seçiniz", new { @class = "dropdownsss", id = "CCompanylist" })</td>
+                </tr>
+                <tr>
+                    <th style="border: none; text-align: right;">Address:</th>
+                    <td style="border-left:none;"> @Html.DropDownList("CAdreslist", (IEnumerable<SelectListItem>)ViewBag.CAdreslist, "Seçiniz", new { @class = "dropdownsss", id = "CAdreslist" })</td>
+                </tr>
+                <tr>
+                    <th style="border: none; text-align: right;">Telephones:</th>
+                    <td style="border-left:none;"> @Html.DropDownList("CTelList", (IEnumerable<SelectListItem>)ViewBag.CTelList, "Seçiniz", new { @class = "dropdownsss", id = "CTelList" })</td>
+                </tr>
+                <tr>
+                    <th style="border: none; text-align: right;">Email:</th>
+                    <td style="border-left:none;"> @Html.DropDownList("CEmaillist", (IEnumerable<SelectListItem>)ViewBag.CEmaillist, "Seçiniz", new { @class = "dropdownsss", id = "CEmaillist" })</td>
+                </tr>
+                <tr>
+                    <th style="border: none; text-align: right;">Tax Number:</th>
+                    <td style="border-left:none;"> @Html.DropDownList("CtaxOfficeList", (IEnumerable<SelectListItem>)ViewBag.CtaxOfficeList, "Seçiniz", new { @class = "dropdownsss", id = "CtaxOfficeList" })</td>
+                </tr>
+            </table>
         </div>
 
         <!-- Invoice Table -->
-        <table class="table">
+        <table class="invoice-table">
             <thead>
                 <tr>
                     <th>Description</th>
-                    <th colspan="2">Quantity</th>  <!-- Birleştirilen Quantity Başlığı -->
+                    <th colspan="2">Quantity</th>
                     <th>Unit Price</th>
                     <th>Total</th>
                     <th>Container</th>
@@ -163,8 +229,8 @@
             <tbody>
                 <tr>
                     <td>QR01</td>
-                    <td>5</td>  <!-- Quantity için değerler -->
-                    <td>5</td> @*quantıty alanı*@
+                    <td>5</td>
+                    <td>5</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -173,8 +239,8 @@
                 </tr>
                 <tr>
                     <td>QR02</td>
-                    <td>5</td> @*quantıty alanı*@
-                    <td>5</td> @*quantıty alanı*@
+                    <td>5</td>
+                    <td>5</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -183,8 +249,8 @@
                 </tr>
                 <tr>
                     <td>QR03</td>
-                    <td>5</td>  @*quantıty alanı*@
-                    <td>5</td> @*quantıty alanı*@
+                    <td>5</td>
+                    <td>5</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -192,44 +258,210 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>QR04</td>
-                    <td>16.00 / burası</td> @*quantıty alanı*@
-                    <td>16.00 / burası</td> @*quantıty alanı*@
-                    <td>$330.00</td>
-                    <td>$5,280.00</td>
-                    <td>1x20DC</td>
-                    <td>22980.0 KG</td>
-                    <td>842199</td>
+                    <td> @Html.DropDownList("DescriptionList", (IEnumerable<SelectListItem>)ViewBag.DescriptionList, "Seçiniz", new { @class = "dropdownsss", id = "DescriptionList" })</td>
+                    <td>16.00</td> @*burayı ayarlıcam*@
+                    <td> @Html.DropDownList("UrunList", (IEnumerable<SelectListItem>)ViewBag.UrunList, "Seçiniz", new { @class = "dropdownsss", id = "UrunList" })</td>
+                    <td> @Html.DropDownList("UnitpriceList", (IEnumerable<SelectListItem>)ViewBag.UnitpriceList, "Seçiniz", new { @class = "dropdownsss", id = "UnitpriceList" })</td>
+                    <td>$5,280.00</td> @*totali hesaplatıcam*@
+                    <td>  @Html.DropDownList("ContainerList", (IEnumerable<SelectListItem>)ViewBag.ContainerList, "Seçiniz", new { @class = "dropdownsss", id = "ContainerList" })</td>
+                    <td>22980.0 KG</td> @*net kg hesaplatıcam*@
+                    <td> @Html.DropDownList("HsList", (IEnumerable<SelectListItem>)ViewBag.HsList, "Seçiniz", new { @class = "dropdownsss", id = "HsList" })</td>
                 </tr>
+
+                <tr>
+                    <th rowspan="5" class="color-white"></th>
+                </tr>
+
+
+                <tr>
+                    <td style=" background-color: #f2f2f2;"></td>
+                    <td colspan="2" style=" background-color: #f2f2f2; text-align: right;">TOTAL VALUE :</td>
+                    <td style=" background-color: #f2f2f2;">SAYISAL</td>
+
+                    <td>Total Kg</td>
+                    <td>item 4</td>
+                    <td> </td>
+                </tr>
+
+
+
+                <tr>
+                    <td style=" background-color: #f2f2f2;"> 1</td>
+                    <td style="background-color: #f2f2f2; text-align: right;">FREIGHT :</td>
+                    <td style="background-color: #f2f2f2; text-align: right; ">SAYSAL</td>
+                    <td style=" background-color: #f2f2f2;">SAYSAY</td>
+                    <td rowspan="3" colspan="3"></td>
+
+                </tr>
+
+                <tr>
+                    <td style=" background-color: #f2f2f2;"> 1</td>
+                    <td style=" background-color: #f2f2f2; text-align: right;">ASSURANCE :</td>
+                    <td style=" background-color: #f2f2f2; text-align: right;">sAYISAL</td>
+                    <td style=" background-color: #f2f2f2; ">SAYSAY</td>
+
+                </tr>
+
+
+                <tr>
+                    <td colspan="3" style=" background-color: #f2f2f2; text-align: right; ">GENERAL CIV VALUE :</td>
+
+                    <td style=" background-color: #f2f2f2;">SAYSAL</td>
+                </tr>
+
+
+                <tr>
+                    <td style="text-align:left"> TERM OF DELIVERY</td>
+                    <td colspan="4" style="text-align:left; border:none">
+                        <input type="text" value=": CIF (KRIBI PORT)" style="border:none; width: 100%; background: none; text-align: left;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="text-align:left"> COUNTRY OF ORIGIN</td>
+                    <td colspan="4" style="text-align:left; border:none">
+                        <input type="text" value=":  TURKEY (ALL GOODS MADE IN TURKEY)" style="border:none; width: 100%; background: none; text-align: left;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="text-align:left" ;>TERMS OF PAYMENT</td>
+                    <td colspan="7" style="text-align:left; border-top:none; border-right:none;">
+
+                        <input type="text" value=":  RECEPTION OF GOOD IN CAMEROON" style="border:none; width: 100%; background: none; text-align: left;">
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td style="border:none;"></td>
+                </tr>
+                <tr>
+                    <td style="border:none;"></td>
+                </tr>
+
+                <tr>
+                    <td style="text-align: left; text-decoration: underline; background-color: #f2f2f2;"><b> BANK ACCOUNT</b></td>
+                    <td colspan="7" style="border-bottom:none;border-right:none;"></td>
+                </tr>
+
+
+                <tr>
+                    <td style="text-align: left; background-color: #f2f2f2; "><b>BENEFICIARY</b></td>
+                    <td colspan="7" style="border:none; text-align:left">
+
+
+                        <input type="text" value=": REDMOND INSAAT VE DIS TICARET LTD. STI." style="border:none; width: 100%; background: none; text-align: left;">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td style="text-align: left; background-color: #f2f2f2; "><b>NAME OF BANK</b></td>
+                    <td colspan="7" style="border: none; text-align: left">
+                        <input type="text" value=": T. GARANTİ BANKASI A.Ş." style="border:none; width: 100%; background: none; text-align: left;">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td style="text-align: left; background-color: #f2f2f2; "><b>BRANCH</b></td>
+                    <td colspan="7" style="border: none; text-align: left">
+                        <input type="text" value=": ŞANLIURFA (451)" style="border:none; width: 100%; background: none; text-align: left;">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td style="text-align: left; background-color: #f2f2f2; "><b>SWIFT CODE</b></td>
+                    <td colspan="7" style="border: none; text-align: left">
+
+                        <input type="text" value=": TGBATRISXXX" style="border:none; width: 100%; background: none; text-align: left;">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td style="text-align: left; background-color: #f2f2f2; "><b>ACCOUNT NUMBER</b></td>
+                    <td colspan="7" style="border: none; text-align: left">
+
+
+                        <input type="text" value=": 451-9067642" style="border:none; width: 100%; background: none; text-align: left;">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td style="text-align: left; background-color: #f2f2f2;"><b>IBAN NUMBER (USD)</b></td>
+                    <td colspan="7" style="border-top: none; border-right: none; text-align: left">
+
+                        <input type="text" value=": TR18 0006 2000 4510 0009 0676 42" style="border:none; width: 100%; background: none; text-align: left;">
+                    </td>
+                </tr>
+
             </tbody>
         </table>
 
-        <!-- Totals -->
-        <div class="totals">
-            <p><strong>Freight:</strong> $2,030.00</p>
-            <p><strong>Assurance:</strong> $17.50</p>
-            <p><strong>General CIF Value:</strong> $7,327.50</p>
-        </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            <p><strong>Term of Delivery:</strong> CIF (KRIBI PORT)</p>
-            <p><strong>Country of Origin:</strong> TURKEY (ALL GOODS MADE IN TURKEY)</p>
-            <p><strong>Terms of Payment:</strong> RECEPTION OF GOODS IN CAMEROON</p>
-            <p><strong>Bank Account:</strong></p>
-            <p>
-                REDMOND INSAAT VE DIS TICARET LTD. STI.<br>
-                T. GARANTI BANKASI A.S.<br>
-                Branch: SANLIURFA (451)<br>
-                Swift Code: TGBATRISXXX<br>
-                IBAN Number (USD): TR18 0006 2000 4510 0093 0674 62
-            </p>
-        </div>
 
-        <!-- Signature Section -->
-        <div class="signature">
-            Signature Area
-        </div>
+
     </div>
 </body>
 </html>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // CCompanylist Dropdown'da bir değişiklik olduğunda tetiklenir
+        $('#CCompanylist').change(function () {
+            // Seçilen indeks değerini al
+            var selectedIndex = $(this).prop('selectedIndex');
+
+            // Diğer DropDownList'lerin seçimini güncelle
+            $('#CAdreslist').prop('selectedIndex', selectedIndex);
+            $('#CTelList').prop('selectedIndex', selectedIndex);
+            $('#CEmaillist').prop('selectedIndex', selectedIndex);
+            $('#CtaxOfficeList').prop('selectedIndex', selectedIndex);
+        });
+
+
+
+        // Shipper için işlev
+        $('#SCompanylist').change(function () {
+            var selectedIndex = $(this).prop('selectedIndex');
+
+            $('#SAdreslist').prop('selectedIndex', selectedIndex);
+            $('#STelList').prop('selectedIndex', selectedIndex);
+            $('#SEmaillist').prop('selectedIndex', selectedIndex);
+            $('#StaxOfficeList').prop('selectedIndex', selectedIndex);
+        });
+
+
+
+        // Shipper için işlev
+        $('#UrunList').change(function () {
+            var selectedIndex = $(this).prop('selectedIndex');
+
+            $('#DescriptionList').prop('selectedIndex', selectedIndex);
+            $('#UnitpriceList').prop('selectedIndex', selectedIndex);
+            $('#ContainerList').prop('selectedIndex', selectedIndex);
+            $('#WeightList').prop('selectedIndex', selectedIndex);
+            $('#HsList').prop('selectedIndex', selectedIndex);
+        });
+
+
+
+
+
+
+
+
+
+    });
+</script>

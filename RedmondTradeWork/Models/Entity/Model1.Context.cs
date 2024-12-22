@@ -40,5 +40,6 @@ namespace RedmondTradeWork.Models.Entity
         public virtual DbSet<TblConsignee> TblConsignee { get; set; }
         public virtual DbSet<TblShipper> TblShipper { get; set; }
         public virtual DbSet<TblUrun> TblUrun { get; set; }
+        public virtual DbSet<Tblortakproforma> Tblortakproforma { get; set; }
     }
 }
