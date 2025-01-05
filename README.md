@@ -18,7 +18,7 @@ Proje, ASP.NET Teknolojisi kullanılarak geliştirilmiştir. Backend kısmında 
 
 ---
 
-##**Öne Çıkan Özellikler**
+## **Öne Çıkan Özellikler**
 
 ### **1. Kullanıcı Rolleri ve Yetkilendirme**
 - **admin**: sayfa yönetimi ve kullanıcı mesajları. container işlemleri gibi işlemlere erişip kontrollerini sağlama. Türkçe,ingilizce,Fransızca sayfaları için içerikleri ayrı ayrı düzenleyebilme.
