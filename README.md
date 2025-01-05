@@ -1,5 +1,6 @@
 <div align="center">
-# **Redmond Trade**
+  
+## **Redmond Trade**
 
 Bu proje, RedmondTrade şirketinin süreçlerini dijitalleştirmek ve kullanıcılar için kolaylaştırılmış bir web  platformu sunmak amacıyla geliştirilmiştir.
 Kullanıcı dostu bir arayüz ve güçlü bir backend ile desteklenen platform, hem sayfa yöneticileri hem de kullanıcılar için kapsamlı bir çözüm sağlamaktadır.
