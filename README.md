@@ -97,6 +97,33 @@ login paneli üzerinden giriş yaptıklarında sadece arama ve detayları yanı 
 
 ## **Proje Görselleri**
 
+![image](https://github.com/user-attachments/assets/762c338b-ad10-41ab-b633-58a1cd42ebd3)
+![image](https://github.com/user-attachments/assets/eb017cbd-1476-47a2-8a70-c294a6155dee)
+![image](https://github.com/user-attachments/assets/787684a4-6ebf-401f-835a-4fa8d3a19b80)
+![image](https://github.com/user-attachments/assets/b35f0c43-5aa9-4344-abd5-c6b052c9e25e)
+![image](https://github.com/user-attachments/assets/09721239-c7e7-4b9b-bc16-d5aa37dd6832)
+![image](https://github.com/user-attachments/assets/d8f469f8-c088-4031-91a8-1b11650e55d8)
+![image](https://github.com/user-attachments/assets/d2cfce39-ede2-4288-9dad-48427ed469f9)
+![image](https://github.com/user-attachments/assets/b8efe8be-2767-4e7b-918f-b097cb127849)
+![image](https://github.com/user-attachments/assets/b29f1f4f-5e0f-45ad-af3a-9a41bdbb1fc2)
+![image](https://github.com/user-attachments/assets/c0cf3e2d-ad92-4401-bc88-fe0d24c4c6f6)
+![image](https://github.com/user-attachments/assets/e503c2c9-4f58-42b6-a6c5-2b4a3c403423)
+![image](https://github.com/user-attachments/assets/90078f4d-d86c-4097-a551-0be6408ab0ab)
+![image](https://github.com/user-attachments/assets/5090c2c8-3ea4-4442-a8fe-f83ee70861e2)
+![image](https://github.com/user-attachments/assets/9ee28fa7-2318-479d-8607-43a5e2934ad4)
+![image](https://github.com/user-attachments/assets/2372d242-7e21-4d00-be79-7b55d5763a7d)
+![image](https://github.com/user-attachments/assets/350ef93e-b689-4bec-b0d5-ce10c50005a9)
+![image](https://github.com/user-attachments/assets/aabd6bd0-60fa-447f-8e76-74e06a66bbc2)
+![image](https://github.com/user-attachments/assets/b9036520-cd36-46c4-bf9a-bff8b2a08027)
+![image](https://github.com/user-attachments/assets/9abf23a0-5933-4704-9688-12c742075cec)
+![image](https://github.com/user-attachments/assets/83b88113-56f4-4f44-80d6-3d4a76c8290a)
+![image](https://github.com/user-attachments/assets/c3099a64-8270-4bb4-8a10-0f38a73abad5)
+![image](https://github.com/user-attachments/assets/e2e7e8db-3b58-461b-905c-964e41ad4d34)
+![image](https://github.com/user-attachments/assets/b18dba64-7099-4d8d-ae19-3e1d075b7bef)
+![image](https://github.com/user-attachments/assets/91c28ddd-c6d2-44d6-ae9c-8f6207ad927b)
+![image](https://github.com/user-attachments/assets/c83c2602-1494-4de2-b246-a747bf366ab3)
+![image](https://github.com/user-attachments/assets/2cd53024-6525-4b99-83c7-bcecb63516c8)
+
 
 
 
