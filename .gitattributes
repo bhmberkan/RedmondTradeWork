@@ -62,4 +62,11 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
+# wwwroot klasöründeki tüm dosyaları dil analizinden hariç tut
 wwwroot/** linguist-vendored
+
+# .cs dosyaları analiz edilsin
+*.cs linguist-detectable=true
+
+# Satır sonlarını normalize et
+* text=auto
